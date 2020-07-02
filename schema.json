@@ -5288,7 +5288,7 @@
         },
         "ContentType.AdaptiveCard": {
           "description": "Represents AdaptiveCard content",
-          "$ref": "http://adaptivecards.io/schemas/adaptive-card.json#/definitions/AdaptiveCard"
+          "$ref": "https://adaptivecards.io/schemas/adaptive-card.json#/definitions/AdaptiveCard"
         },
         "progressIndicator": {
           "description": "Represents progress indicator attributes",
@@ -6103,8 +6103,8 @@
         }
       }
     },
-    "http://adaptivecards.io/schemas/adaptive-card.json": {
-      "$ref": "http://adaptivecards.io/schemas/adaptive-card.json"
+    "https://adaptivecards.io/schemas/adaptive-card.json": {
+      "$ref": "https://adaptivecards.io/schemas/adaptive-card.json"
     }
   }
 }
