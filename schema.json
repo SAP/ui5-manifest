@@ -36,7 +36,8 @@
         "1.21.0",
         "1.22.0",
         "1.23.0",
-        "1.24.0"
+        "1.24.0",
+        "1.25.0"
       ]
     },
     "start_url": {
@@ -1552,8 +1553,12 @@
             "1.9.0",
             "1.10.0",
             "1.11.0",
-            "1.12.0"
+            "1.13.0"
           ]
+        },
+        "designtime": {
+          "description": "The path to the design time folder with assets files.",
+          "type": "string"
         },
         "configuration": {
           "description": "Represents configuration with parameters and destinations, which can be used inside the card",
@@ -1856,6 +1861,36 @@
               }
             }
           }
+        }
+      }
+    },
+    "sap.package": {
+      "title": "JSON schema for SAP.PACKAGE Namespace",
+      "description": "Represents general package attributes. Experimental, will be detailed in the future",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "_version": {
+          "description": "Represents SAP.PACKAGE attributes format version. It is managed by namespace owner",
+          "type": "string",
+          "enum": [
+            "1.0.0"
+          ]
+        }
+      }
+    },
+    "sap.artifact": {
+      "title": "JSON schema for SAP.ARTIFACT Namespace",
+      "description": "Represents general artifact attributes. Experimental, will be detailed in the future",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "_version": {
+          "description": "Represents SAP.ARTIFACT attributes format version. It is managed by namespace owner",
+          "type": "string",
+          "enum": [
+            "1.0.0"
+          ]
         }
       }
     }
@@ -2386,7 +2421,7 @@
           "type": "string"
         },
         "icon": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/definitions/simpleIcon"
         },
         "type": {
           "description": "The type of the item - one of the types defined in the legend.",
@@ -2562,7 +2597,7 @@
         },
         "icon": {
           "description": "Represents column with icon.",
-          "$ref": "#/definitions/icon"
+          "$ref": "#/definitions/simpleIcon"
         },
         "state": {
           "description": "Defines the state of the column.",
@@ -2604,6 +2639,10 @@
         "progressIndicator": {
           "description": "Represents progress indicator attributes",
           "$ref": "#/definitions/progressIndicator"
+        },
+        "visible": {
+          "description": "Represents the visibility state of the column",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2669,6 +2708,10 @@
         "emailSubject": {
           "description": "Represents the subject of the email. Works only with item of type 'email'.",
           "type": "string"
+        },
+        "visible": {
+          "description": "Represents the visibility state of the item",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2687,6 +2730,10 @@
           "items": {
             "$ref": "#/definitions/ContentType.Object.Item"
           }
+        },
+        "visible": {
+          "description": "Represents the visibility state of the group",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2721,9 +2768,20 @@
         },
         "icon": {
           "description": "The icon of the timeline item.",
-          "$ref": "#/definitions/icon"
+          "$ref": "#/definitions/simpleIcon"
         }
       }
+    },
+    "visibility": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "$ref": "#/definitions/simpleBinding"
+        }
+      ]
     },
     "ContentType.Analytical.AxisText": {
       "description": "Represents descriptive text of the axis",
@@ -2732,15 +2790,7 @@
       "properties": {
         "visible": {
           "description": "Represents the visibility state of the descriptive axis text",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2751,27 +2801,11 @@
       "properties": {
         "visible": {
           "description": "Represents the visibility state of the dataLabel",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         },
         "showTotal": {
           "description": "Represents the visibility state of 'show total' indicator",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2782,15 +2816,7 @@
       "properties": {
         "visible": {
           "description": "Represent the visibility state of the legend",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         },
         "position": {
           "description": "Representation of where the legend will be positioned",
@@ -2838,6 +2864,17 @@
           "$ref": "#/definitions/Microchart.StackedBar"
         }
       ]
+    },
+    "simpleIcon": {
+      "description": "Represents simple icon attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "src": {
+          "type": "string",
+          "description": "Represents icon name or source URL"
+        }
+      }
     },
     "state": {
       "description": "Represents state of an entity",
@@ -2925,7 +2962,7 @@
           ]
         },
         "icon": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/definitions/simpleIcon"
         },
         "actions": {
           "description": "Defines actions that can be applied on the item.",
@@ -3052,7 +3089,7 @@
                 "Square",
                 "Circle"
               ],
-              "default": "Square"
+              "default": "Circle"
             },
             {
               "$ref": "#/definitions/simpleBinding"
@@ -3061,15 +3098,7 @@
         },
         "text": {
           "type": "string",
-          "description": "Text inside icon"
-        },
-        "backgroundColor": {
-          "type": "string",
-          "description": "Background color of the icon"
-        },
-        "color": {
-          "type": "string",
-          "description": "Color of the icon"
+          "description": "Initials for the avatar. Up to 2 symbols."
         }
       }
     },
