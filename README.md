@@ -11,5 +11,3 @@ In case you need any support, please create a GitHub issue.
 ## Release History
 See [CHANGELOG.md](CHANGELOG.md).
 
-## License
-This project is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](LICENSE.txt) file.
