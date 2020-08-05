@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ui5-manifest
+Upstream-Contact: Silke Arians <silke.arians@sap.com>, Aleksandr Suvorov <aleksandr.suvorov@sap.com>
+Source: https://github.com/SAP/ui5-manifest
+
+Files: *.*
+Copyright: 2009-2020 SAP SE or an SAP affiliate company
+License: Apache-2.0
