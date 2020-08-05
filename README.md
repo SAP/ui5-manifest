@@ -1,5 +1,7 @@
 # @ui5/manifest
 
+[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool)
+
 ## Description
 This project contains the flattend json schema for the ui5 manifest.
 
