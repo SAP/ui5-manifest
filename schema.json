@@ -37,7 +37,8 @@
         "1.22.0",
         "1.23.0",
         "1.24.0",
-        "1.25.0"
+        "1.25.0",
+        "1.26.0"
       ]
     },
     "start_url": {
@@ -71,7 +72,8 @@
             "1.9.0",
             "1.10.0",
             "1.11.0",
-            "1.12.0"
+            "1.12.0",
+            "1.13.0"
           ]
         },
         "sourceTemplate": {
@@ -103,8 +105,7 @@
             "application",
             "component",
             "library",
-            "card",
-            "widget"
+            "card"
           ]
         },
         "i18n": {
@@ -1553,7 +1554,8 @@
             "1.9.0",
             "1.10.0",
             "1.11.0",
-            "1.13.0"
+            "1.13.0",
+            "1.14.0"
           ]
         },
         "designtime": {
@@ -1819,51 +1821,6 @@
         }
       }
     },
-    "sap.widget": {
-      "title": "JSON schema for SAP.WIDGET Namespace",
-      "description": "Represents general widget attributes",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_version": {
-          "description": "Represents SAP.WIDGET attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
-        "designtime": {
-          "description": "Path to the designtime used for this widget",
-          "type": "string"
-        },
-        "configuration": {
-          "description": "Represents configuration with parameters, which can be used inside the widget",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "settings": {
-              "description": "Settings, which can be used throughout the widget",
-              "type": "object"
-            },
-            "parameters": {
-              "description": "Map of parameters.",
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/Configuration.Parameter"
-              }
-            },
-            "destinations": {
-              "description": "Describes what destinations are used by the widget.",
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/Configuration.Destinations"
-              }
-            }
-          }
-        }
-      }
-    },
     "sap.package": {
       "title": "JSON schema for SAP.PACKAGE Namespace",
       "description": "Represents general package attributes. Experimental, will be detailed in the future",
@@ -1896,55 +1853,6 @@
     }
   },
   "definitions": {
-    "Configuration.Destinations_0": {
-      "description": "Represents a configuration for a cloud platform destination.",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "description": "The name of the destination. Use the same name which is used in Cloud Platform.",
-          "type": "string"
-        },
-        "label": {
-          "description": "Label for the destination for user-friendly visualization in the design-time editor.",
-          "type": "string"
-        },
-        "description": {
-          "description": "Description of the destination for user-friendly visualization in the design-time editor.",
-          "type": "string"
-        }
-      }
-    },
-    "Configuration.Parameter_0": {
-      "description": "Represents configuration parameter.",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "value": {
-          "description": "The value of the parameter."
-        },
-        "type": {
-          "description": "The type of the value for the parameter.",
-          "type": "string",
-          "enum": [
-            "string",
-            "integer",
-            "number",
-            "boolean",
-            "date",
-            "datetime"
-          ]
-        },
-        "label": {
-          "description": "Label for the parameter for user-friendly visualization in the design-time editor.",
-          "type": "string"
-        },
-        "description": {
-          "description": "Description of the parameter for user-friendly visualization in the design-time editor.",
-          "type": "string"
-        }
-      }
-    },
     "Microchart.StackedBar.Bar": {
       "type": "object",
       "additionalProperties": false,
@@ -2597,7 +2505,7 @@
         },
         "icon": {
           "description": "Represents column with icon.",
-          "$ref": "#/definitions/simpleIcon"
+          "$ref": "#/definitions/icon"
         },
         "state": {
           "description": "Defines the state of the column.",
@@ -2737,6 +2645,17 @@
         }
       }
     },
+    "simpleIcon": {
+      "description": "Represents simple icon attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "src": {
+          "type": "string",
+          "description": "Represents icon name or source URL"
+        }
+      }
+    },
     "ContentType.Timeline.Item": {
       "description": "Represents a single timeline item",
       "type": "object",
@@ -2865,14 +2784,61 @@
         }
       ]
     },
-    "simpleIcon": {
-      "description": "Represents simple icon attributes",
+    "icon": {
+      "description": "Represents icon attributes",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "src": {
           "type": "string",
           "description": "Represents icon name or source URL"
+        },
+        "alt": {
+          "type": "string",
+          "description": "Alternative text for the icon"
+        },
+        "shape": {
+          "type": "string",
+          "description": "Represents the shape of the icon",
+          "oneOf": [
+            {
+              "enum": [
+                "Square",
+                "Circle"
+              ],
+              "default": "Circle"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "text": {
+          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown.",
+          "oneOf": [
+            {
+              "type": "string",
+              "maxLength": 2
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "size": {
+          "description": "[Experimental] The size of the icon.",
+          "oneOf": [
+            {
+              "enum": [
+                "XS",
+                "S",
+                "M"
+              ]
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -2962,7 +2928,7 @@
           ]
         },
         "icon": {
-          "$ref": "#/definitions/simpleIcon"
+          "$ref": "#/definitions/icon"
         },
         "actions": {
           "description": "Defines actions that can be applied on the item.",
@@ -3067,7 +3033,7 @@
         }
       }
     },
-    "icon": {
+    "iconWithoutSize": {
       "description": "Represents icon attributes",
       "type": "object",
       "additionalProperties": false,
@@ -3097,8 +3063,16 @@
           ]
         },
         "text": {
-          "type": "string",
-          "description": "Initials for the avatar. Up to 2 symbols."
+          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown.",
+          "oneOf": [
+            {
+              "type": "string",
+              "maxLength": 2
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -3250,7 +3224,7 @@
         },
         "icon": {
           "description": "Represents the icon of the card.",
-          "$ref": "#/definitions/icon"
+          "$ref": "#/definitions/iconWithoutSize"
         },
         "status": {
           "description": "Represents the status of the card.",
