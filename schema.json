@@ -38,7 +38,8 @@
         "1.23.0",
         "1.24.0",
         "1.25.0",
-        "1.26.0"
+        "1.26.0",
+        "1.27.0"
       ]
     },
     "start_url": {
@@ -495,7 +496,8 @@
                 "1.8.0",
                 "1.9.0",
                 "1.10.0",
-                "1.11.0"
+                "1.11.0",
+                "1.12.0"
               ]
             },
             "resources": {
@@ -1555,7 +1557,8 @@
             "1.10.0",
             "1.11.0",
             "1.13.0",
-            "1.14.0"
+            "1.14.0",
+            "1.15.0"
           ]
         },
         "designtime": {
@@ -1563,7 +1566,7 @@
           "type": "string"
         },
         "configuration": {
-          "description": "Represents configuration with parameters and destinations, which can be used inside the card",
+          "description": "Represents configuration with parameters, destinations, and filters, which can be used inside the card",
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -2200,6 +2203,32 @@
         }
       }
     },
+    "iconBackgroundColor": {
+      "oneOf": [
+        {
+          "enum": [
+            "Accent1",
+            "Accent2",
+            "Accent3",
+            "Accent4",
+            "Accent5",
+            "Accent6",
+            "Accent7",
+            "Accent8",
+            "Accent9",
+            "Accent10",
+            "Placeholder",
+            "Random",
+            "TileIcon",
+            "Transparent"
+          ],
+          "default": "Transparent"
+        },
+        {
+          "$ref": "#/definitions/simpleBinding"
+        }
+      ]
+    },
     "ContentType.Calendar.SpecialDate.Template": {
       "description": "The template for all specialDates",
       "type": "object",
@@ -2301,17 +2330,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "visualization": {
-          "description": "Defines the visualization of the item in the card. Available visualizations: \"appointment\" and \"blocker\".",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/field"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
         "startDate": {
           "description": "The start date of the item. The accepted date format is ISO 8601.",
           "type": "string"
@@ -2325,7 +2343,7 @@
           "type": "string"
         },
         "text": {
-          "description": "The additional information of the item. Note: It is available only for items of visualization type \"appointment\".",
+          "description": "The additional information of the item.",
           "type": "string"
         },
         "icon": {
@@ -2839,6 +2857,9 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "backgroundColor": {
+          "$ref": "#/definitions/iconBackgroundColor"
         }
       }
     },
@@ -3073,6 +3094,9 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "backgroundColor": {
+          "$ref": "#/definitions/iconBackgroundColor"
         }
       }
     },
@@ -3630,6 +3654,9 @@
           "description": "The type of the value for the filter.",
           "$ref": "#/definitions/Configuration.BasicDataType"
         },
+        "data": {
+          "$ref": "#/definitions/data"
+        },
         "label": {
           "description": "Label for the filter for user-friendly visualization in the design-time editor.",
           "type": "string"
@@ -3642,6 +3669,23 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Configuration.Filter.Item"
+          }
+        },
+        "item": {
+          "type": "object",
+          "required": [
+            "template"
+          ],
+          "properties": {
+            "template": {
+              "$ref": "#/definitions/Configuration.Filter.Item"
+            },
+            "path": {
+              "description": "Defines the path to the structure holding the data about the items.",
+              "type": "string",
+              "default": "/",
+              "pattern": "^[a-zA-Z0-9_\\.\\-/|\\@\\#]*$"
+            }
           }
         }
       }
@@ -3664,10 +3708,6 @@
         },
         "description": {
           "description": "Description of the parameter for user-friendly visualization in the design-time editor.",
-          "type": "string"
-        },
-        "contextType": {
-          "description": "[Experimental] Represents the context type of the parameter. For example WorkZoneUserId or SuccessFactorsUserId.",
           "type": "string"
         }
       }
@@ -4876,6 +4916,11 @@
             "id": {
               "description": "Represents the id of the view",
               "type": "string"
+            },
+            "async": {
+              "description": "Configure the targets for asynchronous loading",
+              "type": "boolean",
+              "default": false
             }
           }
         }
@@ -5079,6 +5124,11 @@
         "id": {
           "description": "Represents the id of the view",
           "type": "string"
+        },
+        "async": {
+          "description": "Configure the targets for asynchronous loading",
+          "type": "boolean",
+          "default": false
         }
       }
     },
