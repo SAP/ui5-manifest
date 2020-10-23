@@ -196,25 +196,25 @@
           "type": "string"
         },
         "title": {
-          "description": "Represents mandatory title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents additional information to the title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "description": {
-          "description": "Represents description (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "ach": {
           "description": "Represents application component hierarchy",
           "type": "string",
-          "pattern": "^([a-zA-Z0-9]{2,3})(\\-[a-zA-Z0-9]{1,6})*$"
+          "pattern": "^([a-zA-Z0-9]{2,3})(-[a-zA-Z0-9]{1,6})*$"
         },
         "dataSources": {
           "description": "Represents used data sources with a unique key/alias",
@@ -393,7 +393,7 @@
               "type": "object",
               "additionalProperties": false,
               "patternProperties": {
-                "^[a-zA-Z0-9_\\.\\-\\|\\@]*$": {
+                "^[a-zA-Z0-9_\\.\\-\\|@]*$": {
                   "$ref": "#/definitions/model"
                 }
               }
@@ -485,7 +485,7 @@
               "type": "object",
               "additionalProperties": false,
               "patternProperties": {
-                "^[A-Za-z_][A-Za-z0-9_\\-\\|\\@]+$": {
+                "^[A-Za-z_][A-Za-z0-9_\\-\\|@]+$": {
                   "$ref": "#/definitions/command"
                 }
               }
@@ -819,17 +819,17 @@
         "globalFilterModel": {
           "description": "Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "globalFilterEntityType": {
           "description": "Represents the entity to use as global filter in the smart filter bar control",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "globalFilterEntitySet": {
           "description": "Represents the entity set to use as global filter in the smart filter bar control",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "showBasicSearch": {
           "description": "Represents a switch to include basic search in the global filters",
@@ -930,7 +930,7 @@
         "applicationId": {
           "description": "Represents ID of an application",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,30}$"
+          "pattern": "^[a-zA-Z0-9\\/_]{1,30}$"
         },
         "configId": {
           "description": "Represents ID of an application configuration",
@@ -1005,7 +1005,7 @@
         "transaction": {
           "description": "Represents transaction of an application",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,20}$"
+          "pattern": "^[a-zA-Z0-9\\/_]{1,20}$"
         },
         "flavorId": {
           "description": "Represents SAP Screen Personas Flavor ID",
@@ -1081,7 +1081,7 @@
         "wcf-target-id": {
           "description": "Represents the target technical id for a WCF Application",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,10}$"
+          "pattern": "^[a-zA-Z0-9\\/_]{1,10}$"
         }
       }
     },
@@ -1470,37 +1470,37 @@
         "annotationPath": {
           "description": "Represents the annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "selectionAnnotationPath": {
           "description": "Represents the selection annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "chartAnnotationPath": {
           "description": "Represents the chart annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "presentationAnnotationPath": {
           "description": "Represents the presentation annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dataPointAnnotationPath": {
           "description": "Represents the data point annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "identificationAnnotationPath": {
           "description": "Represents the identification annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dynamicSubtitleAnnotationPath": {
           "description": "Represents the dynamic subtitle annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "value": {
           "description": "Represents the drop down value to be shown",
@@ -1571,7 +1571,7 @@
         "entitySet": {
           "description": "Represents the entity set that will be displayed in this card",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\_]+$"
+          "pattern": "^[a-zA-Z0-9_]+$"
         },
         "staticContent": {
           "description": "Represents the static content that will be displayed in this card",
@@ -1612,47 +1612,47 @@
         "annotationPath": {
           "description": "Represents the annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "selectionAnnotationPath": {
           "description": "Represents the selection annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "chartAnnotationPath": {
           "description": "Represents the chart annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "presentationAnnotationPath": {
           "description": "Represents the presentation annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dataPointAnnotationPath": {
           "description": "Represents the data point annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "identificationAnnotationPath": {
           "description": "Represents the identification annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#\\,]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#,]*$"
         },
         "kpiAnnotationPath": {
           "description": "Represents the KPI annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "selectionPresentationAnnotationPath": {
           "description": "Represents the selection presentation annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dynamicSubtitleAnnotationPath": {
           "description": "Represents the dynamic subtitle annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "ignoreSapText": {
           "description": "Represents the flag to indicate priority of number formatting over sap text",
@@ -1768,7 +1768,7 @@
         "model": {
           "description": "Represents the model for the card",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "template": {
           "description": "Represents the card component path to use for this card",
@@ -1903,7 +1903,7 @@
       "type": "object",
       "additionalProperties": false,
       "patternProperties": {
-        "^[a-zA-Z0-9_\\.\\-\\:]+$": {
+        "^[a-zA-Z0-9_.:-]+$": {
           "allOf": [
             {
               "type": "object",
@@ -1915,7 +1915,7 @@
                 "id": {
                   "description": "Represents an unique id for the instance of the reuse component inside of the object page",
                   "type": "string",
-                  "pattern": "^([A-Za-z_][\\-A-Za-z0-9_\\.\\:]*)$"
+                  "pattern": "^([A-Za-z_][-A-Za-z0-9_.:]*)$"
                 },
                 "title": {
                   "description": "Represents the title for the content of the reuse component",

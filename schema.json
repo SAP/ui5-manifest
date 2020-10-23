@@ -39,7 +39,8 @@
         "1.24.0",
         "1.25.0",
         "1.26.0",
-        "1.27.0"
+        "1.27.0",
+        "1.28.0"
       ]
     },
     "start_url": {
@@ -74,7 +75,8 @@
             "1.10.0",
             "1.11.0",
             "1.12.0",
-            "1.13.0"
+            "1.13.0",
+            "1.14.0"
           ]
         },
         "sourceTemplate": {
@@ -230,23 +232,23 @@
           "type": "string"
         },
         "title": {
-          "description": "Represents mandatory title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents additional information to the title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "description": {
-          "description": "Represents description (language-dependent if in double-curly brackets {{<key>}})",
+          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "tags": {
@@ -272,7 +274,7 @@
         "ach": {
           "description": "Represents application component hierarchy",
           "type": "string",
-          "pattern": "^([a-zA-Z0-9]{2,3})(\\-[a-zA-Z0-9]{1,6})*$"
+          "pattern": "^([a-zA-Z0-9]{2,3})(-[a-zA-Z0-9]{1,6})*$"
         },
         "dataSources": {
           "description": "Represents used data sources with a unique key/alias",
@@ -369,6 +371,10 @@
         }
       },
       "definitions": {
+        "i18n_key": {
+          "type": "string",
+          "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
+        },
         "parameter": {
           "type": "object",
           "properties": {
@@ -558,7 +564,7 @@
               "type": "object",
               "additionalProperties": false,
               "patternProperties": {
-                "^[a-zA-Z0-9_\\.\\-\\|\\@]*$": {
+                "^[a-zA-Z0-9_\\.\\-\\|@]*$": {
                   "$ref": "#/definitions/model"
                 }
               }
@@ -700,7 +706,7 @@
               "type": "object",
               "additionalProperties": false,
               "patternProperties": {
-                "^[A-Za-z_][A-Za-z0-9_\\-\\|\\@]+$": {
+                "^[A-Za-z_][A-Za-z0-9_\\-\\|@]+$": {
                   "$ref": "#/definitions/command"
                 }
               }
@@ -1080,17 +1086,17 @@
         "globalFilterModel": {
           "description": "Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "globalFilterEntityType": {
           "description": "Represents the entity to use as global filter in the smart filter bar control",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "globalFilterEntitySet": {
           "description": "Represents the entity set to use as global filter in the smart filter bar control",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "showBasicSearch": {
           "description": "Represents a switch to include basic search in the global filters",
@@ -1191,7 +1197,7 @@
         "applicationId": {
           "description": "Represents ID of an application",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,30}$"
+          "pattern": "^[a-zA-Z0-9\\/_]{1,30}$"
         },
         "configId": {
           "description": "Represents ID of an application configuration",
@@ -1266,7 +1272,7 @@
         "transaction": {
           "description": "Represents transaction of an application",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,20}$"
+          "pattern": "^[a-zA-Z0-9\\/_]{1,20}$"
         },
         "flavorId": {
           "description": "Represents SAP Screen Personas Flavor ID",
@@ -1342,7 +1348,7 @@
         "wcf-target-id": {
           "description": "Represents the target technical id for a WCF Application",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,10}$"
+          "pattern": "^[a-zA-Z0-9\\/_]{1,10}$"
         }
       }
     },
@@ -1829,33 +1835,355 @@
       "description": "Represents general package attributes. Experimental, will be detailed in the future",
       "type": "object",
       "additionalProperties": true,
+      "required": [
+        "id",
+        "title",
+        "description",
+        "packageVersion",
+        "vendor",
+        "support"
+      ],
       "properties": {
         "_version": {
           "description": "Represents SAP.PACKAGE attributes format version. It is managed by namespace owner",
           "type": "string",
           "enum": [
-            "1.0.0"
+            "1.0.0",
+            "1.1.0"
           ]
+        },
+        "id": {
+          "description": "Represents mandatory unique package identifier",
+          "$ref": "#/definitions/iddef"
+        },
+        "i18n": {
+          "default": "i18n/i18n.properties",
+          "description": "Represents path inside the package to the properties file containing text symbols for the packages texts",
+          "oneOf": [
+            {
+              "default": "i18n/i18n.properties",
+              "type": "string"
+            }
+          ]
+        },
+        "packageVersion": {
+          "description": "Represents mandatory semantic version of the package information and optional the upgrade notification",
+          "type": "object",
+          "required": [
+            "version"
+          ],
+          "properties": {
+            "version": {
+              "description": "Represents mandatory semantic version of the package",
+              "$ref": "#/definitions/semanticversion"
+            },
+            "upgradeNotification": {
+              "description": "Represents optional upgrade notification once the package is available. none - no notification, package will be installed automatically for any version. major - notification before a new major version is installed. major.minor - notification before a major and minor version is installed. all - notification before any new version is installed, including patches",
+              "type": "string",
+              "default": "all",
+              "enum": [
+                "none",
+                "major",
+                "major.minor",
+                "all"
+              ]
+            }
+          }
+        },
+        "type": {
+          "description": "Represents type of an package and can be card, workflow, workspace-template",
+          "type": "string",
+          "enum": [
+            "card",
+            "workflow",
+            "workspace-template"
+          ]
+        },
+        "title": {
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "subTitle": {
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "shortTitle": {
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "info": {
+          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "description": {
+          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "icon": {
+          "description": "Represents icon name or source URL for the package",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Represents array of keywords used to find the package",
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "keywords"
+          ],
+          "properties": {
+            "keywords": {
+              "$ref": "#/definitions/tag"
+            },
+            "technicalAttributes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Z0-9_\\-\\/]+$"
+              }
+            }
+          }
+        },
+        "vendor": {
+          "description": "Represents the support information",
+          "$ref": "#/definitions/vendor"
+        },
+        "homepage": {
+          "description": "Represents the homepage information",
+          "$ref": "#/definitions/infolink"
+        },
+        "support": {
+          "description": "Represents the support information",
+          "$ref": "#/definitions/infolink"
+        },
+        "documentation": {
+          "description": "Represents the documentation information",
+          "$ref": "#/definitions/infolink"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "description": "Represents the artifacts contained in the package",
+            "$ref": "#/definitions/contentitem"
+          }
+        },
+        "consumption": {
+          "description": "Represents list of product ids that are allowed to consume this package. if not defined all products that are capable of installing this package are allowed",
+          "type": "array",
+          "items": {
+            "description": "Represents the id of the product that can consume this package.",
+            "type": "string"
+          }
+        },
+        "dependencies": {
+          "description": "Represents the products and service that the pacakge depends on",
+          "type": "object",
+          "properties": {
+            "products": {
+              "description": "List of products that this package depends on",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "services": {
+              "description": "List of services that this package depends on",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     },
     "sap.artifact": {
       "title": "JSON schema for SAP.ARTIFACT Namespace",
-      "description": "Represents general artifact attributes. Experimental, will be detailed in the future",
+      "description": "Represents general artifact attributes.",
       "type": "object",
       "additionalProperties": true,
+      "required": [
+        "id",
+        "type",
+        "title",
+        "description",
+        "artifactVersion"
+      ],
       "properties": {
         "_version": {
           "description": "Represents SAP.ARTIFACT attributes format version. It is managed by namespace owner",
           "type": "string",
           "enum": [
-            "1.0.0"
+            "1.0.0",
+            "1.1.0"
           ]
+        },
+        "id": {
+          "description": "Represents mandatory unique artifact identifier",
+          "$ref": "#/definitions/iddef"
+        },
+        "i18n": {
+          "default": "i18n/i18n.properties",
+          "description": "Represents path inside the artifact to the properties file containing text symbols for the artifacts texts",
+          "oneOf": [
+            {
+              "default": "i18n/i18n.properties",
+              "type": "string"
+            }
+          ]
+        },
+        "artifactVersion": {
+          "description": "Represents mandatory semantic version of the artifact",
+          "type": "object",
+          "required": [
+            "version"
+          ],
+          "properties": {
+            "version": {
+              "$ref": "#/definitions/semanticversion"
+            }
+          }
+        },
+        "type": {
+          "description": "Represents type of an artifact and can be card, workflow, workspace-template",
+          "type": "string",
+          "enum": [
+            "card",
+            "workflow",
+            "workspace-template"
+          ]
+        },
+        "title": {
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "subTitle": {
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "shortTitle": {
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "info": {
+          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "description": {
+          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "type": "string"
+        },
+        "icon": {
+          "description": "Represents icon name or source URL for the artifact",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Represents array of keywords used to find the artifact",
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "keywords"
+          ],
+          "properties": {
+            "keywords": {
+              "$ref": "#/definitions/tag"
+            },
+            "technicalAttributes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Z0-9_\\-\\/]+$"
+              }
+            }
+          }
         }
       }
     }
   },
   "definitions": {
+    "tag": {
+      "type": "array",
+      "items": {
+        "description": "Represents a tag; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+        "type": "string"
+      }
+    },
+    "semanticversion": {
+      "description": "The version number of the schema in major.minor.patch format.",
+      "type": "string",
+      "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$"
+    },
+    "iddef": {
+      "type": "string",
+      "maxLength": 70,
+      "pattern": "^[A-Za-z]{2,}.[A-Za-z]{2,}"
+    },
+    "contentitem": {
+      "description": "Represents an item of the content list defining the sub manifest and baseurl",
+      "type": "object",
+      "properties": {
+        "baseURL": {
+          "description": "Relative url to the artifact within the folder in this package",
+          "type": "string"
+        },
+        "manifest": {
+          "description": "Wraps the child manifest",
+          "type": "object",
+          "properties": {
+            "sap.artifact": {
+              "description": "The artifacts manifest",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "infolink": {
+      "description": "Represents a link information with text and url",
+      "type": "object",
+      "required": [
+        "url",
+        "text"
+      ],
+      "properties": {
+        "url": {
+          "description": "Represents a target url",
+          "type": "string",
+          "format": "uri-template"
+        },
+        "text": {
+          "description": "Represents a descriptive text for the target",
+          "type": "string"
+        }
+      }
+    },
+    "vendor": {
+      "description": "Represents the vendor information",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "url"
+      ],
+      "properties": {
+        "id": {
+          "description": "Represents the vendor id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Represents the vendor name",
+          "type": "string"
+        },
+        "lineOfBusiness": {
+          "description": "Represents the vendor line of business within the vendors organization if any",
+          "type": "string"
+        },
+        "url": {
+          "description": "Represents a target url",
+          "type": "string",
+          "format": "uri-template"
+        }
+      }
+    },
     "Microchart.StackedBar.Bar": {
       "type": "object",
       "additionalProperties": false,
@@ -2499,7 +2827,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Defines language-dependent title of the column.",
+          "description": "Defines a title of the column; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "width": {
@@ -2647,7 +2975,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Defines language-dependent title of the object group.",
+          "description": "Defines a title of the object group; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "items": {
@@ -2880,7 +3208,7 @@
       "additionalProperties": false,
       "properties": {
         "label": {
-          "description": "Represents language-dependent label of the field",
+          "description": "Represents a label of the field; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "value": {
@@ -2978,7 +3306,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Represents language-dependent title of the side indicator",
+          "description": "Represents a title of the side indicator; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "number": {
@@ -3174,11 +3502,11 @@
           ]
         },
         "title": {
-          "description": "Represents language-dependent title.",
+          "description": "Represents a title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents language-dependent additional information to the title.",
+          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "actions": {
@@ -3229,11 +3557,11 @@
           ]
         },
         "title": {
-          "description": "Represents language-dependent title.",
+          "description": "Represents a title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents language-dependent additional information to the title.",
+          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
           "type": "string"
         },
         "actions": {
@@ -3589,7 +3917,7 @@
           "description": "The path from the JSON to be used as root",
           "type": "string",
           "default": "/",
-          "pattern": "^[a-zA-Z0-9_\\.\\-/|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-/|@#]*$"
         },
         "json": {
           "description": "The data to be used directly. Without making requests.",
@@ -3684,7 +4012,7 @@
               "description": "Defines the path to the structure holding the data about the items.",
               "type": "string",
               "default": "/",
-              "pattern": "^[a-zA-Z0-9_\\.\\-/|\\@\\#]*$"
+              "pattern": "^[a-zA-Z0-9_\\.\\-/|@#]*$"
             }
           }
         }
@@ -3909,37 +4237,37 @@
         "annotationPath": {
           "description": "Represents the annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "selectionAnnotationPath": {
           "description": "Represents the selection annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "chartAnnotationPath": {
           "description": "Represents the chart annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "presentationAnnotationPath": {
           "description": "Represents the presentation annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dataPointAnnotationPath": {
           "description": "Represents the data point annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "identificationAnnotationPath": {
           "description": "Represents the identification annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dynamicSubtitleAnnotationPath": {
           "description": "Represents the dynamic subtitle annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "value": {
           "description": "Represents the drop down value to be shown",
@@ -4010,7 +4338,7 @@
         "entitySet": {
           "description": "Represents the entity set that will be displayed in this card",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9\\_]+$"
+          "pattern": "^[a-zA-Z0-9_]+$"
         },
         "staticContent": {
           "description": "Represents the static content that will be displayed in this card",
@@ -4051,47 +4379,47 @@
         "annotationPath": {
           "description": "Represents the annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "selectionAnnotationPath": {
           "description": "Represents the selection annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "chartAnnotationPath": {
           "description": "Represents the chart annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "presentationAnnotationPath": {
           "description": "Represents the presentation annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dataPointAnnotationPath": {
           "description": "Represents the data point annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "identificationAnnotationPath": {
           "description": "Represents the identification annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#\\,]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#,]*$"
         },
         "kpiAnnotationPath": {
           "description": "Represents the KPI annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "selectionPresentationAnnotationPath": {
           "description": "Represents the selection presentation annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "dynamicSubtitleAnnotationPath": {
           "description": "Represents the dynamic subtitle annotation path",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@\\#]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
         },
         "ignoreSapText": {
           "description": "Represents the flag to indicate priority of number formatting over sap text",
@@ -4207,7 +4535,7 @@
         "model": {
           "description": "Represents the model for the card",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|\\@]*$"
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
         "template": {
           "description": "Represents the card component path to use for this card",
@@ -4342,7 +4670,7 @@
       "type": "object",
       "additionalProperties": false,
       "patternProperties": {
-        "^[a-zA-Z0-9_\\.\\-\\:]+$": {
+        "^[a-zA-Z0-9_.:-]+$": {
           "allOf": [
             {
               "type": "object",
@@ -4354,7 +4682,7 @@
                 "id": {
                   "description": "Represents an unique id for the instance of the reuse component inside of the object page",
                   "type": "string",
-                  "pattern": "^([A-Za-z_][\\-A-Za-z0-9_\\.\\:]*)$"
+                  "pattern": "^([A-Za-z_][-A-Za-z0-9_.:]*)$"
                 },
                 "title": {
                   "description": "Represents the title for the content of the reuse component",
@@ -5674,10 +6002,6 @@
         }
       }
     },
-    "i18n_key": {
-      "type": "string",
-      "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
-    },
     "dataSourceCustom": {
       "type": "object",
       "additionalProperties": false,
@@ -5887,44 +6211,20 @@
               "type": "string"
             },
             "title": {
-              "description": "Represents language-dependent - different languages via server API or on client",
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/i18n_key"
-                },
-                {
-                  "type": "string",
-                  "pattern": "^[^\\W][\\w\\.\\-]*$"
-                }
-              ]
+              "description": "Represents title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "type": "string"
             },
             "subTitle": {
-              "description": "Represents language-dependent additional information to the title and can overwrite subTitle from sap.app definition",
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/i18n_key"
-                },
-                {
-                  "type": "string",
-                  "pattern": "^[^\\W][\\w\\.\\-]*$"
-                }
-              ]
+              "description": "Represents subtitle; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "type": "string"
             },
             "shortTitle": {
-              "description": "Represents shorter version of the title (language-dependent if in double-curly brackets {{<key>}})",
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/i18n_key"
-                },
-                {
-                  "type": "string",
-                  "pattern": "^[^\\W][\\w\\.\\-]*$"
-                }
-              ]
+              "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "type": "string"
             },
             "info": {
-              "description": "Represents language-dependent  additional information to the title",
-              "$ref": "#/definitions/i18n_key"
+              "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "type": "string"
             },
             "displayMode": {
               "description": "Represents the display mode of the tile",
@@ -5996,13 +6296,6 @@
           "$ref": "#/definitions/dataSourceCustom"
         }
       ]
-    },
-    "tag": {
-      "type": "array",
-      "items": {
-        "description": "Represents a tag (language-dependent if in double-curly brackets {{<key>}})",
-        "type": "string"
-      }
     },
     "enhanceWithSetting": {
       "oneOf": [
