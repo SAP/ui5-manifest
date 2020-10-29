@@ -232,23 +232,23 @@
           "type": "string"
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "tags": {
@@ -1900,23 +1900,23 @@
           ]
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "icon": {
@@ -2053,23 +2053,23 @@
           ]
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "icon": {
@@ -2103,7 +2103,7 @@
     "tag": {
       "type": "array",
       "items": {
-        "description": "Represents a tag; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+        "description": "Represents a tag; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
         "type": "string"
       }
     },
@@ -2827,7 +2827,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Defines a title of the column; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Defines a title of the column; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "width": {
@@ -2975,7 +2975,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Defines a title of the object group; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Defines a title of the object group; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "items": {
@@ -3208,7 +3208,7 @@
       "additionalProperties": false,
       "properties": {
         "label": {
-          "description": "Represents a label of the field; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents a label of the field; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "value": {
@@ -3306,7 +3306,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Represents a title of the side indicator; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents a title of the side indicator; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "number": {
@@ -3502,11 +3502,11 @@
           ]
         },
         "title": {
-          "description": "Represents a title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents a title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "actions": {
@@ -3557,11 +3557,11 @@
           ]
         },
         "title": {
-          "description": "Represents a title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents a title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "actions": {
@@ -6211,19 +6211,19 @@
               "type": "string"
             },
             "title": {
-              "description": "Represents title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "description": "Represents title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
               "type": "string"
             },
             "subTitle": {
-              "description": "Represents subtitle; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "description": "Represents subtitle; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
               "type": "string"
             },
             "shortTitle": {
-              "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
               "type": "string"
             },
             "info": {
-              "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+              "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
               "type": "string"
             },
             "displayMode": {

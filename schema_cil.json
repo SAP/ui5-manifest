@@ -196,19 +196,19 @@
           "type": "string"
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double-curly braces '{{key}}' must be used",
+          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
           "type": "string"
         },
         "ach": {
