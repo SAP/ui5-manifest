@@ -232,23 +232,23 @@
           "type": "string"
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "tags": {
@@ -1568,7 +1568,7 @@
           ]
         },
         "designtime": {
-          "description": "The path to the design time folder with assets files.",
+          "description": "The path to the design time folder with assets files",
           "type": "string"
         },
         "configuration": {
@@ -1577,37 +1577,37 @@
           "additionalProperties": false,
           "properties": {
             "enableMarkdown": {
-              "description": "Markdown enablement for Adaptive Content.",
+              "description": "Markdown enablement for Adaptive Content",
               "type": "boolean"
             },
             "parameters": {
-              "description": "Map of parameters.",
+              "description": "Map of parameters",
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/Configuration.Parameter"
               }
             },
             "filters": {
-              "description": "Map of filters.",
+              "description": "Map of filters",
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/Configuration.Filter"
               }
             },
             "destinations": {
-              "description": "Describes what destinations are used by the card.",
+              "description": "Describes what destinations are used by the card",
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/Configuration.Destinations"
               }
             },
             "actionHandlers": {
-              "description": "Holds configuration for the default action handlers.",
+              "description": "Holds configuration for the default action handlers",
               "type": "object",
               "additionalProperties": false,
               "properties": {
                 "submit": {
-                  "description": "Configuration for the submit action handler.",
+                  "description": "Configuration for the submit action handler",
                   "type": "object"
                 }
               }
@@ -1620,6 +1620,7 @@
           "enum": [
             "List",
             "Analytical",
+            "AnalyticsCloud",
             "Table",
             "Object",
             "Timeline",
@@ -1655,7 +1656,7 @@
           "description": "Represents card content attributes. Content type should be the same as card type e.g. if card type List is used the content type should also be List"
         },
         "extension": {
-          "description": "[Experimental] A path to an Extension implementation. It is resolved relatively to the manifest.",
+          "description": "[Experimental] A path to an Extension implementation. It is resolved relatively to the manifest",
           "type": "string"
         }
       },
@@ -1695,6 +1696,26 @@
               "properties": {
                 "content": {
                   "$ref": "#/definitions/ContentType.Analytical"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "AnalyticsCloud"
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "content": {
+                  "$ref": "#/definitions/ContentType.AnalyticsCloud"
                 }
               }
             }
@@ -1774,9 +1795,7 @@
             {
               "properties": {
                 "content": {
-                  "enum": [
-                    "null"
-                  ]
+                  "$ref": "#/definitions/ContentType.Component"
                 }
               }
             }
@@ -1900,23 +1919,23 @@
           ]
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "icon": {
@@ -2053,23 +2072,23 @@
           ]
         },
         "title": {
-          "description": "Represents mandatory title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "shortTitle": {
-          "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "info": {
-          "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "description": {
-          "description": "Represents description; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "icon": {
@@ -2103,7 +2122,7 @@
     "tag": {
       "type": "array",
       "items": {
-        "description": "Represents a tag; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+        "description": "Represents a tag; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
         "type": "string"
       }
     },
@@ -2258,7 +2277,7 @@
       ],
       "properties": {
         "type": {
-          "description": "Represents the type of the Microchart.",
+          "description": "Represents the type of the Microchart",
           "type": "string",
           "const": "StackedBar"
         },
@@ -2278,7 +2297,7 @@
           "type": "string"
         },
         "bars": {
-          "description": "The bars of the chart.",
+          "description": "The bars of the chart",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microchart.StackedBar.Bar"
@@ -2294,7 +2313,7 @@
       ],
       "properties": {
         "type": {
-          "description": "Represents the type of the Microchart.",
+          "description": "Represents the type of the Microchart",
           "type": "string",
           "const": "Bullet"
         },
@@ -2377,17 +2396,17 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "The title of the filter option.",
+          "description": "The title of the filter option",
           "type": "string"
         },
         "key": {
-          "description": "The unique key of the filter option. Mapped to the filter's value.",
+          "description": "The unique key of the filter option. Mapped to the filter's value",
           "type": "string"
         }
       }
     },
     "Configuration.BasicDataType": {
-      "description": "Basic data types for parameters and filters.",
+      "description": "Basic data types for parameters and filters",
       "type": "string",
       "enum": [
         "string",
@@ -2404,7 +2423,7 @@
       "additionalProperties": true
     },
     "extension": {
-      "description": "[Experimental] Represents attributes, needed to get data via extension.",
+      "description": "[Experimental] Represents attributes, needed to get data via extension",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -2412,11 +2431,11 @@
       ],
       "properties": {
         "method": {
-          "description": "The method of the extension, which fetches data.",
+          "description": "The method of the extension, which fetches data",
           "type": "string"
         },
         "args": {
-          "description": "The arguments, with which the method will be called.",
+          "description": "The arguments, with which the method will be called",
           "type": "array"
         }
       }
@@ -2498,11 +2517,11 @@
           "additionalProperties": true
         },
         "withCredentials": {
-          "description": "Indicates whether cross-site requests should be made using credentials.",
+          "description": "Indicates whether cross-site requests should be made using credentials",
           "oneOf": [
             {
               "type": "boolean",
-              "default": false
+              "default": true
             },
             {
               "$ref": "#/definitions/simpleBinding"
@@ -2513,11 +2532,11 @@
     },
     "statusTextFormatter": {
       "type": "object",
-      "description": "Defines fields for dynamic status formatting.",
+      "description": "Defines fields for dynamic status formatting",
       "additionalProperties": false,
       "properties": {
         "format": {
-          "description": "Defines binding information.",
+          "description": "Defines binding information",
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -2563,15 +2582,15 @@
       "additionalProperties": false,
       "properties": {
         "startDate": {
-          "description": "The start date of the special date. The accepted date format is ISO 8601.",
+          "description": "The start date of the special date. The accepted date format is ISO 8601",
           "type": "string"
         },
         "endDate": {
-          "description": "The end date of the special date. The accepted date format is ISO 8601.",
+          "description": "The end date of the special date. The accepted date format is ISO 8601",
           "type": "string"
         },
         "type": {
-          "description": "The type of the special date - one of the types defined in the legend.",
+          "description": "The type of the special date - one of the types defined in the legend",
           "oneOf": [
             {
               "enum": [
@@ -2611,15 +2630,15 @@
       "additionalProperties": false,
       "properties": {
         "category": {
-          "description": "Defines which card component describes the legend item. Available categories: \"calendar\" (represented as square) or \"appointment\" (circle).",
+          "description": "Defines which card component describes the legend item. Available categories: \"calendar\" (represented as square) or \"appointment\" (circle)",
           "type": "string"
         },
         "text": {
-          "description": "The describing information of the item.",
+          "description": "The describing information of the item",
           "type": "string"
         },
         "type": {
-          "description": "The type of the legend item corresponding with the described component.",
+          "description": "The type of the legend item corresponding with the described component",
           "oneOf": [
             {
               "enum": [
@@ -2659,26 +2678,26 @@
       "additionalProperties": false,
       "properties": {
         "startDate": {
-          "description": "The start date of the item. The accepted date format is ISO 8601.",
+          "description": "The start date of the item. The accepted date format is ISO 8601",
           "type": "string"
         },
         "endDate": {
-          "description": "The end date of the item. The accepted date format is ISO 8601.",
+          "description": "The end date of the item. The accepted date format is ISO 8601",
           "type": "string"
         },
         "title": {
-          "description": "The title of the item.",
+          "description": "The title of the item",
           "type": "string"
         },
         "text": {
-          "description": "The additional information of the item.",
+          "description": "The additional information of the item",
           "type": "string"
         },
         "icon": {
           "$ref": "#/definitions/simpleIcon"
         },
         "type": {
-          "description": "The type of the item - one of the types defined in the legend.",
+          "description": "The type of the item - one of the types defined in the legend",
           "oneOf": [
             {
               "enum": [
@@ -2713,7 +2732,7 @@
       }
     },
     "ContentType.Calendar.SpecialDate": {
-      "description": "Describes each specialDate.",
+      "description": "Describes each specialDate",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -2721,13 +2740,13 @@
           "$ref": "#/definitions/ContentType.Calendar.SpecialDate.Template"
         },
         "path": {
-          "description": "Defines the path to the structure holding the data about the specialDates.",
+          "description": "Defines the path to the structure holding the data about the specialDates",
           "type": "string"
         }
       }
     },
     "ContentType.Calendar.LegendItem": {
-      "description": "Describes each legendItem.",
+      "description": "Describes each legendItem",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -2735,13 +2754,13 @@
           "$ref": "#/definitions/ContentType.Calendar.LegendItem.Template"
         },
         "path": {
-          "description": "Defines the path to the structure holding the data about the legendItems.",
+          "description": "Defines the path to the structure holding the data about the legendItems",
           "type": "string"
         }
       }
     },
     "ContentType.Calendar.Item": {
-      "description": "Describes each item.",
+      "description": "Describes each item",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -2749,7 +2768,7 @@
           "$ref": "#/definitions/ContentType.Calendar.Item.Template"
         },
         "path": {
-          "description": "Defines the path to the structure holding the data about the items.",
+          "description": "Defines the path to the structure holding the data about the items",
           "type": "string"
         }
       }
@@ -2827,15 +2846,15 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Defines a title of the column; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title of the column; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "width": {
-          "description": "Defines the width of the column.",
+          "description": "Defines the width of the column",
           "type": "string"
         },
         "hAlign": {
-          "description": "Defines the horizontal alignment of the column content.",
+          "description": "Defines the horizontal alignment of the column content",
           "oneOf": [
             {
               "$ref": "#/definitions/textAlign"
@@ -2846,15 +2865,15 @@
           ]
         },
         "value": {
-          "description": "Represents the text value of the column.",
+          "description": "Represents the text value of the column",
           "type": "string"
         },
         "icon": {
-          "description": "Represents column with icon.",
+          "description": "Represents column with icon",
           "$ref": "#/definitions/icon"
         },
         "state": {
-          "description": "Defines the state of the column.",
+          "description": "Defines the state of the column",
           "oneOf": [
             {
               "$ref": "#/definitions/state"
@@ -2865,11 +2884,11 @@
           ]
         },
         "url": {
-          "description": "Defines the URL string.",
+          "description": "Defines the URL string",
           "type": "string"
         },
         "target": {
-          "description": "Specifies where to open the 'url', if it is provided.",
+          "description": "Specifies where to open the 'url', if it is provided",
           "type": "string",
           "oneOf": [
             {
@@ -2915,19 +2934,19 @@
       "additionalProperties": false,
       "properties": {
         "icon": {
-          "description": "Defines the icon of the item.",
+          "description": "Defines the icon of the item",
           "$ref": "#/definitions/icon"
         },
         "label": {
-          "description": "Defines the label of the item.",
+          "description": "Defines the label of the item",
           "type": "string"
         },
         "value": {
-          "description": "Represents the text, which is associated with the label.",
+          "description": "Represents the text, which is associated with the label",
           "type": "string"
         },
         "type": {
-          "description": "Defines the type of the displayed information.",
+          "description": "Defines the type of the displayed information",
           "type": "string",
           "oneOf": [
             {
@@ -2945,11 +2964,11 @@
           ]
         },
         "url": {
-          "description": "Defines the URL string. Works only with items of type 'link'.",
+          "description": "Defines the URL string. Works only with items of type 'link'",
           "type": "string"
         },
         "target": {
-          "description": "Specifies the target of the link - it works like the target property of the HTML 'a' tag. Works only with items of type 'link'.",
+          "description": "Specifies the target of the link - it works like the target property of the HTML 'a' tag. Works only with items of type 'link'",
           "oneOf": [
             {
               "$ref": "#/definitions/target"
@@ -2960,7 +2979,7 @@
           ]
         },
         "emailSubject": {
-          "description": "Represents the subject of the email. Works only with item of type 'email'.",
+          "description": "Represents the subject of the email. Works only with item of type 'email'",
           "type": "string"
         },
         "visible": {
@@ -2975,11 +2994,11 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Defines a title of the object group; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title of the object group; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "items": {
-          "description": "Represents items of information.",
+          "description": "Represents items of information",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ContentType.Object.Item"
@@ -3008,23 +3027,23 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "The title of the timeline item.",
+          "description": "The title of the timeline item",
           "$ref": "#/definitions/field"
         },
         "description": {
-          "description": "The description of the timeline item.",
+          "description": "The description of the timeline item",
           "$ref": "#/definitions/field"
         },
         "dateTime": {
-          "description": "The dateTime value of the timeline item.",
+          "description": "The dateTime value of the timeline item",
           "$ref": "#/definitions/field"
         },
         "owner": {
-          "description": "The owner of the timeline item.",
+          "description": "The owner of the timeline item",
           "$ref": "#/definitions/field"
         },
         "ownerImage": {
-          "description": "The owner image of the timeline item.",
+          "description": "The owner image of the timeline item",
           "properties": {
             "value": {
               "type": "string"
@@ -3032,7 +3051,7 @@
           }
         },
         "icon": {
-          "description": "The icon of the timeline item.",
+          "description": "The icon of the timeline item",
           "$ref": "#/definitions/simpleIcon"
         }
       }
@@ -3160,7 +3179,7 @@
           ]
         },
         "text": {
-          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown.",
+          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown",
           "oneOf": [
             {
               "type": "string",
@@ -3172,7 +3191,7 @@
           ]
         },
         "size": {
-          "description": "[Experimental] The size of the icon.",
+          "description": "[Experimental] The size of the icon",
           "oneOf": [
             {
               "enum": [
@@ -3208,7 +3227,7 @@
       "additionalProperties": false,
       "properties": {
         "label": {
-          "description": "Represents a label of the field; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a label of the field; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "value": {
@@ -3223,7 +3242,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "The title of the item.",
+          "description": "The title of the item",
           "oneOf": [
             {
               "$ref": "#/definitions/field"
@@ -3234,7 +3253,7 @@
           ]
         },
         "description": {
-          "description": "The description of the item.",
+          "description": "The description of the item",
           "oneOf": [
             {
               "$ref": "#/definitions/field"
@@ -3266,7 +3285,7 @@
         },
         "highlight": {
           "type": "string",
-          "description": "The highlight of the item.",
+          "description": "The highlight of the item",
           "oneOf": [
             {
               "$ref": "#/definitions/state"
@@ -3280,7 +3299,7 @@
           "$ref": "#/definitions/icon"
         },
         "actions": {
-          "description": "Defines actions that can be applied on the item.",
+          "description": "Defines actions that can be applied on the item",
           "type": "array",
           "items": {
             "$ref": "#/definitions/action"
@@ -3290,6 +3309,10 @@
           "$ref": "#/definitions/Microchart"
         }
       }
+    },
+    "minHeight": {
+      "description": "Defines the min-height of the Content as a CSS value",
+      "type": "string"
     },
     "Enums.ValueColor": {
       "enum": [
@@ -3306,7 +3329,7 @@
       "additionalProperties": false,
       "properties": {
         "title": {
-          "description": "Represents a title of the side indicator; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title of the side indicator",
           "type": "string"
         },
         "number": {
@@ -3365,12 +3388,12 @@
       }
     },
     "status": {
-      "description": "Represents status attributes.",
+      "description": "Represents status attributes",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "text": {
-          "description": "Represents status text.",
+          "description": "Represents status text",
           "oneOf": [
             {
               "type": "string"
@@ -3412,7 +3435,7 @@
           ]
         },
         "text": {
-          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown.",
+          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown",
           "oneOf": [
             {
               "type": "string",
@@ -3473,7 +3496,7 @@
           "$ref": "#/definitions/parameters"
         },
         "target": {
-          "description": "Specifies where to open the 'url', if it is provided.",
+          "description": "Specifies where to open the 'url', if it is provided",
           "type": "string",
           "oneOf": [
             {
@@ -3495,22 +3518,22 @@
       "type": "object",
       "properties": {
         "type": {
-          "description": "Represents the type of the header.",
+          "description": "Represents the type of the header",
           "type": "string",
           "enum": [
             "Numeric"
           ]
         },
         "title": {
-          "description": "Represents a title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title of the header; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "actions": {
-          "description": "Represents description of the actions that can be applied on a part of a card.",
+          "description": "Represents a description of the actions that can be applied on a part of a card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/action"
@@ -3520,18 +3543,18 @@
           "$ref": "#/definitions/data"
         },
         "unitOfMeasurement": {
-          "description": "Represents unit of measurement for the whole numeric header.",
+          "description": "Represents unit of measurement for the whole numeric header",
           "type": "string"
         },
         "mainIndicator": {
           "$ref": "#/definitions/HeaderType.Numeric.MainIndicator"
         },
         "details": {
-          "description": "Represents additional information about the numeric header.",
+          "description": "Represents additional information about the numeric header",
           "type": "string"
         },
         "sideIndicators": {
-          "description": "Multiple side indicators that relate to the main numeric indicator.",
+          "description": "Multiple side indicators that relate to the main numeric indicator",
           "type": "array",
           "maxItems": 2,
           "items": {
@@ -3539,7 +3562,7 @@
           }
         },
         "status": {
-          "description": "Represents the status of the card.",
+          "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
         }
       }
@@ -3550,22 +3573,22 @@
       "type": "object",
       "properties": {
         "type": {
-          "description": "Represents the type of the header.",
+          "description": "Represents the type of the header",
           "type": "string",
           "enum": [
             "Default"
           ]
         },
         "title": {
-          "description": "Represents a title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a title of the header; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "subTitle": {
-          "description": "Represents a subtitle to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+          "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
           "type": "string"
         },
         "actions": {
-          "description": "Represents description of the actions that can be applied on a part of a card.",
+          "description": "Represents a description of the actions that can be applied on a part of a card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/action"
@@ -3575,11 +3598,11 @@
           "$ref": "#/definitions/data"
         },
         "icon": {
-          "description": "Represents the icon of the card.",
+          "description": "Represents the icon of the card",
           "$ref": "#/definitions/iconWithoutSize"
         },
         "status": {
-          "description": "Represents the status of the card.",
+          "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
         }
       }
@@ -3589,7 +3612,7 @@
       "$ref": "https://adaptivecards.io/schemas/adaptive-card.json#/definitions/AdaptiveCard"
     },
     "ContentType.Calendar": {
-      "description": "The calendar card is used to display a schedule of a single entity (such as person, resource) for a selected time interval.",
+      "description": "The calendar card is used to display a schedule of a single entity (such as person, resource) for a selected time interval",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -3606,7 +3629,7 @@
           "$ref": "#/definitions/ContentType.Calendar.SpecialDate"
         },
         "date": {
-          "description": "The initial date of the calendar which appointments are initially shown. The accepted date format is ISO 8601.",
+          "description": "The initial date of the calendar which appointments are initially shown. The accepted date format is ISO 8601",
           "oneOf": [
             {
               "type": "string"
@@ -3654,13 +3677,23 @@
           "type": "object",
           "properties": {
             "actions": {
-              "description": "Represents an action that can be applied on he button showing there are more items than the shown.",
+              "description": "Represents an action that can be applied on he button showing there are more items than the shown",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/action"
               }
             }
           }
+        }
+      }
+    },
+    "ContentType.Component": {
+      "description": "Represents the configuration for a component card's content",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
         }
       }
     },
@@ -3680,7 +3713,7 @@
           }
         },
         "actions": {
-          "description": "Defines actions that can be applied on the content.",
+          "description": "Defines actions that can be applied on the content",
           "type": "array",
           "items": {
             "$ref": "#/definitions/action"
@@ -3702,14 +3735,14 @@
           "additionalProperties": false,
           "properties": {
             "columns": {
-              "description": "Defines the columns attributes.",
+              "description": "Defines the columns attributes",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ContentType.Table.Column"
               }
             },
             "actions": {
-              "description": "Defines actions that can be applied on the item.",
+              "description": "Defines actions that can be applied on the item",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/action"
@@ -3755,6 +3788,37 @@
         }
       }
     },
+    "ContentType.AnalyticsCloud": {
+      "description": "Represents SAP Analytics Cloud content attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the content",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
+        },
+        "options": {
+          "description": "Options of the chart",
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
     "ContentType.Analytical": {
       "description": "Represents analytical content attributes",
       "type": "object",
@@ -3779,6 +3843,9 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
         },
         "legend": {
           "$ref": "#/definitions/ContentType.Analytical.Legend"
@@ -3817,7 +3884,7 @@
               ]
             },
             "text": {
-              "description": "Represents title text",
+              "description": "Represents a title text",
               "type": "string"
             },
             "alignment": {
@@ -3859,7 +3926,7 @@
           }
         },
         "actions": {
-          "description": "Defines actions that can be applied on the content.",
+          "description": "Defines actions that can be applied on the content",
           "type": "array",
           "items": {
             "$ref": "#/definitions/action"
@@ -3920,7 +3987,7 @@
           "pattern": "^[a-zA-Z0-9_\\.\\-/|@#]*$"
         },
         "json": {
-          "description": "The data to be used directly. Without making requests.",
+          "description": "The data to be used directly. Without making requests",
           "type": [
             "object",
             "array"
@@ -3931,7 +3998,7 @@
           "$ref": "#/definitions/service"
         },
         "updateInterval": {
-          "description": "Represents interval in seconds, after which a new data request will be triggered.",
+          "description": "Represents interval in seconds, after which a new data request will be triggered",
           "oneOf": [
             {
               "type": "number"
@@ -3942,55 +4009,55 @@
           ]
         },
         "extension": {
-          "description": "[Experimental] Provides a way to request data via extension.",
+          "description": "[Experimental] Provides a way to request data via extension",
           "$ref": "#/definitions/extension"
         }
       }
     },
     "Configuration.Destinations": {
-      "description": "Represents a configuration for a cloud platform destination.",
+      "description": "Represents a configuration for a cloud platform destination",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "name": {
-          "description": "The name of the destination. Use the same name which is used in Cloud Platform.",
+          "description": "The name of the destination. Use the same name which is used in Cloud Platform",
           "type": "string"
         },
         "label": {
-          "description": "Label for the destination for user-friendly visualization in the design-time editor.",
+          "description": "Label for the destination for user-friendly visualization in the design-time editor",
           "type": "string"
         },
         "description": {
-          "description": "Description of the destination for user-friendly visualization in the design-time editor.",
+          "description": "Description of the destination for user-friendly visualization in the design-time editor",
           "type": "string"
         },
         "defaultUrl": {
-          "description": "A default url which will be used if there is no Host associated with the card.",
+          "description": "A default url which will be used if there is no Host associated with the card",
           "type": "string"
         }
       }
     },
     "Configuration.Filter": {
-      "description": "[Experimental] Represents a filter definition.",
+      "description": "[Experimental] Represents a filter definition",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "value": {
-          "description": "The value of the filter."
+          "description": "The value of the filter"
         },
         "type": {
-          "description": "The type of the value for the filter.",
+          "description": "The type of the value for the filter",
           "$ref": "#/definitions/Configuration.BasicDataType"
         },
         "data": {
           "$ref": "#/definitions/data"
         },
         "label": {
-          "description": "Label for the filter for user-friendly visualization in the design-time editor.",
+          "description": "Label for the filter for user-friendly visualization in the design-time editor",
           "type": "string"
         },
         "description": {
-          "description": "Description of the filter for user-friendly visualization in the design-time editor.",
+          "description": "Description of the filter for user-friendly visualization in the design-time editor",
           "type": "string"
         },
         "items": {
@@ -4009,7 +4076,7 @@
               "$ref": "#/definitions/Configuration.Filter.Item"
             },
             "path": {
-              "description": "Defines the path to the structure holding the data about the items.",
+              "description": "Defines the path to the structure holding the data about the items",
               "type": "string",
               "default": "/",
               "pattern": "^[a-zA-Z0-9_\\.\\-/|@#]*$"
@@ -4019,23 +4086,23 @@
       }
     },
     "Configuration.Parameter": {
-      "description": "Represents configuration parameter.",
+      "description": "Represents configuration parameter",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "value": {
-          "description": "The value of the parameter."
+          "description": "The value of the parameter"
         },
         "type": {
-          "description": "The type of the value for the parameter.",
+          "description": "The type of the value for the parameter",
           "$ref": "#/definitions/Configuration.BasicDataType"
         },
         "label": {
-          "description": "Label for the parameter for user-friendly visualization in the design-time editor.",
+          "description": "Label for the parameter for user-friendly visualization in the design-time editor",
           "type": "string"
         },
         "description": {
-          "description": "Description of the parameter for user-friendly visualization in the design-time editor.",
+          "description": "Description of the parameter for user-friendly visualization in the design-time editor",
           "type": "string"
         }
       }
@@ -6211,19 +6278,19 @@
               "type": "string"
             },
             "title": {
-              "description": "Represents title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+              "description": "Represents a title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
               "type": "string"
             },
             "subTitle": {
-              "description": "Represents subtitle; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+              "description": "Represents a subtitle; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
               "type": "string"
             },
             "shortTitle": {
-              "description": "Represents shorter version of the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+              "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
               "type": "string"
             },
             "info": {
-              "description": "Represents additional information to the title; this property is language dependent and, therefore, a key in double curly brackets '{{key}}' must be used",
+              "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
               "type": "string"
             },
             "displayMode": {
