@@ -42,7 +42,8 @@
         "1.27.0",
         "1.28.0",
         "1.29.0",
-        "1.30.0"
+        "1.30.0",
+        "1.31.0"
       ]
     },
     "start_url": {
@@ -78,7 +79,8 @@
             "1.11.0",
             "1.12.0",
             "1.13.0",
-            "1.14.0"
+            "1.14.0",
+            "1.15.0"
           ]
         },
         "sourceTemplate": {
@@ -929,7 +931,8 @@
           "description": "Represents attributes format version. It is managed by namespace owner",
           "type": "string",
           "enum": [
-            "1.1.0"
+            "1.1.0",
+            "1.2.0"
           ]
         },
         "registrationIds": {
@@ -950,6 +953,10 @@
             "fpmwebdynpro",
             "designstudio"
           ]
+        },
+        "abstract": {
+          "description": "Indicator that app is an abstract (generic) app which may not be used directly, but needs to be specialized in the SAP Fiori launchpad content",
+          "type": "boolean"
         }
       }
     },
@@ -6090,7 +6097,7 @@
           "type": "string"
         },
         "type": {
-          "description": "Represents type of the data source. The supported types are OData, ODataAnnotation, INA, XML, JSON",
+          "description": "Represents type of the data source. The supported types are OData, ODataAnnotation, INA, XML, JSON, FHIR, WebSocket, http",
           "type": "string",
           "pattern": "^[a-zA-Z0-9_\\-]+$",
           "not": {
@@ -6100,7 +6107,9 @@
               "INA",
               "XML",
               "JSON",
-              "FHIR"
+              "FHIR",
+              "WebSocket",
+              "http"
             ]
           }
         },
@@ -6129,7 +6138,7 @@
           "type": "string"
         },
         "type": {
-          "description": "Represents type of the data source. The supported types are OData, ODataAnnotation, INA, XML, JSON",
+          "description": "Represents type of the data source. The supported types are OData, ODataAnnotation, INA, XML, JSON, FHIR, WebSocket, http",
           "type": "string",
           "enum": [
             "OData",
@@ -6137,7 +6146,9 @@
             "INA",
             "XML",
             "JSON",
-            "FHIR"
+            "FHIR",
+            "WebSocket",
+            "http"
           ],
           "default": "OData"
         },
