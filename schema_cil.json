@@ -2920,7 +2920,7 @@
       ],
       "properties": {
         "uri": {
-          "description": "Represents uri of the data source",
+          "description": "Represents the uri of the data source, should always be given in lower case",
           "type": "string"
         },
         "type": {

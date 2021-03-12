@@ -43,7 +43,8 @@
         "1.28.0",
         "1.29.0",
         "1.30.0",
-        "1.31.0"
+        "1.31.0",
+        "1.32.0"
       ]
     },
     "start_url": {
@@ -1575,7 +1576,8 @@
             "1.14.0",
             "1.15.0",
             "1.16.0",
-            "1.17.0"
+            "1.17.0",
+            "1.18.0"
           ]
         },
         "designtime": {
@@ -1667,7 +1669,7 @@
           "description": "Represents card content attributes. Content type should be the same as card type e.g. if card type List is used the content type should also be List"
         },
         "extension": {
-          "description": "[Experimental] A path to an Extension implementation. It is resolved relatively to the manifest",
+          "description": "A path to an Extension implementation. It is resolved relatively to the manifest",
           "type": "string"
         }
       },
@@ -2452,7 +2454,7 @@
       }
     },
     "service_0": {
-      "description": "Represents service that will be used for an actions",
+      "description": "Represents service that will be used for actions",
       "oneOf": [
         {
           "description": "Represents name of the Service to be used for the action",
@@ -2739,6 +2741,13 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the item",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
         }
       }
     },
@@ -2827,6 +2836,7 @@
         {
           "type": "object",
           "additionalProperties": false,
+          "description": "[Deprecated]",
           "properties": {
             "url": {
               "type": "string"
@@ -2895,11 +2905,11 @@
           ]
         },
         "url": {
-          "description": "Defines the URL string",
+          "description": "[Deprecated] Defines the URL string",
           "type": "string"
         },
         "target": {
-          "description": "Specifies where to open the 'url', if it is provided",
+          "description": "[Deprecated] Specifies where to open the 'url', if it is provided",
           "type": "string",
           "oneOf": [
             {
@@ -2927,6 +2937,13 @@
         "visible": {
           "description": "Represents the visibility state of the column",
           "$ref": "#/definitions/visibility"
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the group item",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
         }
       }
     },
@@ -2957,7 +2974,7 @@
           "type": "string"
         },
         "type": {
-          "description": "Defines the type of the displayed information",
+          "description": "[Deprecated] Defines the type of the displayed information",
           "type": "string",
           "oneOf": [
             {
@@ -2975,11 +2992,11 @@
           ]
         },
         "url": {
-          "description": "Defines the URL string. Works only with items of type 'link'",
+          "description": "[Deprecated] Defines the URL string. Works only with items of type 'link'",
           "type": "string"
         },
         "target": {
-          "description": "Specifies the target of the link - it works like the target property of the HTML 'a' tag. Works only with items of type 'link'",
+          "description": "[Deprecated] Specifies the target of the link - it works like the target property of the HTML 'a' tag. Works only with items of type 'link'",
           "oneOf": [
             {
               "$ref": "#/definitions/target"
@@ -2990,8 +3007,15 @@
           ]
         },
         "emailSubject": {
-          "description": "Represents the subject of the email. Works only with item of type 'email'",
+          "description": "[Deprecated] Represents the subject of the email. Works only with item of type 'email'",
           "type": "string"
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the group item",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
         },
         "visible": {
           "description": "Represents the visibility state of the item",
@@ -3002,6 +3026,9 @@
     "ContentType.Object.Group": {
       "description": "Represents a group of information for an object",
       "type": "object",
+      "required": [
+        "items"
+      ],
       "additionalProperties": false,
       "properties": {
         "title": {
@@ -6093,7 +6120,7 @@
       ],
       "properties": {
         "uri": {
-          "description": "Represents uri of the data source",
+          "description": "Represents the uri of the data source, should always be given in lower case",
           "type": "string"
         },
         "type": {
