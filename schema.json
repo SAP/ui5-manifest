@@ -44,7 +44,8 @@
         "1.29.0",
         "1.30.0",
         "1.31.0",
-        "1.32.0"
+        "1.32.0",
+        "1.33.0"
       ]
     },
     "start_url": {
@@ -536,11 +537,6 @@
                 "minUI5Version": {
                   "description": "Represents the minimum version of SAP UI5 that your component requires",
                   "$ref": "#/definitions/version"
-                },
-                "incompatibleLimitation": {
-                  "description": "Represents ...",
-                  "type": "boolean",
-                  "default": false
                 },
                 "libs": {
                   "description": "Represents the id (namespace) of the libraries that should be loaded by UI5 Core to be used in your component",
@@ -1090,7 +1086,8 @@
           "enum": [
             "1.1.0",
             "1.2.0",
-            "1.3.0"
+            "1.3.0",
+            "1.4.0"
           ]
         },
         "globalFilterModel": {
@@ -1166,6 +1163,17 @@
           "description": "Flag to enable/disable semantic date range control for Smart filter bar",
           "type": "boolean",
           "default": false
+        },
+        "chartSettings": {
+          "description": "Represents the object to store analytical chart settings",
+          "type": "object",
+          "properties": {
+            "showDataLabel": {
+              "description": "Flag to enable data labels on analytical charts",
+              "type": "boolean",
+              "default": false
+            }
+          }
         },
         "cards": {
           "type": "object",
@@ -1577,7 +1585,8 @@
             "1.15.0",
             "1.16.0",
             "1.17.0",
-            "1.18.0"
+            "1.18.0",
+            "1.19.0"
           ]
         },
         "designtime": {
@@ -1631,15 +1640,16 @@
           "description": "Represents the type of the card's content",
           "type": "string",
           "enum": [
-            "List",
+            "AdaptiveCard",
             "Analytical",
             "AnalyticsCloud",
-            "Table",
-            "Object",
-            "Timeline",
-            "Component",
             "Calendar",
-            "AdaptiveCard"
+            "Component",
+            "List",
+            "Object",
+            "Table",
+            "Timeline",
+            "WebPage"
           ]
         },
         "data": {
@@ -1849,6 +1859,26 @@
               "properties": {
                 "content": {
                   "$ref": "#/definitions/ContentType.AdaptiveCard"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "WebPage"
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "content": {
+                  "$ref": "#/definitions/ContentType.WebPage"
                 }
               }
             }
@@ -2430,6 +2460,41 @@
         "datetime"
       ]
     },
+    "batchRequest": {
+      "description": "Represents a request which is a part of a batch request.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "method"
+      ],
+      "properties": {
+        "url": {
+          "description": "The URL to make the request to",
+          "type": "string"
+        },
+        "method": {
+          "description": "The HTTP method",
+          "type": "string",
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        "headers": {
+          "description": "Represents HTTP headers",
+          "type": "object",
+          "additionalProperties": true
+        },
+        "body": {
+          "description": "Represents the request body",
+          "additionalProperties": true
+        }
+      }
+    },
     "parameters": {
       "description": "Represents parameters that are passed in the actions",
       "type": "object",
@@ -2540,6 +2605,13 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "batch": {
+          "description": "Map of requests to be batched",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/batchRequest"
+          }
         }
       }
     },
@@ -3642,6 +3714,27 @@
         "status": {
           "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
+        }
+      }
+    },
+    "ContentType.WebPage": {
+      "description": "WebPage content is used to embed HTML page",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
+        },
+        "src": {
+          "description": "URL of the web page to be embedded",
+          "type": "string"
+        },
+        "sandbox": {
+          "description": "Sandbox attribute of the iframe",
+          "type": "string"
         }
       }
     },

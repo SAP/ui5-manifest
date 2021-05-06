@@ -820,7 +820,8 @@
           "enum": [
             "1.1.0",
             "1.2.0",
-            "1.3.0"
+            "1.3.0",
+            "1.4.0"
           ]
         },
         "globalFilterModel": {
@@ -896,6 +897,17 @@
           "description": "Flag to enable/disable semantic date range control for Smart filter bar",
           "type": "boolean",
           "default": false
+        },
+        "chartSettings": {
+          "description": "Represents the object to store analytical chart settings",
+          "type": "object",
+          "properties": {
+            "showDataLabel": {
+              "description": "Flag to enable data labels on analytical charts",
+              "type": "boolean",
+              "default": false
+            }
+          }
         },
         "cards": {
           "type": "object",
