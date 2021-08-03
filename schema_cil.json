@@ -2084,6 +2084,20 @@
         "target": {
           "description": "Represents the pointer to a semantic object",
           "type": "string"
+        },
+        "refreshStrategyOnAppRestore": {
+          "description": "Represents the refresh strategies configured for external display navigation while coming back to the source app",
+          "$ref": "#/definitions/refreshStrategies_prop_def"
+        }
+      }
+    },
+    "refreshStrategies_prop_def": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entitySets": {
+          "description": "Represents the map of entity sets configured for refresh strategies",
+          "type": "object"
         }
       }
     },
