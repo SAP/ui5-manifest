@@ -1864,411 +1864,6 @@
         }
       ],
       "definitions": {
-        "ContentType.Component": {
-          "description": "Represents the configuration for a component card's content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "minHeight": {
-              "$ref": "#/definitions/minHeight"
-            }
-          }
-        },
-        "ContentType.List": {
-          "description": "Represents list content attributes",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "item": {
-              "$ref": "#/definitions/ContentType.List.Item"
-            },
-            "maxItems": {
-              "description": "Represents number of items",
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            }
-          }
-        },
-        "ContentType.Analytical": {
-          "description": "Represents analytical content attributes",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "chartType": {
-              "description": "Describes the type of the chart",
-              "type": "string",
-              "oneOf": [
-                {
-                  "enum": [
-                    "Line",
-                    "StackedColumn",
-                    "StackedBar",
-                    "Donut"
-                  ]
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            },
-            "minHeight": {
-              "$ref": "#/definitions/minHeight"
-            },
-            "legend": {
-              "$ref": "#/definitions/ContentType.Analytical.Legend"
-            },
-            "plotArea": {
-              "description": "Describes the plotArea properties",
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "dataLabel": {
-                  "$ref": "#/definitions/ContentType.Analytical.DataLabel"
-                },
-                "categoryAxisText": {
-                  "$ref": "#/definitions/ContentType.Analytical.AxisText"
-                },
-                "valueAxisText": {
-                  "$ref": "#/definitions/ContentType.Analytical.AxisText"
-                }
-              }
-            },
-            "title": {
-              "description": "Represents title attributes",
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "visible": {
-                  "description": "Represents the visibility state of the title",
-                  "oneOf": [
-                    {
-                      "type": "boolean",
-                      "default": true
-                    },
-                    {
-                      "$ref": "#/definitions/simpleBinding"
-                    }
-                  ]
-                },
-                "text": {
-                  "description": "Represents a title text",
-                  "type": "string"
-                },
-                "alignment": {
-                  "description": "Represents the title alignment",
-                  "oneOf": [
-                    {
-                      "enum": [
-                        "Left",
-                        "Center",
-                        "Right"
-                      ],
-                      "default": "Center"
-                    },
-                    {
-                      "$ref": "#/definitions/simpleBinding"
-                    }
-                  ]
-                }
-              }
-            },
-            "measureAxis": {
-              "description": "Represents the value set for measure axis",
-              "type": "string"
-            },
-            "dimensionAxis": {
-              "description": "Represents the value set for dimension axis",
-              "type": "string"
-            },
-            "dimensions": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/field"
-              }
-            },
-            "measures": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/field"
-              }
-            },
-            "actions": {
-              "description": "Defines actions that can be applied on the content",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/action"
-              }
-            },
-            "actionableArea": {
-              "oneOf": [
-                {
-                  "enum": [
-                    "Full",
-                    "Chart"
-                  ],
-                  "default": "Full"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            },
-            "popover": {
-              "type": "object",
-              "additionalProperties": false,
-              "description": "Configuration for a popover, which will open while pressing chart points",
-              "properties": {
-                "connected": {
-                  "description": "Whether the popover is connected to the chart. If it's not it won't open",
-                  "oneOf": [
-                    {
-                      "type": "boolean",
-                      "default": false
-                    },
-                    {
-                      "$ref": "#/definitions/simpleBinding"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "ContentType.AnalyticsCloud": {
-          "description": "Represents SAP Analytics Cloud content attributes",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "minHeight": {
-              "$ref": "#/definitions/minHeight"
-            },
-            "actions": {
-              "description": "Defines actions that can be applied on the content",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/action"
-              }
-            },
-            "options": {
-              "description": "Options of the chart",
-              "oneOf": [
-                {
-                  "type": "object"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            }
-          }
-        },
-        "ContentType.Timeline": {
-          "description": "Represents time related content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "item": {
-              "description": "Defines the timeline item",
-              "$ref": "#/definitions/ContentType.Timeline.Item"
-            },
-            "maxItems": {
-              "description": "Represents number of items",
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            }
-          }
-        },
-        "ContentType.Object": {
-          "description": "Represents object content attributes",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "groups": {
-              "description": "Represents groups of information for an object",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ContentType.Object.Group"
-              }
-            },
-            "actions": {
-              "description": "Defines actions that can be applied on the content",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/action"
-              }
-            }
-          }
-        },
-        "ContentType.Table": {
-          "description": "Represents table content attributes",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "row": {
-              "description": "The template for all rows",
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "columns": {
-                  "description": "Defines the columns attributes",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/ContentType.Table.Column"
-                  }
-                },
-                "actions": {
-                  "description": "Defines actions that can be applied on the item",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/action"
-                  }
-                }
-              }
-            },
-            "maxItems": {
-              "description": "Represents number of items",
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            }
-          }
-        },
-        "ContentType.Calendar": {
-          "description": "The calendar card is used to display a schedule of a single entity (such as person, resource) for a selected time interval",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "item": {
-              "$ref": "#/definitions/ContentType.Calendar.Item"
-            },
-            "legendItem": {
-              "$ref": "#/definitions/ContentType.Calendar.LegendItem"
-            },
-            "specialDate": {
-              "$ref": "#/definitions/ContentType.Calendar.SpecialDate"
-            },
-            "date": {
-              "description": "The initial date of the calendar which appointments are initially shown. The accepted date format is ISO 8601",
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            },
-            "maxItems": {
-              "description": "Represents number of items displayed",
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            },
-            "maxLegendItems": {
-              "description": "Represents number of legendItems displayed",
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            },
-            "noItemsText": {
-              "description": "The text shown when there are no items for the selected day",
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            },
-            "moreItems": {
-              "description": "Defines actions that can be applied on the button showing there are more items than the shown",
-              "type": "object",
-              "properties": {
-                "actions": {
-                  "description": "Represents an action that can be applied on he button showing there are more items than the shown",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/action"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "ContentType.AdaptiveCard": {
-          "description": "Represents AdaptiveCard content",
-          "$ref": "https://adaptivecards.io/schemas/adaptive-card.json#/definitions/AdaptiveCard"
-        },
-        "ContentType.WebPage": {
-          "description": "WebPage content is used to embed HTML page",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "data": {
-              "$ref": "#/definitions/data"
-            },
-            "minHeight": {
-              "$ref": "#/definitions/minHeight"
-            },
-            "src": {
-              "description": "URL of the web page to be embedded",
-              "type": "string"
-            },
-            "sandbox": {
-              "description": "Sandbox attribute of the iframe",
-              "type": "string"
-            }
-          }
-        },
         "i18n_key": {
           "type": "string",
           "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
@@ -4145,6 +3740,411 @@
         }
       }
     },
+    "ContentType.WebPage": {
+      "description": "WebPage content is used to embed HTML page",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
+        },
+        "src": {
+          "description": "URL of the web page to be embedded",
+          "type": "string"
+        },
+        "sandbox": {
+          "description": "Sandbox attribute of the iframe",
+          "type": "string"
+        }
+      }
+    },
+    "ContentType.AdaptiveCard": {
+      "description": "Represents AdaptiveCard content",
+      "$ref": "https://adaptivecards.io/schemas/adaptive-card.json#/definitions/AdaptiveCard"
+    },
+    "ContentType.Calendar": {
+      "description": "The calendar card is used to display a schedule of a single entity (such as person, resource) for a selected time interval",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "item": {
+          "$ref": "#/definitions/ContentType.Calendar.Item"
+        },
+        "legendItem": {
+          "$ref": "#/definitions/ContentType.Calendar.LegendItem"
+        },
+        "specialDate": {
+          "$ref": "#/definitions/ContentType.Calendar.SpecialDate"
+        },
+        "date": {
+          "description": "The initial date of the calendar which appointments are initially shown. The accepted date format is ISO 8601",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "maxItems": {
+          "description": "Represents number of items displayed",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "maxLegendItems": {
+          "description": "Represents number of legendItems displayed",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "noItemsText": {
+          "description": "The text shown when there are no items for the selected day",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "moreItems": {
+          "description": "Defines actions that can be applied on the button showing there are more items than the shown",
+          "type": "object",
+          "properties": {
+            "actions": {
+              "description": "Represents an action that can be applied on he button showing there are more items than the shown",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/action"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ContentType.Component": {
+      "description": "Represents the configuration for a component card's content",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
+        }
+      }
+    },
+    "ContentType.Object": {
+      "description": "Represents object content attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "groups": {
+          "description": "Represents groups of information for an object",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContentType.Object.Group"
+          }
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the content",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
+        }
+      }
+    },
+    "ContentType.Table": {
+      "description": "Represents table content attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "row": {
+          "description": "The template for all rows",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "columns": {
+              "description": "Defines the columns attributes",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ContentType.Table.Column"
+              }
+            },
+            "actions": {
+              "description": "Defines actions that can be applied on the item",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/action"
+              }
+            }
+          }
+        },
+        "maxItems": {
+          "description": "Represents number of items",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
+    "ContentType.Timeline": {
+      "description": "Represents time related content",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "item": {
+          "description": "Defines the timeline item",
+          "$ref": "#/definitions/ContentType.Timeline.Item"
+        },
+        "maxItems": {
+          "description": "Represents number of items",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
+    "ContentType.AnalyticsCloud": {
+      "description": "Represents SAP Analytics Cloud content attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the content",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
+        },
+        "options": {
+          "description": "Options of the chart",
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
+    "ContentType.Analytical": {
+      "description": "Represents analytical content attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "chartType": {
+          "description": "Describes the type of the chart",
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "Line",
+                "StackedColumn",
+                "StackedBar",
+                "Donut"
+              ]
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "minHeight": {
+          "$ref": "#/definitions/minHeight"
+        },
+        "legend": {
+          "$ref": "#/definitions/ContentType.Analytical.Legend"
+        },
+        "plotArea": {
+          "description": "Describes the plotArea properties",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dataLabel": {
+              "$ref": "#/definitions/ContentType.Analytical.DataLabel"
+            },
+            "categoryAxisText": {
+              "$ref": "#/definitions/ContentType.Analytical.AxisText"
+            },
+            "valueAxisText": {
+              "$ref": "#/definitions/ContentType.Analytical.AxisText"
+            }
+          }
+        },
+        "title": {
+          "description": "Represents title attributes",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "visible": {
+              "description": "Represents the visibility state of the title",
+              "oneOf": [
+                {
+                  "type": "boolean",
+                  "default": true
+                },
+                {
+                  "$ref": "#/definitions/simpleBinding"
+                }
+              ]
+            },
+            "text": {
+              "description": "Represents a title text",
+              "type": "string"
+            },
+            "alignment": {
+              "description": "Represents the title alignment",
+              "oneOf": [
+                {
+                  "enum": [
+                    "Left",
+                    "Center",
+                    "Right"
+                  ],
+                  "default": "Center"
+                },
+                {
+                  "$ref": "#/definitions/simpleBinding"
+                }
+              ]
+            }
+          }
+        },
+        "measureAxis": {
+          "description": "Represents the value set for measure axis",
+          "type": "string"
+        },
+        "dimensionAxis": {
+          "description": "Represents the value set for dimension axis",
+          "type": "string"
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/field"
+          }
+        },
+        "measures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/field"
+          }
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the content",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
+        },
+        "actionableArea": {
+          "oneOf": [
+            {
+              "enum": [
+                "Full",
+                "Chart"
+              ],
+              "default": "Full"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "popover": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Configuration for a popover, which will open while pressing chart points",
+          "properties": {
+            "connected": {
+              "description": "Whether the popover is connected to the chart. If it's not it won't open",
+              "oneOf": [
+                {
+                  "type": "boolean",
+                  "default": false
+                },
+                {
+                  "$ref": "#/definitions/simpleBinding"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ContentType.List": {
+      "description": "Represents list content attributes",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "item": {
+          "$ref": "#/definitions/ContentType.List.Item"
+        },
+        "maxItems": {
+          "description": "Represents number of items",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
     "actionsStripItem": {
       "description": "[Experimental] Attributes of actions strip item",
       "type": "object",
@@ -4944,34 +4944,53 @@
       "type": "string"
     },
     "implementingComponent_def": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "componentName"
-      ],
-      "properties": {
-        "componentName": {
-          "description": "Represents the name of the component to be loaded inside the canvas",
-          "type": "string",
-          "pattern": "^([a-zA-Z][a-zA-Z0-9_]{0,39})(\\.[a-zA-Z][a-zA-Z0-9_]{0,39})*$"
-        },
-        "binding": {
-          "description": " Represents a binding string to indicate, how the reuse component should be bound relative to the containing page or absolute ",
-          "type": "string"
-        },
-        "settings": {
-          "$ref": "#/definitions/component_setting_def"
-        },
-        "pages": {
+      "oneOf": [
+        {
           "type": "object",
           "additionalProperties": false,
-          "patternProperties": {
-            "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
-              "$ref": "#/definitions/pages_map"
+          "required": [
+            "componentName"
+          ],
+          "properties": {
+            "componentName": {
+              "description": "Represents the name of the component to be loaded inside the canvas",
+              "type": "string",
+              "pattern": "^([a-zA-Z][a-zA-Z0-9_]{0,39})(\\.[a-zA-Z][a-zA-Z0-9_]{0,39})*$"
+            },
+            "binding": {
+              "$ref": "#/definitions/component_binding_def"
+            },
+            "settings": {
+              "$ref": "#/definitions/component_setting_def"
+            },
+            "pages": {
+              "$ref": "#/definitions/component_pages_def"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "componentUsage"
+          ],
+          "properties": {
+            "componentUsageq": {
+              "description": "Represents the reference to the name of the componentUsages defined in sap.ui5/componentUsages for the component to be loaded inside the canvas",
+              "type": "string"
+            },
+            "binding": {
+              "$ref": "#/definitions/component_binding_def"
+            },
+            "settings": {
+              "$ref": "#/definitions/component_setting_def"
+            },
+            "pages": {
+              "$ref": "#/definitions/component_pages_def"
             }
           }
         }
-      }
+      ]
     },
     "routingSpec_def": {
       "type": "object",
@@ -5046,6 +5065,19 @@
           "$ref": "#/definitions/component_setting_def"
         }
       }
+    },
+    "component_pages_def": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
+          "$ref": "#/definitions/pages_map"
+        }
+      }
+    },
+    "component_binding_def": {
+      "description": " Represents a binding string to indicate, how the reuse component should be bound relative to the containing page or absolute ",
+      "type": "string"
     },
     "component_setting_def": {
       "description": "Represents the settings specific to one component",
