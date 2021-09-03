@@ -1873,53 +1873,34 @@
       "type": "string"
     },
     "implementingComponent_def": {
-      "oneOf": [
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "componentName"
-          ],
-          "properties": {
-            "componentName": {
-              "description": "Represents the name of the component to be loaded inside the canvas",
-              "type": "string",
-              "pattern": "^([a-zA-Z][a-zA-Z0-9_]{0,39})(\\.[a-zA-Z][a-zA-Z0-9_]{0,39})*$"
-            },
-            "binding": {
-              "$ref": "#/definitions/component_binding_def"
-            },
-            "settings": {
-              "$ref": "#/definitions/component_setting_def"
-            },
-            "pages": {
-              "$ref": "#/definitions/component_pages_def"
-            }
-          }
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "componentName"
+      ],
+      "properties": {
+        "componentName": {
+          "description": "Represents the name of the component to be loaded inside the canvas",
+          "type": "string",
+          "pattern": "^([a-zA-Z][a-zA-Z0-9_]{0,39})(\\.[a-zA-Z][a-zA-Z0-9_]{0,39})*$"
         },
-        {
+        "binding": {
+          "description": " Represents a binding string to indicate, how the reuse component should be bound relative to the containing page or absolute ",
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/component_setting_def"
+        },
+        "pages": {
           "type": "object",
           "additionalProperties": false,
-          "required": [
-            "componentUsage"
-          ],
-          "properties": {
-            "componentUsageq": {
-              "description": "Represents the reference to the name of the componentUsages defined in sap.ui5/componentUsages for the component to be loaded inside the canvas",
-              "type": "string"
-            },
-            "binding": {
-              "$ref": "#/definitions/component_binding_def"
-            },
-            "settings": {
-              "$ref": "#/definitions/component_setting_def"
-            },
-            "pages": {
-              "$ref": "#/definitions/component_pages_def"
+          "patternProperties": {
+            "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
+              "$ref": "#/definitions/pages_map"
             }
           }
         }
-      ]
+      }
     },
     "routingSpec_def": {
       "type": "object",
@@ -1994,19 +1975,6 @@
           "$ref": "#/definitions/component_setting_def"
         }
       }
-    },
-    "component_pages_def": {
-      "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
-          "$ref": "#/definitions/pages_map"
-        }
-      }
-    },
-    "component_binding_def": {
-      "description": " Represents a binding string to indicate, how the reuse component should be bound relative to the containing page or absolute ",
-      "type": "string"
     },
     "component_setting_def": {
       "description": "Represents the settings specific to one component",
