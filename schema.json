@@ -48,7 +48,8 @@
         "1.33.0",
         "1.34.0",
         "1.35.0",
-        "1.36.0"
+        "1.36.0",
+        "1.37.0"
       ]
     },
     "start_url": {
@@ -86,7 +87,8 @@
             "1.13.0",
             "1.14.0",
             "1.15.0",
-            "1.16.0"
+            "1.16.0",
+            "1.17.0"
           ]
         },
         "sourceTemplate": {
@@ -1594,7 +1596,8 @@
             "1.18.0",
             "1.19.0",
             "1.20.0",
-            "1.21.0"
+            "1.21.0",
+            "1.22.0"
           ]
         },
         "designtime": {
@@ -1619,9 +1622,15 @@
             },
             "filters": {
               "description": "Map of filters",
-              "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/Configuration.Filter"
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/Configuration.FilterType.Select"
+                  },
+                  {
+                    "$ref": "#/definitions/Configuration.FilterType.DateRange"
+                  }
+                ]
               }
             },
             "destinations": {
@@ -1703,6 +1712,14 @@
               }
             }
           }
+        },
+        "requiredHeight": {
+          "description": "Represents card minimum required height",
+          "type": "string"
+        },
+        "requiredWidth": {
+          "description": "Represents card minimum required width",
+          "type": "string"
         }
       },
       "allOf": [
@@ -3406,6 +3423,28 @@
       ],
       "default": "None"
     },
+    "ContentType.List.Item.ValueStateItem": {
+      "description": "Represents value and state information for an object",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The value of the field"
+        },
+        "state": {
+          "description": "The state of the field",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/state"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
     "field": {
       "type": "object",
       "additionalProperties": false,
@@ -3417,6 +3456,40 @@
         "value": {
           "type": "string",
           "description": "The value of the field"
+        }
+      }
+    },
+    "group": {
+      "description": "Represents group of items",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "description": "The title of the group",
+          "type": "string"
+        },
+        "order": {
+          "description": "The order by which the group will be sorted",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "description": "Defines the path to the structure holding the data about the group order",
+              "type": "string"
+            },
+            "dir": {
+              "description": "The direction in which the group items will be ordered",
+              "oneOf": [
+                {
+                  "enum": [
+                    "ASC",
+                    "DESC"
+                  ],
+                  "default": "ASC"
+                }
+              ]
+            }
+          }
         }
       }
     },
@@ -3448,24 +3521,8 @@
           ]
         },
         "info": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "value": {
-              "type": "string",
-              "description": "The value of the field"
-            },
-            "state": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/state"
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
-            }
-          }
+          "description": "Defines an additional information text",
+          "$ref": "#/definitions/ContentType.List.Item.ValueStateItem"
         },
         "highlight": {
           "type": "string",
@@ -3481,6 +3538,28 @@
         },
         "icon": {
           "$ref": "#/definitions/icon"
+        },
+        "attributesLayoutType": {
+          "description": "Defines the layout type of the attributes",
+          "oneOf": [
+            {
+              "enum": [
+                "OneColumn",
+                "TwoColumns"
+              ],
+              "default": "TwoColumns"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "attributes": {
+          "description": "Defines the attributes",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContentType.List.Item.ValueStateItem"
+          }
         },
         "actions": {
           "description": "Defines actions that can be applied on the item",
@@ -3754,6 +3833,22 @@
         "mainIndicator": {
           "$ref": "#/definitions/HeaderType.Numeric.MainIndicator"
         },
+        "sideIndicatorsAlignment": {
+          "description": "The alignment of the side indicators",
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "Begin",
+                "End"
+              ],
+              "default": "Begin"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "details": {
           "description": "Represents additional information about the numeric header",
           "type": "string"
@@ -3986,6 +4081,9 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "group": {
+          "$ref": "#/definitions/group"
         }
       }
     },
@@ -4227,6 +4325,9 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "group": {
+          "$ref": "#/definitions/group"
         }
       }
     },
@@ -4429,17 +4530,111 @@
         }
       }
     },
-    "Configuration.Filter": {
-      "description": "[Experimental] Represents a filter definition",
+    "Configuration.FilterType.DateRange": {
+      "description": "Date range filter",
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "type": {
+          "description": "The type of the filter",
+          "oneOf": [
+            {
+              "const": "DateRange"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "label": {
+          "description": "Label for the filter for user-friendly visualization in the design-time editor",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the filter for user-friendly visualization in the design-time editor",
+          "type": "string"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "option": {
+              "description": "The selected date range option",
+              "type": "string"
+            },
+            "values": {
+              "type": "array"
+            }
+          }
+        },
+        "options": {
+          "description": "Options that will appear in the dropdown",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "date",
+              "today",
+              "yesterday",
+              "tomorrow",
+              "dateRange",
+              "from",
+              "to",
+              "yearToDate",
+              "lastDays",
+              "lastWeeks",
+              "lastMonths",
+              "lastQuarters",
+              "lastYears",
+              "nextDays",
+              "nextWeeks",
+              "nextMonths",
+              "nextQuarters",
+              "nextYears",
+              "todayFromTo",
+              "thisWeek",
+              "lastWeek",
+              "nextWeek",
+              "specificMonth",
+              "thisMonth",
+              "lastMonth",
+              "nextMonth",
+              "thisQuarter",
+              "lastQuarter",
+              "nextQuarter",
+              "quarter1",
+              "quarter2",
+              "quarter3",
+              "quarter4",
+              "thisYear",
+              "lastYear",
+              "nextYear"
+            ]
+          }
+        }
+      }
+    },
+    "Configuration.FilterType.Select": {
+      "description": "[Experimental] Select filter",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "The type of the filter",
+          "oneOf": [
+            {
+              "const": "Select"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "value": {
           "description": "The value of the filter"
-        },
-        "type": {
-          "description": "The type of the value for the filter",
-          "$ref": "#/definitions/Configuration.BasicDataType"
         },
         "data": {
           "$ref": "#/definitions/data"
@@ -6604,7 +6799,7 @@
     },
     "setting": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "odataVersion": {
           "description": "Represents version of OData: 2.0 is default",
