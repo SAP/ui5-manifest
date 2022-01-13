@@ -800,7 +800,28 @@
     "sap.fe": {
       "title": "JSON schema for SAP.FE Namespace",
       "description": "Represents specific attributes for Fiori Elements ",
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_version": {
+          "type": "string",
+          "enum": [
+            "1.1.0"
+          ]
+        },
+        "form": {
+          "description": "Collection of attributes related to forms in Fiori Elements v4",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "retrieveTextFromValueList": {
+              "description": "Flag defining whether a property's text should be retrieved from a value help collection if there is no text at property level",
+              "type": "boolean",
+              "default": "false"
+            }
+          }
+        }
+      }
     },
     "sap.flp": {
       "title": "JSON schema for SAP.FLP Namespace",

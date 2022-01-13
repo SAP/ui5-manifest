@@ -1009,7 +1009,28 @@
     "sap.fe": {
       "title": "JSON schema for SAP.FE Namespace",
       "description": "Represents specific attributes for Fiori Elements ",
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_version": {
+          "type": "string",
+          "enum": [
+            "1.1.0"
+          ]
+        },
+        "form": {
+          "description": "Collection of attributes related to forms in Fiori Elements v4",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "retrieveTextFromValueList": {
+              "description": "Flag defining whether a property's text should be retrieved from a value help collection if there is no text at property level",
+              "type": "boolean",
+              "default": "false"
+            }
+          }
+        }
+      }
     },
     "sap.flp": {
       "title": "JSON schema for SAP.FLP Namespace",
@@ -1597,7 +1618,8 @@
             "1.19.0",
             "1.20.0",
             "1.21.0",
-            "1.22.0"
+            "1.22.0",
+            "1.23.0"
           ]
         },
         "designtime": {
@@ -1605,7 +1627,7 @@
           "type": "string"
         },
         "configuration": {
-          "description": "Represents configuration with parameters, destinations, and filters, which can be used inside the card",
+          "description": "General configuration of the card. Allows to define parameters, destinations, filters and more",
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -1629,6 +1651,9 @@
                   },
                   {
                     "$ref": "#/definitions/Configuration.FilterType.DateRange"
+                  },
+                  {
+                    "$ref": "#/definitions/Configuration.FilterType.Search"
                   }
                 ]
               }
@@ -1638,6 +1663,13 @@
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/Configuration.Destinations"
+              }
+            },
+            "csrfTokens": {
+              "description": "Describes the CSRF tokens used by the card",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Configuration.CSRFToken"
               }
             },
             "actionHandlers": {
@@ -2602,7 +2634,12 @@
             {
               "enum": [
                 "GET",
-                "POST"
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE",
+                "OPTIONS",
+                "HEAD"
               ],
               "default": "GET"
             },
@@ -3060,6 +3097,65 @@
         }
       }
     },
+    "ContentType.Object.Item.MainIndicator": {
+      "description": "Represents the main numeric indicator of the NumericData",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "description": "The value of the main indicator",
+          "type": "string"
+        },
+        "unit": {
+          "description": "The unit of the main indicator",
+          "type": "string"
+        },
+        "trend": {
+          "description": "The trend indicator (direction)",
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "Down",
+                "None",
+                "Up"
+              ],
+              "default": "None"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "state": {
+          "description": "The state color of the main indicator",
+          "type": "string",
+          "oneOf": [
+            {
+              "description": "The state color of the main indicator",
+              "$ref": "#/definitions/Enums.ValueColor"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "size": {
+          "oneOf": [
+            {
+              "enum": [
+                "S",
+                "L"
+              ],
+              "default": "Default"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
     "target_0": {
       "description": "Specifies where to open an URL",
       "type": "string",
@@ -3087,17 +3183,20 @@
           "type": "string"
         },
         "type": {
-          "description": "[Deprecated] Defines the type of the displayed information",
+          "description": "Defines the type of the displayed information. Some of the types are deprecated.",
           "type": "string",
           "oneOf": [
             {
               "enum": [
+                "Default",
+                "NumericData",
+                "Status",
                 "phone",
                 "email",
                 "link",
                 "text"
               ],
-              "default": "text"
+              "default": "Default"
             },
             {
               "$ref": "#/definitions/simpleBinding"
@@ -3133,6 +3232,53 @@
         "visible": {
           "description": "Represents the visibility state of the item",
           "$ref": "#/definitions/visibility"
+        },
+        "mainIndicator": {
+          "description": "[Experimental]",
+          "$ref": "#/definitions/ContentType.Object.Item.MainIndicator"
+        },
+        "sideIndicators": {
+          "description": "[Experimental] Multiple side indicators that relate to the main numeric indicator",
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/definitions/HeaderType.Numeric.SideIndicator"
+          }
+        },
+        "sideIndicatorsAlignment": {
+          "description": "[Experimental] The alignment of the side indicators",
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "Begin",
+                "End"
+              ],
+              "default": "Begin"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "maxLines": {
+          "description": "Maximum number of lines",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "details": {
+          "description": "Represents additional information about the numeric indicators",
+          "type": "string"
+        },
+        "state": {
+          "description": "The state color of the item",
+          "$ref": "#/definitions/state"
         }
       }
     },
@@ -3158,6 +3304,14 @@
         "visible": {
           "description": "Represents the visibility state of the group",
           "$ref": "#/definitions/visibility"
+        },
+        "alignment": {
+          "description": "[Experimental] Alignment of the group",
+          "enum": [
+            "Default",
+            "Stretch"
+          ],
+          "default": "Default"
         }
       }
     },
@@ -3204,6 +3358,13 @@
         "icon": {
           "description": "The icon of the timeline item",
           "$ref": "#/definitions/simpleIcon"
+        },
+        "actions": {
+          "description": "Defines actions that can be applied on the item level",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
         }
       }
     },
@@ -3478,7 +3639,7 @@
               "type": "string"
             },
             "dir": {
-              "description": "The direction in which the group items will be ordered",
+              "description": "The sorting direction in which the group items will be ordered",
               "oneOf": [
                 {
                   "enum": [
@@ -4507,6 +4668,16 @@
         }
       }
     },
+    "Configuration.CSRFToken": {
+      "description": "Represents a configuration for a CSRF token",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        }
+      }
+    },
     "Configuration.Destinations": {
       "description": "Represents a configuration for a cloud platform destination",
       "type": "object",
@@ -4526,6 +4697,43 @@
         },
         "defaultUrl": {
           "description": "A default url which will be used if there is no Host associated with the card",
+          "type": "string"
+        }
+      }
+    },
+    "Configuration.FilterType.Search": {
+      "description": "Search filter",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "The type of the filter",
+          "oneOf": [
+            {
+              "const": "Search"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "label": {
+          "description": "Label for the filter for user-friendly visualization in the design-time editor",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the filter for user-friendly visualization in the design-time editor",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value of the filter",
+          "type": "string"
+        },
+        "placeholder": {
+          "description": "The placeholder of the filter",
           "type": "string"
         }
       }
@@ -4562,7 +4770,7 @@
           "additionalProperties": false,
           "properties": {
             "option": {
-              "description": "The selected date range option",
+              "description": "The date range option",
               "type": "string"
             },
             "values": {
