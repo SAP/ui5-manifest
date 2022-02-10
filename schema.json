@@ -50,7 +50,8 @@
         "1.35.0",
         "1.36.0",
         "1.37.0",
-        "1.38.0"
+        "1.38.0",
+        "1.39.0"
       ]
     },
     "start_url": {
@@ -978,7 +979,8 @@
             "1.2.0",
             "1.3.0",
             "1.4.0",
-            "1.5.0"
+            "1.5.0",
+            "1.6.0"
           ]
         },
         "settings": {
@@ -1620,7 +1622,8 @@
             "1.20.0",
             "1.21.0",
             "1.22.0",
-            "1.23.0"
+            "1.23.0",
+            "1.24.0"
           ]
         },
         "designtime": {
@@ -1683,6 +1686,13 @@
                   "type": "object"
                 }
               }
+            },
+            "messages": {
+              "description": "Describes the messages for the card",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Configuration.NoData"
+              }
             }
           }
         },
@@ -1742,6 +1752,35 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/actionsStripItem"
+              }
+            },
+            "paginator": {
+              "description": "[Experimental] Describes the paginator",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pageSize": {
+                  "description": "Represents the number of the items in one page",
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "$ref": "#/definitions/simpleBinding"
+                    }
+                  ]
+                },
+                "totalCount": {
+                  "description": "Represents the total count of the items in all pages",
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "$ref": "#/definitions/simpleBinding"
+                    }
+                  ]
+                }
               }
             }
           }
@@ -4669,6 +4708,29 @@
         }
       }
     },
+    "Configuration.NoData": {
+      "description": "Represents a configuration for a NoData",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "description": "Title shown in the illustrated message of the card",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description shown in the illustrated message of the card",
+          "type": "string"
+        },
+        "size": {
+          "description": "Defines the size predefined from sap.m.IllustratedMessage",
+          "type": "string"
+        },
+        "type": {
+          "description": "Defines the image predefined from sap.m.IllustratedMessage",
+          "type": "string"
+        }
+      }
+    },
     "Configuration.CSRFToken": {
       "description": "Represents a configuration for a CSRF token",
       "type": "object",
@@ -4722,11 +4784,7 @@
           "$ref": "#/definitions/data"
         },
         "label": {
-          "description": "Label for the filter for user-friendly visualization in the design-time editor",
-          "type": "string"
-        },
-        "description": {
-          "description": "Description of the filter for user-friendly visualization in the design-time editor",
+          "description": "Label for the filter. Used by screen readers",
           "type": "string"
         },
         "value": {
@@ -4759,11 +4817,7 @@
           "$ref": "#/definitions/data"
         },
         "label": {
-          "description": "Label for the filter for user-friendly visualization in the design-time editor",
-          "type": "string"
-        },
-        "description": {
-          "description": "Description of the filter for user-friendly visualization in the design-time editor",
+          "description": "Label for the filter. Used by screen readers",
           "type": "string"
         },
         "value": {
@@ -4827,7 +4881,7 @@
       }
     },
     "Configuration.FilterType.Select": {
-      "description": "[Experimental] Select filter",
+      "description": "Select filter",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -4849,11 +4903,7 @@
           "$ref": "#/definitions/data"
         },
         "label": {
-          "description": "Label for the filter for user-friendly visualization in the design-time editor",
-          "type": "string"
-        },
-        "description": {
-          "description": "Description of the filter for user-friendly visualization in the design-time editor",
+          "description": "Label for the filter. Used by screen readers",
           "type": "string"
         },
         "items": {
@@ -5500,6 +5550,10 @@
         "noKey": {
           "description": "Represents the switch to indicate, whether this route is reached via a 1:1 navigation or a 1:n navigation",
           "type": "boolean"
+        },
+        "semanticKey": {
+          "description": "Name of a semantic key field which can be used to identify an instance of this page. Only relevant if nKey is false.",
+          "type": "string"
         }
       }
     },
