@@ -806,28 +806,7 @@
     "sap.fe": {
       "title": "JSON schema for SAP.FE Namespace",
       "description": "Represents specific attributes for Fiori Elements ",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_version": {
-          "type": "string",
-          "enum": [
-            "1.1.0"
-          ]
-        },
-        "form": {
-          "description": "Collection of attributes related to forms in Fiori Elements v4",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "retrieveTextFromValueList": {
-              "description": "Flag defining whether a property's text should be retrieved from a value help collection if there is no text at property level",
-              "type": "boolean",
-              "default": "false"
-            }
-          }
-        }
-      }
+      "type": "object"
     },
     "sap.flp": {
       "title": "JSON schema for SAP.FLP Namespace",
@@ -913,7 +892,8 @@
             "1.1.0",
             "1.2.0",
             "1.3.0",
-            "1.4.0"
+            "1.4.0",
+            "1.5.0"
           ]
         },
         "globalFilterModel": {
@@ -974,6 +954,10 @@
           "description": "Represents the switch to activate live update in the global filters, else manual update will be required",
           "type": "boolean",
           "default": true
+        },
+        "refreshStrategyOnAppRestore": {
+          "description": "Represents the refresh strategies configured for OVP while coming back to the source app",
+          "$ref": "#/definitions/refreshStrategies_prop_def"
         },
         "considerAnalyticalParameters": {
           "description": "Flag to enable/disable analytical parameter support for Smart filter bar",
@@ -1899,6 +1883,16 @@
         }
       }
     },
+    "refreshStrategies_prop_def": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entitySets": {
+          "description": "Represents the map of entity sets configured for refresh strategies",
+          "type": "object"
+        }
+      }
+    },
     "defaultLayoutType_def": {
       "type": "string"
     },
@@ -2154,16 +2148,6 @@
         "refreshStrategyOnAppRestore": {
           "description": "Represents the refresh strategies configured for external display navigation while coming back to the source app",
           "$ref": "#/definitions/refreshStrategies_prop_def"
-        }
-      }
-    },
-    "refreshStrategies_prop_def": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "entitySets": {
-          "description": "Represents the map of entity sets configured for refresh strategies",
-          "type": "object"
         }
       }
     },
