@@ -893,7 +893,8 @@
             "1.2.0",
             "1.3.0",
             "1.4.0",
-            "1.5.0"
+            "1.5.0",
+            "1.6.0"
           ]
         },
         "globalFilterModel": {
@@ -982,6 +983,41 @@
               "description": "Flag to enable data labels on analytical charts",
               "type": "boolean",
               "default": false
+            }
+          }
+        },
+        "filterSettings": {
+          "description": "Represents the object to store filter bar configuration",
+          "type": "object",
+          "properties": {
+            "dateSettings": {
+              "description": "Represents the object to store date type filter fields configuration",
+              "type": "object",
+              "properties": {
+                "useDateRange": {
+                  "description": "Flag to enable DateTimeRange setting for date type filter fields with filter restriction interval",
+                  "type": "boolean",
+                  "default": false
+                },
+                "selectedValues": {
+                  "description": "Represents the semantic date values selected for the date filter field",
+                  "type": "string"
+                },
+                "exclude": {
+                  "description": "Flag to exclude values from the date picker",
+                  "type": "boolean",
+                  "default": false
+                },
+                "fields": {
+                  "description": "Represents the filter field definition for each field",
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-zA-Z0-9_\\.\\-]*$": {
+                      "$ref": "#/definitions/filterFieldName"
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -1880,6 +1916,35 @@
           "items": {
             "$ref": "#/definitions/tab_setting"
           }
+        }
+      }
+    },
+    "filterFieldName": {
+      "type": "object",
+      "description": "Represents the configuration object for each date filter field",
+      "properties": {
+        "defaultValue": {
+          "type": "object",
+          "description": "Represents the configuration for setting default value for the date filter field",
+          "properties": {
+            "operation": {
+              "type": "string",
+              "description": "Represents the default semantic date value to be set on the filter field"
+            }
+          }
+        },
+        "selectedValues": {
+          "type": "string",
+          "description": "Represents the semantic date values selected for the date filter field"
+        },
+        "customDateRangeImplementation": {
+          "type": "string",
+          "description": "Represents the custom implementation for semantic date filter field"
+        },
+        "exclude": {
+          "type": "boolean",
+          "description": "Flag to exclude values from the date picker",
+          "default": false
         }
       }
     },
