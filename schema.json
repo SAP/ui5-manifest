@@ -55,7 +55,8 @@
         "1.40.0",
         "1.41.0",
         "1.42.0",
-        "1.43.0"
+        "1.43.0",
+        "1.44.0"
       ]
     },
     "start_url": {
@@ -527,7 +528,8 @@
                 "1.10.0",
                 "1.11.0",
                 "1.12.0",
-                "1.13.0"
+                "1.13.0",
+                "1.14.0"
               ]
             },
             "resources": {
@@ -1109,7 +1111,8 @@
             "1.3.0",
             "1.4.0",
             "1.5.0",
-            "1.6.0"
+            "1.6.0",
+            "1.7.0"
           ]
         },
         "globalFilterModel": {
@@ -1233,6 +1236,22 @@
                   }
                 }
               }
+            }
+          }
+        },
+        "dataLoadSettings": {
+          "description": "Represents the object to define data loading behaviour for an overview page application",
+          "type": "object",
+          "properties": {
+            "loadDataOnAppLaunch": {
+              "description": "Data load behaviour options on application launch",
+              "type": "string",
+              "default": "always",
+              "enum": [
+                "always",
+                "never",
+                "ifAnyFilterExist"
+              ]
             }
           }
         },
@@ -1717,7 +1736,8 @@
             "1.25.0",
             "1.26.0",
             "1.27.0",
-            "1.28.0"
+            "1.28.0",
+            "1.29.0"
           ]
         },
         "designtime": {
@@ -3250,6 +3270,21 @@
         }
       }
     },
+    "ContentType.Object.Item.ComboBoxItemTemplate": {
+      "description": "Template for combo box items",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "description": "The title of the option",
+          "type": "string"
+        },
+        "key": {
+          "description": "The unique key of the option. Mapped to the input's value",
+          "type": "string"
+        }
+      }
+    },
     "ContentType.Object.Item.IconGroupTemplate": {
       "description": "Template definition for the icons in the group",
       "type": "object",
@@ -3365,6 +3400,8 @@
                 "NumericData",
                 "Status",
                 "IconGroup",
+                "ComboBox",
+                "TextArea",
                 "phone",
                 "email",
                 "link",
@@ -3477,6 +3514,41 @@
         "state": {
           "description": "The state color of the item",
           "$ref": "#/definitions/state"
+        },
+        "id": {
+          "description": "ID for input fields",
+          "type": "string"
+        },
+        "selectedKey": {
+          "description": "Defines the initially selected key from the given options for ComboBox.",
+          "type": "string"
+        },
+        "placeholder": {
+          "description": "Placeholder for input fields",
+          "type": "string"
+        },
+        "rows": {
+          "description": "Property rows for TextArea",
+          "type": "number"
+        },
+        "item": {
+          "type": "object",
+          "description": "Binding info for ComboBox items",
+          "required": [
+            "template"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "template": {
+              "$ref": "#/definitions/ContentType.Object.Item.ComboBoxItemTemplate"
+            },
+            "path": {
+              "description": "Defines the path to the structure holding the data about the items",
+              "type": "string",
+              "default": "/",
+              "pattern": "^[a-zA-Z0-9_\\.\\-/|@#]*$"
+            }
+          }
         }
       }
     },
@@ -4500,6 +4572,10 @@
           "items": {
             "$ref": "#/definitions/action"
           }
+        },
+        "hasData": {
+          "description": "Represents flag for no data",
+          "type": "string"
         }
       }
     },
@@ -6934,7 +7010,7 @@
         {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/config"
           }
         },
         {

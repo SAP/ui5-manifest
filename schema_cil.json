@@ -36,7 +36,8 @@
         "1.21.0",
         "1.22.0",
         "1.23.0",
-        "1.24.0"
+        "1.24.0",
+        "1.25.0"
       ]
     },
     "start_url": {
@@ -372,7 +373,8 @@
                 "1.8.0",
                 "1.9.0",
                 "1.10.0",
-                "1.11.0"
+                "1.11.0",
+                "1.12.0"
               ]
             },
             "resources": {
@@ -894,7 +896,8 @@
             "1.3.0",
             "1.4.0",
             "1.5.0",
-            "1.6.0"
+            "1.6.0",
+            "1.7.0"
           ]
         },
         "globalFilterModel": {
@@ -1018,6 +1021,22 @@
                   }
                 }
               }
+            }
+          }
+        },
+        "dataLoadSettings": {
+          "description": "Represents the object to define data loading behaviour for an overview page application",
+          "type": "object",
+          "properties": {
+            "loadDataOnAppLaunch": {
+              "description": "Data load behaviour options on application launch",
+              "type": "string",
+              "default": "always",
+              "enum": [
+                "always",
+                "never",
+                "ifAnyFilterExist"
+              ]
             }
           }
         },
@@ -3112,7 +3131,7 @@
         {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/config"
           }
         },
         {
