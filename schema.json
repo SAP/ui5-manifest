@@ -58,7 +58,8 @@
         "1.43.0",
         "1.44.0",
         "1.45.0",
-        "1.46.0"
+        "1.46.0",
+        "1.47.0"
       ]
     },
     "start_url": {
@@ -1752,7 +1753,8 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "type"
+        "type",
+        "header"
       ],
       "properties": {
         "_version": {
@@ -1788,7 +1790,8 @@
             "1.28.0",
             "1.29.0",
             "1.30.0",
-            "1.31.0"
+            "1.31.0",
+            "1.32.0"
           ]
         },
         "designtime": {
@@ -3313,7 +3316,11 @@
         },
         "text": {
           "type": "string",
-          "description": "Represents text that will be displayed in the icon"
+          "description": "[Deprecated] Represents text that will be displayed in the icon"
+        },
+        "initials": {
+          "type": "string",
+          "description": "Used as fallback if the 'src' property is not set or there is an issue with the resource. Up to two Latin letters can be displayed"
         },
         "alt": {
           "type": "string",
@@ -3380,7 +3387,7 @@
             }
           ]
         },
-        "resrictToPredefinedOptions": {
+        "restrictToPredefinedOptions": {
           "description": "Defines whether the value is restricted to predefined options",
           "oneOf": [
             {
@@ -4009,16 +4016,12 @@
           ]
         },
         "text": {
-          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown",
-          "oneOf": [
-            {
-              "type": "string",
-              "maxLength": 2
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "description": "[Deprecated] Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown",
+          "type": "string"
+        },
+        "initials": {
+          "description": "Used as fallback if the 'src' property is not set or there is an issue with the resource. Up to two Latin letters can be displayed",
+          "type": "string"
         },
         "size": {
           "description": "[Experimental] The size of the icon",
@@ -4358,19 +4361,26 @@
           ]
         },
         "text": {
-          "description": "Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown",
+          "description": "[Deprecated] Initials for the avatar. Up to 2 symbols. If the image provided to the 'src' property fails to load, then the text will be shown",
+          "type": "string"
+        },
+        "initials": {
+          "description": "Used as fallback if the 'src' property is not set or there is an issue with the resource. Up to two Latin letters can be displayed",
+          "type": "string"
+        },
+        "backgroundColor": {
+          "$ref": "#/definitions/iconBackgroundColor"
+        },
+        "visible": {
+          "description": "Visibility of the icon",
           "oneOf": [
             {
-              "type": "string",
-              "maxLength": 2
+              "type": "boolean"
             },
             {
               "$ref": "#/definitions/simpleBinding"
             }
           ]
-        },
-        "backgroundColor": {
-          "$ref": "#/definitions/iconBackgroundColor"
         }
       }
     },
@@ -4542,6 +4552,18 @@
         "status": {
           "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
+        },
+        "visible": {
+          "description": "[Experimental] Visibility of the header",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -4606,6 +4628,18 @@
         "status": {
           "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
+        },
+        "visible": {
+          "description": "[Experimental] Visibility of the header",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -4744,7 +4778,21 @@
         },
         "hasData": {
           "description": "Represents flag for no data",
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            },
+            {
+              "type": "array"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ],
+          "default": true
         }
       }
     },
