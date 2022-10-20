@@ -59,7 +59,8 @@
         "1.44.0",
         "1.45.0",
         "1.46.0",
-        "1.47.0"
+        "1.47.0",
+        "1.48.0"
       ]
     },
     "start_url": {
@@ -533,7 +534,8 @@
                 "1.12.0",
                 "1.13.0",
                 "1.14.0",
-                "1.15.0"
+                "1.15.0",
+                "1.16.0"
               ]
             },
             "resources": {
@@ -741,6 +743,63 @@
                         "fallbackLocale": {
                           "description": "Represents the fallback locale",
                           "type": "string"
+                        },
+                        "terminologies": {
+                          "description": "Represents terminologies with additional properties files",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "patternProperties": {
+                            "^[a-zA-Z0-9_\\-]*$": {
+                              "$ref": "#/definitions/terminologySetting"
+                            }
+                          }
+                        },
+                        "enhanceWith": {
+                          "description": "Represents enhancement of UI5 resource bundle with additional properties files",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "$ref": "#/definitions/enhanceWithSetting"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "bundleName"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "bundleName": {
+                          "description": "Represents the alternative for bundleUrl",
+                          "type": "string"
+                        },
+                        "fallbackLocale": {
+                          "description": "Represents the fallback locale",
+                          "type": "string"
+                        },
+                        "supportedLocales": {
+                          "description": "Represents the list of supported locales",
+                          "type": "array"
+                        },
+                        "terminologies": {
+                          "description": "Represents terminologies with additional properties files",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "patternProperties": {
+                            "^[a-zA-Z0-9_\\-]*$": {
+                              "$ref": "#/definitions/terminologySetting"
+                            }
+                          }
+                        },
+                        "enhanceWith": {
+                          "description": "Represents enhancement of UI5 resource bundle with additional properties files",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "$ref": "#/definitions/enhanceWithSetting"
+                          }
                         }
                       }
                     }
@@ -1791,7 +1850,8 @@
             "1.29.0",
             "1.30.0",
             "1.31.0",
-            "1.32.0"
+            "1.32.0",
+            "1.33.0"
           ]
         },
         "designtime": {
@@ -1950,6 +2010,18 @@
                   ]
                 }
               }
+            },
+            "visible": {
+              "description": "[Experimental] Visibility of the footer",
+              "oneOf": [
+                {
+                  "type": "boolean",
+                  "default": true
+                },
+                {
+                  "$ref": "#/definitions/simpleBinding"
+                }
+              ]
             }
           }
         },
@@ -3398,6 +3470,14 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "pattern": {
+          "description": "Sets the regular expression pattern that should match the value",
+          "type": "string"
+        },
+        "validate": {
+          "description": "An extension function used to validate the value",
+          "type": "string"
         }
       }
     },
@@ -3758,6 +3838,10 @@
         "src": {
           "type": "string",
           "description": "Represents icon name or source URL"
+        },
+        "visible": {
+          "description": "Represents the visibility state of the icon",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -4040,6 +4124,10 @@
         },
         "backgroundColor": {
           "$ref": "#/definitions/iconBackgroundColor"
+        },
+        "visible": {
+          "description": "Represents the visibility state of the icon",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -6583,122 +6671,6 @@
         }
       ]
     },
-    "enhanceWithSetting_0": {
-      "oneOf": [
-        {
-          "additionalProperties": false,
-          "required": [
-            "bundleUrl"
-          ],
-          "properties": {
-            "bundleUrl": {
-              "description": "Represents property url for model enhancement",
-              "type": "string"
-            },
-            "bundleUrlRelativeTo": {
-              "description": "Indicates whether url is relative to component (default) or manifest",
-              "type": "string",
-              "default": "component",
-              "enum": [
-                "manifest",
-                "component"
-              ]
-            },
-            "fallbackLocale": {
-              "description": "Represents the fallback locale",
-              "type": "string"
-            },
-            "supportedLocales": {
-              "description": "Represents the list of supported locales",
-              "type": "array"
-            },
-            "terminologies": {
-              "description": "Represents terminologies with additional properties files",
-              "type": "object",
-              "patternProperties": {
-                "^[a-zA-Z0-9_\\-]*$": {
-                  "$ref": "#/definitions/terminologySetting"
-                }
-              }
-            }
-          }
-        },
-        {
-          "required": [
-            "bundleName"
-          ],
-          "additionalProperties": false,
-          "properties": {
-            "bundleName": {
-              "description": "Represents the alternative for bundleUrl",
-              "type": "string"
-            },
-            "supportedLocales": {
-              "description": "Represents the list of supported locales",
-              "type": "array"
-            },
-            "fallbackLocale": {
-              "description": "Represents the fallback locale",
-              "type": "string"
-            },
-            "terminologies": {
-              "description": "Represents terminologies with additional properties files",
-              "type": "object",
-              "patternProperties": {
-                "^[a-zA-Z0-9_\\-]*$": {
-                  "$ref": "#/definitions/terminologySetting"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "terminologySetting": {
-      "oneOf": [
-        {
-          "additionalProperties": false,
-          "required": [
-            "bundleName"
-          ],
-          "properties": {
-            "bundleName": {
-              "description": "Represents the alternative for bundleUrl",
-              "type": "string"
-            },
-            "supportedLocales": {
-              "description": "Represents the list of supported locales",
-              "type": "array"
-            }
-          }
-        },
-        {
-          "additionalProperties": false,
-          "required": [
-            "bundleUrl"
-          ],
-          "properties": {
-            "bundleUrl": {
-              "description": "Represents the URL for the resource bundle",
-              "type": "string"
-            },
-            "bundleUrlRelativeTo": {
-              "description": "Indicates whether url is relative to component (default) or manifest",
-              "type": "string",
-              "default": "component",
-              "enum": [
-                "manifest",
-                "component"
-              ]
-            },
-            "supportedLocales": {
-              "description": "Represents the list of supported locales",
-              "type": "array"
-            }
-          }
-        }
-      ]
-    },
     "ui5setting": {
       "type": "object",
       "additionalProperties": true,
@@ -7196,6 +7168,122 @@
         },
         {
           "type": "string"
+        }
+      ]
+    },
+    "enhanceWithSetting_0": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": [
+            "bundleUrl"
+          ],
+          "properties": {
+            "bundleUrl": {
+              "description": "Represents property url for model enhancement",
+              "type": "string"
+            },
+            "bundleUrlRelativeTo": {
+              "description": "Indicates whether url is relative to component (default) or manifest",
+              "type": "string",
+              "default": "component",
+              "enum": [
+                "manifest",
+                "component"
+              ]
+            },
+            "fallbackLocale": {
+              "description": "Represents the fallback locale",
+              "type": "string"
+            },
+            "supportedLocales": {
+              "description": "Represents the list of supported locales",
+              "type": "array"
+            },
+            "terminologies": {
+              "description": "Represents terminologies with additional properties files",
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z0-9_\\-]*$": {
+                  "$ref": "#/definitions/terminologySetting"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "bundleName"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "bundleName": {
+              "description": "Represents the alternative for bundleUrl",
+              "type": "string"
+            },
+            "supportedLocales": {
+              "description": "Represents the list of supported locales",
+              "type": "array"
+            },
+            "fallbackLocale": {
+              "description": "Represents the fallback locale",
+              "type": "string"
+            },
+            "terminologies": {
+              "description": "Represents terminologies with additional properties files",
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z0-9_\\-]*$": {
+                  "$ref": "#/definitions/terminologySetting"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "terminologySetting": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": [
+            "bundleName"
+          ],
+          "properties": {
+            "bundleName": {
+              "description": "Represents the alternative for bundleUrl",
+              "type": "string"
+            },
+            "supportedLocales": {
+              "description": "Represents the list of supported locales",
+              "type": "array"
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [
+            "bundleUrl"
+          ],
+          "properties": {
+            "bundleUrl": {
+              "description": "Represents the URL for the resource bundle",
+              "type": "string"
+            },
+            "bundleUrlRelativeTo": {
+              "description": "Indicates whether url is relative to component (default) or manifest",
+              "type": "string",
+              "default": "component",
+              "enum": [
+                "manifest",
+                "component"
+              ]
+            },
+            "supportedLocales": {
+              "description": "Represents the list of supported locales",
+              "type": "array"
+            }
+          }
         }
       ]
     },
