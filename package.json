@@ -1,0 +1,19 @@
+{
+  "name": "ui5-manifest",
+  "version": "1.48.0",
+  "description": "This project contains the flattend json schema for the ui5 manifest.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAP/ui5-manifest.git"
+  },
+  "keywords": [
+    "ui5",
+    "manifest"
+  ],
+  "author": "SAP SE",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/SAP/ui5-manifest/issues"
+  },
+  "homepage": "https://github.com/SAP/ui5-manifest#readme"
+}
