@@ -60,7 +60,8 @@
         "1.45.0",
         "1.46.0",
         "1.47.0",
-        "1.48.0"
+        "1.48.0",
+        "1.49.0"
       ]
     },
     "start_url": {
@@ -1851,7 +1852,8 @@
             "1.30.0",
             "1.31.0",
             "1.32.0",
-            "1.33.0"
+            "1.33.0",
+            "1.34.0"
           ]
         },
         "designtime": {
@@ -4353,6 +4355,18 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "visible": {
+          "description": "Visibility of the side indicator",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -4393,6 +4407,18 @@
             {
               "description": "The state color of the main indicator",
               "$ref": "#/definitions/Enums.ValueColor"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "visible": {
+          "description": "Visibility of the main indicator",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
             },
             {
               "$ref": "#/definitions/simpleBinding"
@@ -4924,6 +4950,17 @@
             }
           ]
         },
+        "minItems": {
+          "description": "Represents the minimum expected number of items",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "group": {
           "$ref": "#/definitions/group"
         }
@@ -4943,6 +4980,17 @@
         },
         "maxItems": {
           "description": "Represents number of items",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "minItems": {
+          "description": "Represents the minimum expected number of items",
           "oneOf": [
             {
               "type": "number"
@@ -5159,6 +5207,17 @@
         },
         "maxItems": {
           "description": "Represents number of items",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "minItems": {
+          "description": "Represents the minimum expected number of items",
           "oneOf": [
             {
               "type": "number"

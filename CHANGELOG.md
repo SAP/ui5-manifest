@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<a name="v1.49.0-1"></a>
+## [v1.49.0-1] - 2022-11-17
+### Flattened schema version 50 (1.49.0, rel-1.49); UI5 version >= 1.109
+
 <a name="v1.48.0-1"></a>
 ## [v1.48.0-1] - 2022-10-20
 ### Flattened schema version 49 (1.48.0, rel-1.48); UI5 version >= 1.108
