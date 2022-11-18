@@ -1206,7 +1206,8 @@
             "1.4.0",
             "1.5.0",
             "1.6.0",
-            "1.7.0"
+            "1.7.0",
+            "1.8.0"
           ]
         },
         "globalFilterModel": {
@@ -6039,6 +6040,11 @@
           "description": "Represents the flag to indicate priority of number formatting over sap text",
           "type": "boolean",
           "default": false
+        },
+        "enableAddToInsights": {
+          "description": "Represents the flag to enable/disable individual card's functionality to add them to insight",
+          "type": "boolean",
+          "default": true
         },
         "defaultSpan": {
           "$ref": "#/definitions/defaultSpanDef"
