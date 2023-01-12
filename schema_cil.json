@@ -734,7 +734,8 @@
           "type": "string",
           "enum": [
             "1.1.0",
-            "1.2.0"
+            "1.2.0",
+            "1.3.0"
           ]
         },
         "registrationIds": {
@@ -759,6 +760,15 @@
         "abstract": {
           "description": "Indicator that app is an abstract (generic) app which may not be used directly, but needs to be specialized in the SAP Fiori launchpad content",
           "type": "boolean"
+        },
+        "cloudDevAdaptationStatus": {
+          "description": "Represents the release status for the developer adaptation in the cloud (relevant for SAP internal only). The supported types are released, deprecated, obsolete, no value means not released",
+          "type": "string",
+          "enum": [
+            "released",
+            "deprecated",
+            "obsolete"
+          ]
         }
       }
     },

@@ -677,7 +677,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.46.0"
     | "1.47.0"
     | "1.48.0"
-    | "1.49.0";
+    | "1.49.0"
+    | "1.50.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -1891,7 +1892,7 @@ export interface JSONSchemaForSAPFIORINamespace {
   /**
    * Represents attributes format version. It is managed by namespace owner
    */
-  _version?: "1.1.0" | "1.2.0";
+  _version?: "1.1.0" | "1.2.0" | "1.3.0";
   /**
    * Represents array of registration ids, i.e. for Fiori apps fiori id(s)
    */
@@ -1904,6 +1905,10 @@ export interface JSONSchemaForSAPFIORINamespace {
    * Indicator that app is an abstract (generic) app which may not be used directly, but needs to be specialized in the SAP Fiori launchpad content
    */
   abstract?: boolean;
+  /**
+   * Represents the release status for the developer adaptation in the cloud (relevant for SAP internal only). The supported types are released, deprecated, obsolete, no value means not released
+   */
+  cloudDevAdaptationStatus?: "released" | "deprecated" | "obsolete";
 }
 /**
  * Represents GENERIC APP specific attributes
