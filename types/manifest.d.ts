@@ -678,7 +678,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.47.0"
     | "1.48.0"
     | "1.49.0"
-    | "1.50.0";
+    | "1.50.0"
+    | "1.51.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -738,7 +739,8 @@ export interface JSONSchemaForSAPAPPNamespace {
     | "1.15.0"
     | "1.16.0"
     | "1.17.0"
-    | "1.18.0";
+    | "1.18.0"
+    | "1.19.0";
   /**
    * Represents the template from which the app was generated
    */
@@ -974,6 +976,10 @@ export interface Setting {
       schemaName?: string;
     };
   };
+  /**
+   * Indicates whether annotations from metadata should be ignored
+   */
+  ignoreAnnotationsFromMetadata?: boolean;
   [k: string]: unknown;
 }
 export interface DataSourceCustom {
@@ -1025,6 +1031,10 @@ export interface Setting1 {
       schemaName?: string;
     };
   };
+  /**
+   * Indicates whether annotations from metadata should be ignored
+   */
+  ignoreAnnotationsFromMetadata?: boolean;
   [k: string]: unknown;
 }
 export interface OpenSource {

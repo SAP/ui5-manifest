@@ -62,7 +62,8 @@
         "1.47.0",
         "1.48.0",
         "1.49.0",
-        "1.50.0"
+        "1.50.0",
+        "1.51.0"
       ]
     },
     "start_url": {
@@ -102,7 +103,8 @@
             "1.15.0",
             "1.16.0",
             "1.17.0",
-            "1.18.0"
+            "1.18.0",
+            "1.19.0"
           ]
         },
         "sourceTemplate": {
@@ -1866,7 +1868,8 @@
             "1.32.0",
             "1.33.0",
             "1.34.0",
-            "1.35.0"
+            "1.35.0",
+            "1.36.0"
           ]
         },
         "designtime": {
@@ -2963,6 +2966,18 @@
             }
           ]
         },
+        "timeout": {
+          "description": "A timeout (in milliseconds) for the request. A value of 0 means there will be no timeout.",
+          "oneOf": [
+            {
+              "type": "number",
+              "default": 15000
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "withCredentials": {
           "description": "Indicates whether cross-site requests should be made using credentials",
           "oneOf": [
@@ -3614,7 +3629,14 @@
         },
         "value": {
           "description": "Represents the text, which is associated with the label",
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
         },
         "tooltip": {
           "description": "Defines the tooltip of the link",
@@ -3632,6 +3654,7 @@
                 "IconGroup",
                 "ComboBox",
                 "TextArea",
+                "RatingIndicator",
                 "phone",
                 "email",
                 "link",
@@ -3796,6 +3819,33 @@
           "items": {
             "$ref": "#/definitions/ContentType.Object.Item.Validation"
           }
+        },
+        "maxValue": {
+          "description": "The number of displayed symbols for RatingIndicator",
+          "oneOf": [
+            {
+              "type": "number",
+              "default": 5
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "visualMode": {
+          "description": "Defines how float values are visualized for RatingIndicator: Full (values are rounded to the nearest integer value (e.g. 1.7 -> 2)) or  Half (values are rounded to the nearest half value (e.g. 1.7 -> 1.5))",
+          "oneOf": [
+            {
+              "enum": [
+                "Full",
+                "Half"
+              ],
+              "default": "Half"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -7917,6 +7967,10 @@
               "objectType"
             ]
           }
+        },
+        "ignoreAnnotationsFromMetadata": {
+          "description": "Indicates whether annotations from metadata should be ignored",
+          "type": "boolean"
         }
       }
     },
