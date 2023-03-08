@@ -9,6 +9,11 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "description": "The resource identifier for the JSON schema to be used. The value of this keyword MUST be a URI [RFC3986] (containing a scheme) and this URI MUST be normalized. The current schema MUST be valid against the meta-schema identified by this URI. If this URI identifies a retrievable resource, that resource SHOULD be of media type \"application/schema+json\".",
+      "format": "uri",
+      "type": "string"
+    },
     "_version": {
       "description": "Represents Application Descriptor format version. It is managed by schema owner",
       "type": "string",

@@ -626,6 +626,10 @@ export type Semanticversion = string;
 
 export interface SAPJSONSchemaForWebApplicationManifestFile {
   /**
+   * The resource identifier for the JSON schema to be used. The value of this keyword MUST be a URI [RFC3986] (containing a scheme) and this URI MUST be normalized. The current schema MUST be valid against the meta-schema identified by this URI. If this URI identifies a retrievable resource, that resource SHOULD be of media type "application/schema+json".
+   */
+  $schema?: string;
+  /**
    * Represents Application Descriptor format version. It is managed by schema owner
    */
   _version:
@@ -679,7 +683,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.48.0"
     | "1.49.0"
     | "1.50.0"
-    | "1.51.0";
+    | "1.51.0"
+    | "1.52.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */

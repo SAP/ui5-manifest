@@ -9,6 +9,11 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "description": "The resource identifier for the JSON schema to be used. The value of this keyword MUST be a URI [RFC3986] (containing a scheme) and this URI MUST be normalized. The current schema MUST be valid against the meta-schema identified by this URI. If this URI identifies a retrievable resource, that resource SHOULD be of media type \"application/schema+json\".",
+      "format": "uri",
+      "type": "string"
+    },
     "_version": {
       "description": "Represents Application Descriptor format version. It is managed by schema owner",
       "type": "string",
@@ -63,7 +68,8 @@
         "1.48.0",
         "1.49.0",
         "1.50.0",
-        "1.51.0"
+        "1.51.0",
+        "1.52.0"
       ]
     },
     "start_url": {
@@ -1869,7 +1875,8 @@
             "1.33.0",
             "1.34.0",
             "1.35.0",
-            "1.36.0"
+            "1.36.0",
+            "1.37.0"
           ]
         },
         "designtime": {
@@ -3654,6 +3661,7 @@
                 "IconGroup",
                 "ComboBox",
                 "TextArea",
+                "Input",
                 "RatingIndicator",
                 "phone",
                 "email",
@@ -5485,12 +5493,32 @@
           ]
         },
         "extension": {
-          "description": "[Experimental] Provides a way to request data via extension",
           "$ref": "#/definitions/extension"
         },
         "name": {
           "description": "[Experimental] Gives a name to the data section. A model with the same name will be assigned to the card",
           "type": "string"
+        },
+        "mockData": {
+          "description": "[Experimental] Mock data attributes",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "request": {
+              "$ref": "#/definitions/request"
+            },
+            "json": {
+              "description": "The data to be used directly. Without making requests",
+              "type": [
+                "object",
+                "array"
+              ],
+              "additionalProperties": true
+            },
+            "extension": {
+              "$ref": "#/definitions/extension"
+            }
+          }
         }
       }
     },
@@ -5641,8 +5669,11 @@
               "yesterday",
               "tomorrow",
               "dateRange",
+              "dateTimeRange",
               "from",
               "to",
+              "fromDateTime",
+              "toDateTime",
               "yearToDate",
               "lastDays",
               "lastWeeks",
@@ -5671,7 +5702,8 @@
               "quarter4",
               "thisYear",
               "lastYear",
-              "nextYear"
+              "nextYear",
+              "dateTime"
             ]
           }
         },
