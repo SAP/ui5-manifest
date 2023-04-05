@@ -69,7 +69,8 @@
         "1.49.0",
         "1.50.0",
         "1.51.0",
-        "1.52.0"
+        "1.52.0",
+        "1.53.0"
       ]
     },
     "start_url": {
@@ -545,7 +546,8 @@
                 "1.13.0",
                 "1.14.0",
                 "1.15.0",
-                "1.16.0"
+                "1.16.0",
+                "1.17.0"
               ]
             },
             "resources": {
@@ -837,6 +839,11 @@
             },
             "flexExtensionPointEnabled": {
               "description": "Represents an indicator whether app variant is flex extension point enabled",
+              "type": "boolean",
+              "default": false
+            },
+            "isCloudDevAdaptation": {
+              "description": "Represents an indicator whether app is a cloud developer adaptation, filled automatically during build.",
               "type": "boolean",
               "default": false
             }
@@ -1404,7 +1411,8 @@
             "1.1.0",
             "1.2.0",
             "1.3.0",
-            "1.4.0"
+            "1.4.0",
+            "1.5.0"
           ]
         },
         "parentAppId": {
@@ -1445,7 +1453,7 @@
           "default": true
         },
         "rank": {
-          "description": "Represents the display order of Insights card",
+          "description": "Deprecated: Represents the display order of Insights card",
           "type": "integer"
         },
         "versions": {
@@ -1460,6 +1468,58 @@
               "description": "Represents the version of design time card generator",
               "type": "string"
             }
+          }
+        },
+        "ranking": {
+          "description": "New property representing the display order of Insights card",
+          "type": "string"
+        },
+        "allowedChartTypes": {
+          "description": "Array of all supported chart type allowed for transformation.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "bar",
+              "column",
+              "line",
+              "bullet",
+              "vertical_bullet",
+              "100_stacked_bar",
+              "100_stacked_column",
+              "waterfall",
+              "horizontal_waterfall",
+              "area",
+              "radar",
+              "combination",
+              "stacked_bar",
+              "stacked_column",
+              "stacked_combination",
+              "horizontal_stacked_combination",
+              "pie",
+              "donut",
+              "dual_bar",
+              "dual_column",
+              "dual_line",
+              "dual_stacked_bar",
+              "dual_stacked_column",
+              "dual_combination",
+              "dual_horizontal_combination",
+              "dual_stacked_combination",
+              "dual_horizontal_stacked_combination",
+              "100_dual_stacked_bar",
+              "100_dual_stacked_column",
+              "scatter",
+              "heatmap",
+              "timeseries_column",
+              "timeseries_line",
+              "timeseries_scatter",
+              "timeseries_stacked_column",
+              "timeseries_100_stacked_column",
+              "timeseries_bullet",
+              "timeseries_waterfall",
+              "timeseries_stacked_combination"
+            ]
           }
         }
       },
@@ -1876,7 +1936,8 @@
             "1.34.0",
             "1.35.0",
             "1.36.0",
-            "1.37.0"
+            "1.37.0",
+            "1.38.0"
           ]
         },
         "designtime": {
@@ -3356,6 +3417,10 @@
           "description": "Represents the text value of the column",
           "type": "string"
         },
+        "additionalText": {
+          "description": "Represents the additional text for the identifier column.",
+          "type": "string"
+        },
         "icon": {
           "description": "Represents column with icon",
           "$ref": "#/definitions/icon"
@@ -3411,6 +3476,21 @@
           "items": {
             "$ref": "#/definitions/action"
           }
+        },
+        "showStateIcon": {
+          "description": "Defines if a default state icon is shown",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "customStateIcon": {
+          "description": "The custom state icon",
+          "type": "string"
         }
       }
     },
@@ -3666,7 +3746,8 @@
                 "phone",
                 "email",
                 "link",
-                "text"
+                "text",
+                "Image"
               ],
               "default": "Default"
             },
@@ -3787,6 +3868,10 @@
             }
           ]
         },
+        "customStateIcon": {
+          "description": "The custom state icon",
+          "type": "string"
+        },
         "id": {
           "description": "ID for input fields",
           "type": "string"
@@ -3849,6 +3934,26 @@
                 "Half"
               ],
               "default": "Half"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "src": {
+          "type": "string",
+          "description": "Represents image source URL"
+        },
+        "alt": {
+          "type": "string",
+          "description": "The alternative text that is displayed in case the image is not available, or cannot be displayed."
+        },
+        "fullWidth": {
+          "description": "Defines if the image will take the full width of the group, including the paddings. If set to false there will be padding. For best result use together with 'alignment': 'Stretched' for the group",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
             },
             {
               "$ref": "#/definitions/simpleBinding"
@@ -4258,6 +4363,10 @@
             }
           ]
         },
+        "customStateIcon": {
+          "description": "The custom state icon",
+          "type": "string"
+        },
         "visible": {
           "description": "Visibility of the item",
           "oneOf": [
@@ -4268,6 +4377,10 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "title": {
+          "description": "Title of the data point. This is just a placeholder to store the title, title will not be rendered on the screen. This is needed to prevent the loss of columnn names while transforming table card to list card.",
+          "type": "string"
         }
       }
     },
@@ -4352,7 +4465,7 @@
         },
         "highlight": {
           "type": "string",
-          "description": "The highlight of the item",
+          "description": "The highlight state of the item",
           "oneOf": [
             {
               "$ref": "#/definitions/state"
@@ -4361,6 +4474,10 @@
               "$ref": "#/definitions/simpleBinding"
             }
           ]
+        },
+        "highlightText": {
+          "type": "string",
+          "description": "Defines the semantics of the 'highlight' property. It is used for accessibility purposes."
         },
         "icon": {
           "$ref": "#/definitions/icon"
@@ -5029,6 +5146,22 @@
               "items": {
                 "$ref": "#/definitions/action"
               }
+            },
+            "highlight": {
+              "type": "string",
+              "description": "The highlight state of the row",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/state"
+                },
+                {
+                  "$ref": "#/definitions/simpleBinding"
+                }
+              ]
+            },
+            "highlightText": {
+              "type": "string",
+              "description": "Defines the semantics of the 'highlight' property. It is used for accessibility purposes."
             }
           }
         },
