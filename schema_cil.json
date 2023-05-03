@@ -216,19 +216,19 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "ach": {
           "description": "Represents application component hierarchy",
@@ -275,10 +275,6 @@
       "definitions": {
         "version": {
           "type": "string"
-        },
-        "i18n_key": {
-          "type": "string",
-          "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
         },
         "objectName": {
           "type": "string",
@@ -3422,6 +3418,17 @@
           "$ref": "#/definitions/setting"
         }
       }
+    },
+    "i18n_key_string": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "enhanceWithSetting": {
       "oneOf": [

@@ -272,23 +272,23 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "info": {
           "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "tags": {
           "description": "Represents array of keywords",
@@ -410,10 +410,6 @@
         }
       },
       "definitions": {
-        "i18n_key": {
-          "type": "string",
-          "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
-        },
         "parameter": {
           "type": "object",
           "properties": {
@@ -2281,13 +2277,7 @@
             }
           }
         }
-      ],
-      "definitions": {
-        "i18n_key": {
-          "type": "string",
-          "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
-        }
-      }
+      ]
     },
     "sap.package": {
       "title": "JSON schema for SAP.PACKAGE Namespace",
@@ -2360,23 +2350,23 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "info": {
           "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "icon": {
           "description": "Represents icon name or source URL for the package",
@@ -2513,23 +2503,23 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "info": {
           "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "icon": {
           "description": "Represents icon name or source URL for the artifact",
@@ -2563,8 +2553,19 @@
       "type": "array",
       "items": {
         "description": "Represents a tag; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-        "type": "string"
+        "$ref": "#/definitions/i18n_key_string"
       }
+    },
+    "i18n_key_string": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^\\{\\{[\\w][\\w\\.\\-]*\\}\\}$"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "semanticversion": {
       "description": "The version number of the schema in major.minor.patch format.",
@@ -2641,6 +2642,13 @@
           "type": "string",
           "format": "uri-template"
         }
+      }
+    },
+    "tag_0": {
+      "type": "array",
+      "items": {
+        "description": "Represents a tag; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
+        "type": "string"
       }
     },
     "Microchart.StackedBar.Bar": {
@@ -3396,7 +3404,7 @@
       "properties": {
         "title": {
           "description": "Represents a title of the column; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "width": {
           "description": "Defines the width of the column",
@@ -3972,7 +3980,7 @@
       "properties": {
         "title": {
           "description": "Represents a title of the object group; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "titleMaxLines": {
           "description": "[Experimental] Limits the number of lines for wrapping the group title.",
@@ -4390,7 +4398,7 @@
       "properties": {
         "label": {
           "description": "Represents a label of the field; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "value": {
           "type": "string",
@@ -4786,7 +4794,7 @@
         },
         "title": {
           "description": "Represents a title of the header; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "titleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the title.",
@@ -4802,7 +4810,7 @@
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "subTitleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the sub title.",
@@ -4905,7 +4913,7 @@
         },
         "title": {
           "description": "Represents a title of the header; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "titleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the title.",
@@ -4921,7 +4929,7 @@
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "type": "string"
+          "$ref": "#/definitions/i18n_key_string"
         },
         "subTitleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the sub title.",
@@ -8243,19 +8251,19 @@
             },
             "title": {
               "description": "Represents a title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "type": "string"
+              "$ref": "#/definitions/i18n_key_string"
             },
             "subTitle": {
               "description": "Represents a subtitle; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "type": "string"
+              "$ref": "#/definitions/i18n_key_string"
             },
             "shortTitle": {
               "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "type": "string"
+              "$ref": "#/definitions/i18n_key_string"
             },
             "info": {
               "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "type": "string"
+              "$ref": "#/definitions/i18n_key_string"
             },
             "displayMode": {
               "description": "Represents the display mode of the tile",
