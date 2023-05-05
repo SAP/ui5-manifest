@@ -690,7 +690,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.50.0"
     | "1.51.0"
     | "1.52.0"
-    | "1.53.0";
+    | "1.53.0"
+    | "1.54.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -751,7 +752,8 @@ export interface JSONSchemaForSAPAPPNamespace {
     | "1.16.0"
     | "1.17.0"
     | "1.18.0"
-    | "1.19.0";
+    | "1.19.0"
+    | "1.20.0";
   /**
    * Represents the template from which the app was generated
    */
@@ -3333,7 +3335,7 @@ export interface JSONSchemaForSAPPACKAGENamespace {
   /**
    * Represents SAP.PACKAGE attributes format version. It is managed by namespace owner
    */
-  _version?: "1.0.0" | "1.1.0";
+  _version?: "1.0.0" | "1.1.0" | "1.2.0";
   /**
    * Represents mandatory unique package identifier
    */
@@ -3510,7 +3512,7 @@ export interface JSONSchemaForSAPARTIFACTNamespace {
   /**
    * Represents SAP.ARTIFACT attributes format version. It is managed by namespace owner
    */
-  _version?: "1.0.0" | "1.1.0";
+  _version?: "1.0.0" | "1.1.0" | "1.2.0";
   /**
    * Represents mandatory unique artifact identifier
    */
