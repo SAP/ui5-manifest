@@ -1231,7 +1231,8 @@
             "1.5.0",
             "1.6.0",
             "1.7.0",
-            "1.8.0"
+            "1.8.0",
+            "1.9.0"
           ]
         },
         "globalFilterModel": {
@@ -1936,7 +1937,8 @@
             "1.36.0",
             "1.37.0",
             "1.38.0",
-            "1.39.0"
+            "1.39.0",
+            "1.40.0"
           ]
         },
         "designtime": {
@@ -1951,6 +1953,18 @@
             "enableMarkdown": {
               "description": "Markdown enablement for Adaptive Content",
               "type": "boolean"
+            },
+            "modelSizeLimit": {
+              "description": "[Experimental] Represents the maximum number of entries that are used for list bindings.",
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "$ref": "#/definitions/simpleBinding"
+                }
+              ],
+              "default": 1000
             },
             "parameters": {
               "description": "Map of parameters",
@@ -3727,6 +3741,17 @@
           "description": "Defines the label of the item",
           "type": "string"
         },
+        "showColon": {
+          "description": "Defines whether the colon next to the label is shown",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "value": {
           "description": "Represents the text, which is associated with the label",
           "oneOf": [
@@ -3735,6 +3760,19 @@
             },
             {
               "type": "number"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "option": {
+                  "description": "The date range option",
+                  "type": "string"
+                },
+                "values": {
+                  "type": "array"
+                }
+              }
             }
           ]
         },
@@ -3756,6 +3794,7 @@
                 "TextArea",
                 "Input",
                 "Duration",
+                "DateRange",
                 "RatingIndicator",
                 "phone",
                 "email",
@@ -5599,10 +5638,6 @@
         }
       ]
     },
-    "simpleBinding": {
-      "type": "string",
-      "pattern": "\\{.*\\}"
-    },
     "data": {
       "description": "Represents request and response attributes",
       "type": "object",
@@ -5950,6 +5985,10 @@
           "type": "string"
         }
       }
+    },
+    "simpleBinding": {
+      "type": "string",
+      "pattern": "\\{.*\\}"
     },
     "definingRequest": {
       "type": "object",
@@ -6339,6 +6378,11 @@
         },
         "enableAddToInsights": {
           "description": "Represents the flag to enable/disable individual card's functionality to add them to insight",
+          "type": "boolean",
+          "default": true
+        },
+        "showRefresh": {
+          "description": "Represents the flag to show/hide individual card's functionality to refresh the card",
           "type": "boolean",
           "default": true
         },

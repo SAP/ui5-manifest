@@ -912,7 +912,8 @@
             "1.5.0",
             "1.6.0",
             "1.7.0",
-            "1.8.0"
+            "1.8.0",
+            "1.9.0"
           ]
         },
         "globalFilterModel": {
@@ -1826,6 +1827,11 @@
         },
         "enableAddToInsights": {
           "description": "Represents the flag to enable/disable individual card's functionality to add them to insight",
+          "type": "boolean",
+          "default": true
+        },
+        "showRefresh": {
+          "description": "Represents the flag to show/hide individual card's functionality to refresh the card",
           "type": "boolean",
           "default": true
         },

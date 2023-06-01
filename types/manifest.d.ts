@@ -2477,7 +2477,7 @@ export interface JSONSchemaForSAPOVPNamespace {
   /**
    * Represents attributes format version. It is managed by namespace owner
    */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0" | "1.6.0" | "1.7.0" | "1.8.0";
+  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0" | "1.6.0" | "1.7.0" | "1.8.0" | "1.9.0";
   /**
    * Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters
    */
@@ -2755,6 +2755,10 @@ export interface CardSetting {
    * Represents the flag to enable/disable individual card's functionality to add them to insight
    */
   enableAddToInsights?: boolean;
+  /**
+   * Represents the flag to show/hide individual card's functionality to refresh the card
+   */
+  showRefresh?: boolean;
   defaultSpan?: DefaultSpanDef;
   /**
    * Represents the cards for which authorization is required
