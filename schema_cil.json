@@ -277,21 +277,6 @@
       "definitions": {
         "version": {
           "type": "string"
-        },
-        "objectName": {
-          "type": "string",
-          "pattern": "^(\\\\[0-9a-zA-Z_]+\\\\)?[a-zA-Z][a-zA-Z0-9_]*$",
-          "minLength": 3,
-          "maxLength": 50
-        },
-        "objectType": {
-          "type": "string",
-          "enum": [
-            "query",
-            "cdsprojectionview",
-            "view",
-            "inamodel"
-          ]
         }
       }
     },
@@ -3317,6 +3302,21 @@
           "type": "boolean"
         }
       }
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "query",
+        "cdsprojectionview",
+        "view",
+        "inamodel"
+      ]
+    },
+    "objectName": {
+      "type": "string",
+      "pattern": "^(\\\\[0-9a-zA-Z_]+\\\\)?[a-zA-Z][a-zA-Z0-9_]*$",
+      "minLength": 3,
+      "maxLength": 50
     },
     "setting": {
       "type": "object",

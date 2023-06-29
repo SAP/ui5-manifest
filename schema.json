@@ -72,7 +72,8 @@
         "1.52.0",
         "1.53.0",
         "1.54.0",
-        "1.55.0"
+        "1.55.0",
+        "1.56.0"
       ]
     },
     "start_url": {
@@ -1939,7 +1940,8 @@
             "1.37.0",
             "1.38.0",
             "1.39.0",
-            "1.40.0"
+            "1.40.0",
+            "1.41.0"
           ]
         },
         "designtime": {
@@ -2108,6 +2110,10 @@
                       "$ref": "#/definitions/simpleBinding"
                     }
                   ]
+                },
+                "visible": {
+                  "description": "Represents the visibility of the paginator",
+                  "$ref": "#/definitions/visibility"
                 }
               }
             },
@@ -2770,6 +2776,10 @@
           "items": {
             "$ref": "#/definitions/Microchart.StackedBar.Bar"
           }
+        },
+        "visible": {
+          "description": "Represents the visibility of the chart bar",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2855,6 +2865,10 @@
           "items": {
             "$ref": "#/definitions/Microchart.Bullet.Threshold"
           }
+        },
+        "visible": {
+          "description": "Represents the visibility of the chart",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -2884,6 +2898,41 @@
         "date",
         "datetime"
       ]
+    },
+    "ibnTarget": {
+      "description": "The application identifier consisting of semanticObject and action or ",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticObject",
+        "action"
+      ],
+      "semanticObject": {
+        "type": "string"
+      },
+      "action": {
+        "type": "string"
+      }
+    },
+    "ibnActionParameters": {
+      "description": "Parameters for an intent based navigation",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ibnTarget"
+      ],
+      "ibnTarget": {
+        "description": "An application identifier consisting of semanticObject and action",
+        "$ref": "#/definitions/ibnTarget"
+      },
+      "ibnParam": {
+        "description": "Key/value pairs for parameters of the target application",
+        "$ref": "#/definitions/parameters"
+      },
+      "ibnAppSpecificRoute": {
+        "description": "An application specific route that is passed to the target application",
+        "type": "string"
+      }
     },
     "cache": {
       "description": "Cache control settings",
@@ -4130,17 +4179,6 @@
         }
       }
     },
-    "visibility": {
-      "oneOf": [
-        {
-          "type": "boolean",
-          "default": true
-        },
-        {
-          "$ref": "#/definitions/simpleBinding"
-        }
-      ]
-    },
     "ContentType.Analytical.Field": {
       "type": "object",
       "additionalProperties": false,
@@ -4449,6 +4487,10 @@
         "value": {
           "type": "string",
           "description": "The value of the field"
+        },
+        "visible": {
+          "description": "Represents the visibility of the field",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -4706,6 +4748,10 @@
               "$ref": "#/definitions/statusTextFormatter"
             }
           ]
+        },
+        "visible": {
+          "description": "Represents the visibility of the status text",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -4807,7 +4853,15 @@
           "type": "string"
         },
         "parameters": {
-          "$ref": "#/definitions/parameters"
+          "description": "Parameters passed to the navigation action handler",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/parameters"
+            },
+            {
+              "$ref": "#/definitions/ibnActionParameters"
+            }
+          ]
         },
         "target": {
           "description": "Specifies where to open the 'url', if it is provided",
@@ -5511,6 +5565,17 @@
           "$ref": "#/definitions/group"
         }
       }
+    },
+    "visibility": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "$ref": "#/definitions/simpleBinding"
+        }
+      ]
     },
     "actionsStripItem": {
       "description": "[Experimental] Attributes of actions strip item",
