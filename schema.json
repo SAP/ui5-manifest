@@ -7931,7 +7931,7 @@
         }
       }
     },
-    "deviceType": {
+    "deviceType_0": {
       "type": "object",
       "description": "Represents device types on which the app is running",
       "additionalProperties": false,
@@ -8104,6 +8104,25 @@
             "allowed",
             "notallowed"
           ]
+        }
+      }
+    },
+    "deviceType": {
+      "type": "object",
+      "description": "Represents device types on which the app is running",
+      "additionalProperties": false,
+      "properties": {
+        "desktop": {
+          "description": "Represents indicator whether desktop device is supported",
+          "type": "boolean"
+        },
+        "tablet": {
+          "description": "Represents indicator whether tablet device is supported",
+          "type": "boolean"
+        },
+        "phone": {
+          "description": "Represents indicator whether phone device is supported",
+          "type": "boolean"
         }
       }
     },

@@ -1132,15 +1132,15 @@ export interface Inbound {
  */
 export interface DeviceType {
   /**
-   * Represents indicator whether desktop device is supported, default true
+   * Represents indicator whether desktop device is supported
    */
   desktop?: boolean;
   /**
-   * Represents indicator whether tablet device is supported, default true
+   * Represents indicator whether tablet device is supported
    */
   tablet?: boolean;
   /**
-   * Represents indicator whether phone device is supported, default true
+   * Represents indicator whether phone device is supported
    */
   phone?: boolean;
 }
@@ -1322,15 +1322,15 @@ export interface JSONSchemaForSAPUINamespace {
  */
 export interface DeviceType1 {
   /**
-   * Represents indicator whether desktop device is supported, default true
+   * Represents indicator whether desktop device is supported
    */
   desktop?: boolean;
   /**
-   * Represents indicator whether tablet device is supported, default true
+   * Represents indicator whether tablet device is supported
    */
   tablet?: boolean;
   /**
-   * Represents indicator whether phone device is supported, default true
+   * Represents indicator whether phone device is supported
    */
   phone?: boolean;
 }
