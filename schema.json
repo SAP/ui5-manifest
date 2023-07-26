@@ -73,7 +73,8 @@
         "1.53.0",
         "1.54.0",
         "1.55.0",
-        "1.56.0"
+        "1.56.0",
+        "1.57.0"
       ]
     },
     "start_url": {
@@ -2572,6 +2573,76 @@
           }
         }
       }
+    },
+    "sap.bpa.task": {
+      "title": "JSON schema for sap.bpa.task Namespace",
+      "description": "Represents SBPA Custom Task UI Attributes",
+      "type": "object",
+      "required": [
+        "outcomes",
+        "category",
+        "_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_version": {
+          "description": "Represents attributes format version. It is managed by namespace owner",
+          "type": "string",
+          "enum": [
+            "1.0.0"
+          ]
+        },
+        "inputs": {
+          "description": "Represents the inputs of the task ui",
+          "$ref": "http://json-schema.org/draft-07/schema"
+        },
+        "outputs": {
+          "description": "Represents the outputs of the task ui",
+          "$ref": "http://json-schema.org/draft-07/schema"
+        },
+        "category": {
+          "description": "Represents the category of the task ui",
+          "type": "string",
+          "enum": [
+            "standard",
+            "approval"
+          ]
+        },
+        "outcomes": {
+          "title": "outcomes",
+          "type": "array",
+          "description": "Represents the outcomes of the task ui",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "Represents the id of the outcome",
+                "type": "string",
+                "enum": [
+                  "approve",
+                  "reject",
+                  "submit"
+                ]
+              },
+              "label": {
+                "type": "string",
+                "description": "Represents the label of the outcome"
+              }
+            }
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "inputs",
+            "outputs"
+          ]
+        }
+      ]
     }
   },
   "definitions": {

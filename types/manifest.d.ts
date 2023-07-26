@@ -628,6 +628,12 @@ export type JSONSchemaForSAPCARDNamespace = {
  * The version number of the schema in major.minor.patch format.
  */
 export type Semanticversion = string;
+/**
+ * Represents SBPA Custom Task UI Attributes
+ */
+export type JSONSchemaForSapBpaTaskNamespace = {
+  [k: string]: unknown;
+};
 
 export interface SAPJSONSchemaForWebApplicationManifestFile {
   /**
@@ -693,7 +699,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.53.0"
     | "1.54.0"
     | "1.55.0"
-    | "1.56.0";
+    | "1.56.0"
+    | "1.57.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -727,6 +734,7 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
   "sap.card"?: JSONSchemaForSAPCARDNamespace;
   "sap.package"?: JSONSchemaForSAPPACKAGENamespace;
   "sap.artifact"?: JSONSchemaForSAPARTIFACTNamespace;
+  "sap.bpa.task"?: JSONSchemaForSapBpaTaskNamespace;
 }
 /**
  * Represents general application attributes
