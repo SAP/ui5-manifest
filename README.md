@@ -8,6 +8,8 @@ This project contains the flattened json schema for the ui5 manifest.
 
 This flattened json schema for the ui5 manifest is meant to be referenced in the [JSON Schema Store](https://www.schemastore.org/json/) in order to provide validation and code completion of the manifest.json file in SAP Business Application Studio or another IDE.
 
+TypeScript type definition is available for schema code completion, documentation and type check within IDE.
+
 ## How to obtain support
 In case you need any support, please create a [GitHub issue](https://github.com/SAP/ui5-manifest/issues).
 
