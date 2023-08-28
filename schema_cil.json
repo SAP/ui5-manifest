@@ -218,19 +218,35 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Application title"
+          }
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Application subtitle"
+          }
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Shorter version of the application title"
+          }
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YDES",
+            "comment": "Application description"
+          }
         },
         "ach": {
           "description": "Represents application component hierarchy",
@@ -898,7 +914,8 @@
             "1.6.0",
             "1.7.0",
             "1.8.0",
-            "1.9.0"
+            "1.9.0",
+            "1.10.0"
           ]
         },
         "globalFilterModel": {
@@ -959,6 +976,11 @@
           "description": "Represents the switch to activate live update in the global filters, else manual update will be required",
           "type": "boolean",
           "default": true
+        },
+        "enableLazyRendering": {
+          "description": "Enable loading of cards when they enter viewport",
+          "type": "boolean",
+          "default": false
         },
         "refreshStrategyOnAppRestore": {
           "description": "Represents the refresh strategies configured for OVP while coming back to the source app",
@@ -1493,7 +1515,11 @@
         "text": {
           "description": "Text displayed for extended actions in Quick View",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XFLD",
+            "comment": "Label for extended actions in Quick View Cards"
+          }
         },
         "press": {
           "description": "Name of the press handler for extended actions in Quick View",
@@ -1697,27 +1723,47 @@
         "category": {
           "description": "Represents the category of the card- used in the card header",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Card category which is displayed in the card header"
+          }
         },
         "itemText": {
           "description": "Represents the user defined string in placeholder card",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XALT",
+            "comment": "Text in placeholder card"
+          }
         },
         "title": {
           "description": "Represents language-dependent title of the card - used in the card header",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Card title which is displayed in the card header"
+          }
         },
         "subTitle": {
           "description": "Represents language-dependent subtitle of the card - used in the card header",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Card subtitle which is displayed in the card header"
+          }
         },
         "valueSelectionInfo": {
           "description": "Represents things like people, number of items",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XFLD",
+            "comment": "Card KPI label"
+          }
         },
         "entitySet": {
           "description": "Represents the entity set that will be displayed in this card",
@@ -2156,7 +2202,11 @@
                 "title": {
                   "description": "Represents the title for the content of the reuse component",
                   "type": "string",
-                  "pattern": "^\\{\\{[^\\W][\\w\\.\\-]*\\}\\}$"
+                  "pattern": "^\\{\\{[^\\W][\\w\\.\\-]*\\}\\}$",
+                  "i18n": {
+                    "type": "XTIT",
+                    "comment": "Reuse component title"
+                  }
                 },
                 "binding": {
                   "description": "Represents an optional element binding  for the ComponentContainer that hosts the reuse component",

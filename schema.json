@@ -74,7 +74,8 @@
         "1.54.0",
         "1.55.0",
         "1.56.0",
-        "1.57.0"
+        "1.57.0",
+        "1.58.0"
       ]
     },
     "start_url": {
@@ -277,23 +278,43 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Application title"
+          }
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Application subtitle"
+          }
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Shorter version of the application title"
+          }
         },
         "info": {
           "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YINF",
+            "comment": "Additional information to the application title"
+          }
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YDES",
+            "comment": "Application description"
+          }
         },
         "tags": {
           "description": "Represents array of keywords",
@@ -1235,7 +1256,8 @@
             "1.6.0",
             "1.7.0",
             "1.8.0",
-            "1.9.0"
+            "1.9.0",
+            "1.10.0"
           ]
         },
         "globalFilterModel": {
@@ -1296,6 +1318,11 @@
           "description": "Represents the switch to activate live update in the global filters, else manual update will be required",
           "type": "boolean",
           "default": true
+        },
+        "enableLazyRendering": {
+          "description": "Enable loading of cards when they enter viewport",
+          "type": "boolean",
+          "default": false
         },
         "refreshStrategyOnAppRestore": {
           "description": "Represents the refresh strategies configured for OVP while coming back to the source app",
@@ -2376,23 +2403,43 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Package title"
+          }
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Package subtitle"
+          }
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Shorter version of the package title"
+          }
         },
         "info": {
           "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YINF",
+            "comment": "Additional information to the package title"
+          }
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YDES",
+            "comment": "Package description"
+          }
         },
         "icon": {
           "description": "Represents icon name or source URL for the package",
@@ -2530,23 +2577,43 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Artifact title"
+          }
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Artifact subtitle"
+          }
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Shorter version of the artifact title"
+          }
         },
         "info": {
           "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YINF",
+            "comment": "Additional information to the artifact title"
+          }
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "YDES",
+            "comment": "Artifact description"
+          }
         },
         "icon": {
           "description": "Represents icon name or source URL for the artifact",
@@ -2646,11 +2713,12 @@
     }
   },
   "definitions": {
-    "tag": {
+    "tag_0": {
       "type": "array",
       "items": {
         "description": "Represents a tag; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-        "$ref": "#/definitions/i18n_key_string"
+        "$ref": "#/definitions/i18n_key_string",
+        "type": "string"
       }
     },
     "i18n_key_string": {
@@ -2739,13 +2807,6 @@
           "type": "string",
           "format": "uri-template"
         }
-      }
-    },
-    "tag_0": {
-      "type": "array",
-      "items": {
-        "description": "Represents a tag; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-        "type": "string"
       }
     },
     "Microchart.StackedBar.Bar": {
@@ -3544,7 +3605,11 @@
       "properties": {
         "title": {
           "description": "Represents a title of the column; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XCOL",
+            "comment": "Column title"
+          }
         },
         "width": {
           "description": "Defines the width of the column",
@@ -4146,7 +4211,11 @@
       "properties": {
         "title": {
           "description": "Represents a title of the object group; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XGRP",
+            "comment": "Object group title"
+          }
         },
         "titleMaxLines": {
           "description": "[Experimental] Limits the number of lines for wrapping the group title.",
@@ -4553,7 +4622,11 @@
       "properties": {
         "label": {
           "description": "Represents a label of the field; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XFLD",
+            "comment": "Field label"
+          }
         },
         "value": {
           "type": "string",
@@ -4965,7 +5038,11 @@
         },
         "title": {
           "description": "Represents a title of the header; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Header title"
+          }
         },
         "titleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the title.",
@@ -4981,7 +5058,11 @@
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Header subtitle"
+          }
         },
         "subTitleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the sub title.",
@@ -5084,7 +5165,11 @@
         },
         "title": {
           "description": "Represents a title of the header; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Header title"
+          }
         },
         "titleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the title.",
@@ -5100,7 +5185,11 @@
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string"
+          "$ref": "#/definitions/i18n_key_string",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Header subtitle"
+          }
         },
         "subTitleMaxLines": {
           "description": "[Experimental] Limit the number of lines for the sub title.",
@@ -6196,7 +6285,11 @@
         "text": {
           "description": "Text displayed for extended actions in Quick View",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XFLD",
+            "comment": "Label for extended actions in Quick View Cards"
+          }
         },
         "press": {
           "description": "Name of the press handler for extended actions in Quick View",
@@ -6400,27 +6493,47 @@
         "category": {
           "description": "Represents the category of the card- used in the card header",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Card category which is displayed in the card header"
+          }
         },
         "itemText": {
           "description": "Represents the user defined string in placeholder card",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XALT",
+            "comment": "Text in placeholder card"
+          }
         },
         "title": {
           "description": "Represents language-dependent title of the card - used in the card header",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Card title which is displayed in the card header"
+          }
         },
         "subTitle": {
           "description": "Represents language-dependent subtitle of the card - used in the card header",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XTIT",
+            "comment": "Card subtitle which is displayed in the card header"
+          }
         },
         "valueSelectionInfo": {
           "description": "Represents things like people, number of items",
           "type": "string",
-          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$"
+          "pattern": "^\\{\\{[^\\W\\.\\-][\\w\\.\\-]*\\}\\}$",
+          "i18n": {
+            "type": "XFLD",
+            "comment": "Card KPI label"
+          }
         },
         "entitySet": {
           "description": "Represents the entity set that will be displayed in this card",
@@ -6859,7 +6972,11 @@
                 "title": {
                   "description": "Represents the title for the content of the reuse component",
                   "type": "string",
-                  "pattern": "^\\{\\{[^\\W][\\w\\.\\-]*\\}\\}$"
+                  "pattern": "^\\{\\{[^\\W][\\w\\.\\-]*\\}\\}$",
+                  "i18n": {
+                    "type": "XTIT",
+                    "comment": "Reuse component title"
+                  }
                 },
                 "binding": {
                   "description": "Represents an optional element binding  for the ComponentContainer that hosts the reuse component",
@@ -8457,19 +8574,35 @@
             },
             "title": {
               "description": "Represents a title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "$ref": "#/definitions/i18n_key_string"
+              "$ref": "#/definitions/i18n_key_string",
+              "i18n": {
+                "type": "XTIT",
+                "comment": "Application title"
+              }
             },
             "subTitle": {
               "description": "Represents a subtitle; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "$ref": "#/definitions/i18n_key_string"
+              "$ref": "#/definitions/i18n_key_string",
+              "i18n": {
+                "type": "XTIT",
+                "comment": "Application subtitle"
+              }
             },
             "shortTitle": {
               "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "$ref": "#/definitions/i18n_key_string"
+              "$ref": "#/definitions/i18n_key_string",
+              "i18n": {
+                "type": "XTIT",
+                "comment": "Shorter version of the application title"
+              }
             },
             "info": {
               "description": "Represents additional information to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-              "$ref": "#/definitions/i18n_key_string"
+              "$ref": "#/definitions/i18n_key_string",
+              "i18n": {
+                "type": "YINF",
+                "comment": "Additional information to the application title"
+              }
             },
             "displayMode": {
               "description": "Represents the display mode of the tile",
@@ -8541,6 +8674,17 @@
           "$ref": "#/definitions/dataSourceCustom"
         }
       ]
+    },
+    "tag": {
+      "type": "array",
+      "items": {
+        "description": "Represents a tag; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
+        "$ref": "#/definitions/i18n_key_string"
+      },
+      "i18n": {
+        "type": "XFLD",
+        "comment": "Represents a tag"
+      }
     },
     "enhanceWithSetting": {
       "oneOf": [

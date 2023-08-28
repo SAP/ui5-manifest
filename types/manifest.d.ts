@@ -700,7 +700,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.54.0"
     | "1.55.0"
     | "1.56.0"
-    | "1.57.0";
+    | "1.57.0"
+    | "1.58.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -2487,7 +2488,7 @@ export interface JSONSchemaForSAPOVPNamespace {
   /**
    * Represents attributes format version. It is managed by namespace owner
    */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0" | "1.6.0" | "1.7.0" | "1.8.0" | "1.9.0";
+  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0" | "1.6.0" | "1.7.0" | "1.8.0" | "1.9.0" | "1.10.0";
   /**
    * Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters
    */
@@ -2532,6 +2533,10 @@ export interface JSONSchemaForSAPOVPNamespace {
    * Represents the switch to activate live update in the global filters, else manual update will be required
    */
   enableLiveFilter?: boolean;
+  /**
+   * Enable loading of cards when they enter viewport
+   */
+  enableLazyRendering?: boolean;
   refreshStrategyOnAppRestore?: RefreshStrategiesPropDef1;
   /**
    * Flag to enable/disable analytical parameter support for Smart filter bar
