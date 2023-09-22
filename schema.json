@@ -1969,7 +1969,8 @@
             "1.38.0",
             "1.39.0",
             "1.40.0",
-            "1.41.0"
+            "1.41.0",
+            "1.42.0"
           ]
         },
         "designtime": {
@@ -2147,15 +2148,7 @@
             },
             "visible": {
               "description": "[Experimental] Visibility of the footer",
-              "oneOf": [
-                {
-                  "type": "boolean",
-                  "default": true
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
+              "$ref": "#/definitions/visibility"
             }
           }
         },
@@ -3039,32 +3032,110 @@
         "semanticObject",
         "action"
       ],
-      "semanticObject": {
-        "type": "string"
-      },
-      "action": {
-        "type": "string"
+      "properties": {
+        "semanticObject": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
       }
     },
-    "ibnActionParameters": {
-      "description": "Parameters for an intent based navigation",
+    "hideCardActionParameters": {
+      "description": "Parameters for HideCard action",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "showCardActionParameters": {
+      "description": "Parameters for ShowCard action",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest"
+      ],
+      "properties": {
+        "manifest": {
+          "description": "An application identifier consisting of semanticObject and action",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "data": {
+          "type": "object"
+        },
+        "width": {
+          "type": "string"
+        },
+        "baseUrl": {
+          "type": "string"
+        },
+        "resizable": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        }
+      }
+    },
+    "submitActionParameters": {
+      "description": "Parameters for Submit action",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "navigationActionIBParameters": {
+      "description": "Parameters for Intent-Based Navigation action",
       "type": "object",
       "additionalProperties": false,
       "required": [
         "ibnTarget"
       ],
-      "ibnTarget": {
-        "description": "An application identifier consisting of semanticObject and action",
-        "$ref": "#/definitions/ibnTarget"
-      },
-      "ibnParam": {
-        "description": "Key/value pairs for parameters of the target application",
-        "$ref": "#/definitions/parameters"
-      },
-      "ibnAppSpecificRoute": {
-        "description": "An application specific route that is passed to the target application",
-        "type": "string"
+      "properties": {
+        "ibnTarget": {
+          "description": "An application identifier consisting of semanticObject and action",
+          "$ref": "#/definitions/ibnTarget"
+        },
+        "ibnParams": {
+          "description": "Key/value pairs for parameters of the target application",
+          "type": "object"
+        },
+        "ibnAppSpecificRoute": {
+          "description": "An application specific route that is passed to the target application",
+          "type": "string"
+        }
       }
+    },
+    "navigationActionParameters": {
+      "description": "Parameters for Navigation action",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "customActionParameters": {
+      "description": "Parameters for Custom action",
+      "type": "object",
+      "additionalProperties": true
     },
     "cache": {
       "description": "Cache control settings",
@@ -3128,11 +3199,6 @@
         }
       }
     },
-    "parameters": {
-      "description": "Represents parameters that are passed in the actions",
-      "type": "object",
-      "additionalProperties": true
-    },
     "extension": {
       "description": "[Experimental] Represents attributes, needed to get data via extension",
       "type": "object",
@@ -3167,7 +3233,7 @@
               "type": "string"
             },
             "parameters": {
-              "$ref": "#/definitions/parameters"
+              "type": "object"
             }
           }
         }
@@ -3225,7 +3291,7 @@
         },
         "parameters": {
           "description": "Represents the request parameters. If it is a POST request the parameters will be put as key/value pairs into the body of the request",
-          "$ref": "#/definitions/parameters"
+          "type": "object"
         },
         "headers": {
           "description": "Represents HTTP headers",
@@ -4601,14 +4667,7 @@
         },
         "visible": {
           "description": "Visibility of the item",
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         },
         "title": {
           "description": "Title of the data point. This is just a placeholder to store the title, title will not be rendered on the screen. This is needed to prevent the loss of columnn names while transforming table card to list card.",
@@ -4808,15 +4867,7 @@
         },
         "visible": {
           "description": "Visibility of the side indicator",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -4865,15 +4916,18 @@
         },
         "visible": {
           "description": "Visibility of the main indicator",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
+        }
+      }
+    },
+    "closeButton": {
+      "description": "[Experimental] Represents attributes of the Close button",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "visible": {
+          "description": "[Experimental] Represents the visibility of the Close button",
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -4941,14 +4995,7 @@
         },
         "visible": {
           "description": "Visibility of the icon",
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -4993,22 +5040,14 @@
           "$ref": "#/definitions/service"
         },
         "url": {
-          "description": "Represents the URL that will be used as navigation target if no service is provided",
+          "description": "[Deprecated] Represents the URL that will be used as navigation target if no service is provided",
           "type": "string"
         },
         "parameters": {
-          "description": "Parameters passed to the navigation action handler",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/parameters"
-            },
-            {
-              "$ref": "#/definitions/ibnActionParameters"
-            }
-          ]
+          "description": "Parameters passed to the navigation action handler"
         },
         "target": {
-          "description": "Specifies where to open the 'url', if it is provided",
+          "description": "[Deprecated] Specifies where to open the 'url', if it is provided",
           "type": "string",
           "oneOf": [
             {
@@ -5019,7 +5058,96 @@
             }
           ]
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Custom"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "$ref": "#/definitions/customActionParameters"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Navigation"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/navigationActionParameters"
+                  },
+                  {
+                    "$ref": "#/definitions/navigationActionIBParameters"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Submit"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "$ref": "#/definitions/submitActionParameters"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ShowCard"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "$ref": "#/definitions/showCardActionParameters"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "HideCard"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "$ref": "#/definitions/hideCardActionParameters"
+              }
+            }
+          }
+        }
+      ]
     },
     "HeaderType.Numeric": {
       "additionalProperties": false,
@@ -5137,17 +5265,13 @@
           "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
         },
+        "closeButton": {
+          "description": "[Experimental] Represents the Close button when a card is opened by the ShowCard action.",
+          "$ref": "#/definitions/closeButton"
+        },
         "visible": {
           "description": "[Experimental] Visibility of the header",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -5221,17 +5345,13 @@
           "description": "Represents the status of the card",
           "$ref": "#/definitions/status"
         },
+        "closeButton": {
+          "description": "[Experimental] Represents the Close button when a card is opened by the ShowCard action.",
+          "$ref": "#/definitions/closeButton"
+        },
         "visible": {
           "description": "[Experimental] Visibility of the header",
-          "oneOf": [
-            {
-              "type": "boolean",
-              "default": true
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -5587,15 +5707,7 @@
           "properties": {
             "visible": {
               "description": "Represents the visibility state of the title",
-              "oneOf": [
-                {
-                  "type": "boolean",
-                  "default": true
-                },
-                {
-                  "$ref": "#/definitions/simpleBinding"
-                }
-              ]
+              "$ref": "#/definitions/visibility"
             },
             "text": {
               "description": "Represents a title text",
@@ -5843,14 +5955,7 @@
         },
         "visible": {
           "description": "Determines whether the item is visible",
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -6019,14 +6124,7 @@
         },
         "visible": {
           "description": "Determines whether the filter is visible",
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -6117,14 +6215,7 @@
         },
         "visible": {
           "description": "Determines whether the filter is visible",
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
@@ -6179,14 +6270,7 @@
         },
         "visible": {
           "description": "Determines whether the filter is visible",
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
+          "$ref": "#/definitions/visibility"
         }
       }
     },
