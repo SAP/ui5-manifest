@@ -701,7 +701,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.55.0"
     | "1.56.0"
     | "1.57.0"
-    | "1.58.0";
+    | "1.58.0"
+    | "1.59.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
