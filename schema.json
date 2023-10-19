@@ -2650,7 +2650,8 @@
           "description": "Represents attributes format version. It is managed by namespace owner",
           "type": "string",
           "enum": [
-            "1.0.0"
+            "1.0.0",
+            "1.1.0"
           ]
         },
         "inputs": {
@@ -2675,25 +2676,45 @@
           "description": "Represents the outcomes of the task ui",
           "items": {
             "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "label"
+            ],
             "properties": {
               "id": {
                 "description": "Represents the id of the outcome",
                 "type": "string",
-                "enum": [
-                  "approve",
-                  "reject",
-                  "submit"
-                ]
+                "pattern": "^[a-zA-Z0-9_]{1,60}$"
               },
               "label": {
                 "type": "string",
                 "description": "Represents the label of the outcome"
+              },
+              "type": {
+                "type": "string",
+                "description": "Represents the intent of the outcome within a process",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "neutral"
+                ]
               }
             }
           },
-          "maxItems": 2,
           "minItems": 1,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "maxItems": 5
+        },
+        "preview": {
+          "description": "Configuration for a preview of the application in SBPA",
+          "type": "object",
+          "properties": {
+            "src": {
+              "description": "Relative path to an image. The path to the image is relative to the baseUrl of the application",
+              "type": "string"
+            }
+          }
         }
       },
       "oneOf": [
