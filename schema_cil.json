@@ -915,7 +915,8 @@
             "1.7.0",
             "1.8.0",
             "1.9.0",
-            "1.10.0"
+            "1.10.0",
+            "1.11.0"
           ]
         },
         "globalFilterModel": {
@@ -927,6 +928,15 @@
           "description": "Represents the entity to use as global filter in the smart filter bar control",
           "type": "string",
           "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
+        },
+        "globalFilterControlType": {
+          "description": "Represents the control to be used for the filter bar",
+          "type": "string",
+          "default": "SmartFilterBar",
+          "enum": [
+            "MacroFilterBar",
+            "SmartFilterBar"
+          ]
         },
         "globalFilterEntitySet": {
           "description": "Represents the entity set to use as global filter in the smart filter bar control",

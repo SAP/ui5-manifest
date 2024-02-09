@@ -703,7 +703,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.57.0"
     | "1.58.0"
     | "1.59.0"
-    | "1.60.0";
+    | "1.60.0"
+    | "1.61.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -738,6 +739,7 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
   "sap.package"?: JSONSchemaForSAPPACKAGENamespace;
   "sap.artifact"?: JSONSchemaForSAPARTIFACTNamespace;
   "sap.bpa.task"?: JSONSchemaForSapBpaTaskNamespace;
+  "sap.cards.ap"?: JSONSchemaForSapCardsApNamespace;
 }
 /**
  * Represents general application attributes
@@ -766,7 +768,8 @@ export interface JSONSchemaForSAPAPPNamespace {
     | "1.17.0"
     | "1.18.0"
     | "1.19.0"
-    | "1.20.0";
+    | "1.20.0"
+    | "1.21.0";
   /**
    * Represents the template from which the app was generated
    */
@@ -790,7 +793,7 @@ export interface JSONSchemaForSAPAPPNamespace {
    */
   id: string;
   /**
-   * Represents type of an application and can be application or component or library
+   * Represents type of an application and can be application or component or library or card
    */
   type: "application" | "component" | "library" | "card";
   /**
@@ -2490,7 +2493,18 @@ export interface JSONSchemaForSAPOVPNamespace {
   /**
    * Represents attributes format version. It is managed by namespace owner
    */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0" | "1.6.0" | "1.7.0" | "1.8.0" | "1.9.0" | "1.10.0";
+  _version?:
+    | "1.1.0"
+    | "1.2.0"
+    | "1.3.0"
+    | "1.4.0"
+    | "1.5.0"
+    | "1.6.0"
+    | "1.7.0"
+    | "1.8.0"
+    | "1.9.0"
+    | "1.10.0"
+    | "1.11.0";
   /**
    * Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters
    */
@@ -2499,6 +2513,10 @@ export interface JSONSchemaForSAPOVPNamespace {
    * Represents the entity to use as global filter in the smart filter bar control
    */
   globalFilterEntityType?: string;
+  /**
+   * Represents the control to be used for the filter bar
+   */
+  globalFilterControlType?: "MacroFilterBar" | "SmartFilterBar";
   /**
    * Represents the entity set to use as global filter in the smart filter bar control
    */
@@ -3585,5 +3603,49 @@ export interface JSONSchemaForSAPARTIFACTNamespace {
     technicalAttributes?: string[];
     [k: string]: unknown;
   };
+  [k: string]: unknown;
+}
+/**
+ * Represents generated cards saved to the application repository
+ */
+export interface JSONSchemaForSapCardsApNamespace {
+  /**
+   * Represents attributes format version.
+   */
+  _version?: "1.0.0";
+  /**
+   * Represents an object with reference to the generated cards
+   */
+  embeds?: {
+    ObjectPage?: EmbedsSettings;
+    [k: string]: unknown;
+  };
+  [k: string]: unknown;
+}
+/**
+ * Represents the embeds settings
+ */
+export interface EmbedsSettings {
+  /**
+   * Represents the detault card
+   */
+  default?: string;
+  manifests?: {
+    /**
+     * This interface was referenced by `undefined`'s JSON-Schema definition
+     * via the `patternProperty` "^[a-zA-Z0-9_]+$".
+     */
+    [k: string]: ManifestSettings[];
+  };
+  [k: string]: unknown;
+}
+/**
+ * Represents the manifest settings
+ */
+export interface ManifestSettings {
+  /**
+   * Represents the local uri of the generated card
+   */
+  localUri?: string;
   [k: string]: unknown;
 }
