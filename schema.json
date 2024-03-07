@@ -78,7 +78,8 @@
         "1.58.0",
         "1.59.0",
         "1.60.0",
-        "1.61.0"
+        "1.61.0",
+        "1.62.0"
       ]
     },
     "start_url": {
@@ -1985,7 +1986,8 @@
             "1.40.0",
             "1.41.0",
             "1.42.0",
-            "1.43.0"
+            "1.43.0",
+            "1.44.0"
           ]
         },
         "designtime": {
@@ -2074,6 +2076,10 @@
               "additionalProperties": {
                 "$ref": "#/definitions/Configuration.NoData"
               }
+            },
+            "componentData": {
+              "description": "[Experimental] Object which will be passed to the component as 'componentData'",
+              "type": "object"
             }
           }
         },
@@ -4439,12 +4445,24 @@
               "description": "The horizontal alignment of the texts",
               "type": "string"
             },
+            "padding": {
+              "description": "Set to 'MediumStart' to have medium size padding in the beginning of the texts.",
+              "type": "string"
+            },
             "textColor": {
               "description": "The color of the texts",
               "type": "string"
             },
+            "textFilter": {
+              "description": "The CSS filter which will be applied to the text.",
+              "type": "string"
+            },
             "background": {
               "description": "The background behind the texts and over the image",
+              "type": "string"
+            },
+            "animation": {
+              "description": "Defines the animation that should be used to show up the overlay.",
               "type": "string"
             }
           }
@@ -5111,6 +5129,22 @@
         }
       }
     },
+    "wrappingType": {
+      "description": "The wrapping type for texts",
+      "type": "string",
+      "oneOf": [
+        {
+          "enum": [
+            "Normal",
+            "Hyphenated"
+          ],
+          "default": "Normal"
+        },
+        {
+          "$ref": "#/definitions/simpleBinding"
+        }
+      ]
+    },
     "closeButton": {
       "description": "[Experimental] Represents attributes of the Close button",
       "type": "object",
@@ -5460,6 +5494,10 @@
           "description": "[Experimental] Represents the Close button when a card is opened by the ShowCard action.",
           "$ref": "#/definitions/closeButton"
         },
+        "wrappingType": {
+          "description": "[Experimental] The wrapping type for texts inside the header.",
+          "$ref": "#/definitions/wrappingType"
+        },
         "visible": {
           "description": "[Experimental] Visibility of the header",
           "$ref": "#/definitions/visibility"
@@ -5539,6 +5577,10 @@
         "closeButton": {
           "description": "[Experimental] Represents the Close button when a card is opened by the ShowCard action.",
           "$ref": "#/definitions/closeButton"
+        },
+        "wrappingType": {
+          "description": "[Experimental] The wrapping type for texts inside the header.",
+          "$ref": "#/definitions/wrappingType"
         },
         "visible": {
           "description": "[Experimental] Visibility of the header",
@@ -5986,6 +6028,28 @@
                   "$ref": "#/definitions/simpleBinding"
                 }
               ]
+            },
+            "actionsStrip": {
+              "description": "Defines actions items that can be triggered when the action button is pressed",
+              "type": "array",
+              "maxItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "actions": {
+                    "description": "Defines actions that will be triggered when the action button is pressed",
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/action"
+                    }
+                  },
+                  "text": {
+                    "type": "string",
+                    "description": "The action button text"
+                  }
+                }
+              }
             }
           }
         }
