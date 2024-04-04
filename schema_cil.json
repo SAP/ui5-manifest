@@ -2434,6 +2434,93 @@
         }
       }
     },
+    "actualTargetAdditionComponentUsage": {
+      "type": "object",
+      "required": [
+        "usage",
+        "type"
+      ],
+      "properties": {
+        "usage": {
+          "description": "Represents the componentUsage of the component that will be created",
+          "type": "string"
+        },
+        "id": {
+          "description": "Represents the id of the created view or component",
+          "type": "string"
+        },
+        "type": {
+          "description": "Represents the type of the type Component",
+          "type": "string",
+          "enum": [
+            "Component"
+          ]
+        },
+        "level": {
+          "description": "Represents the level of the current component which is used to define the transition direction when navigate to this component",
+          "type": "number",
+          "multipleOf": 1
+        }
+      }
+    },
+    "actualTargetAdditionStandard": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "Represents the name of a view or component that will be created",
+          "type": "string"
+        },
+        "id": {
+          "description": "Represents the id of the created view or component",
+          "type": "string"
+        },
+        "path": {
+          "description": "Represents a prefix that is prepended in front of the view or component name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Represents the type of the type View or Component",
+          "type": "string",
+          "enum": [
+            "View",
+            "Component"
+          ]
+        },
+        "level": {
+          "description": "Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component",
+          "type": "number",
+          "multipleOf": 1
+        }
+      }
+    },
+    "legacyTargetAddition": {
+      "type": "object",
+      "required": [
+        "viewName"
+      ],
+      "properties": {
+        "viewName": {
+          "description": "Represents the name of a view that will be created",
+          "type": "string"
+        },
+        "viewId": {
+          "description": "Represents the id of the created view",
+          "type": "string"
+        },
+        "viewPath": {
+          "description": "Represents a prefix that is prepended in front of the viewName",
+          "type": "string"
+        },
+        "viewLevel": {
+          "description": "Represents the level of the current view which is used to define the transition direction when navigate to this view",
+          "type": "number",
+          "multipleOf": 1
+        }
+      }
+    },
     "routeWithoutName": {
       "description": "Represents the definition of route without the option 'name'. This is used when routes are defined in an object.",
       "type": "object",
@@ -3023,15 +3110,23 @@
                       "$ref": "#/definitions/routeTarget"
                     }
                   }
-                },
-                "viewPath": {
-                  "description": "Represents a prefix that is prepended in front of the viewName",
-                  "type": "string"
                 }
               }
             },
             {
               "$ref": "#/definitions/target"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$ref": "#/definitions/legacyTargetAddition/properties"
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$ref": "#/definitions/actualTargetAdditionStandard/properties"
+              }
             }
           ]
         },
@@ -3067,24 +3162,10 @@
                       "$ref": "#/definitions/target"
                     },
                     {
-                      "type": "object",
                       "required": [
                         "viewName"
                       ],
-                      "properties": {
-                        "viewName": {
-                          "description": "Represents the name of a view that will be created",
-                          "type": "string"
-                        },
-                        "viewId": {
-                          "description": "Represents the id of the created view",
-                          "type": "string"
-                        },
-                        "viewPath": {
-                          "description": "Represents a prefix that is prepended in front of the viewName",
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/definitions/legacyTargetAddition"
                     }
                   ]
                 },
@@ -3096,56 +3177,10 @@
                     {
                       "oneOf": [
                         {
-                          "type": "object",
-                          "required": [
-                            "name"
-                          ],
-                          "properties": {
-                            "name": {
-                              "description": "Represents the name of a view or component that will be created",
-                              "type": "string"
-                            },
-                            "id": {
-                              "description": "Represents the id of the created view or component",
-                              "type": "string"
-                            },
-                            "path": {
-                              "description": "Represents a prefix that is prepended in front of the view or component name",
-                              "type": "string"
-                            },
-                            "type": {
-                              "description": "Represents the type of the type View or Component",
-                              "type": "string",
-                              "enum": [
-                                "View",
-                                "Component"
-                              ]
-                            }
-                          }
+                          "$ref": "#/definitions/actualTargetAdditionStandard"
                         },
                         {
-                          "type": "object",
-                          "required": [
-                            "usage",
-                            "type"
-                          ],
-                          "properties": {
-                            "usage": {
-                              "description": "Represents the componentUsage of the component that will be created",
-                              "type": "string"
-                            },
-                            "id": {
-                              "description": "Represents the id of the created view or component",
-                              "type": "string"
-                            },
-                            "type": {
-                              "description": "Represents the type of the type Component",
-                              "type": "string",
-                              "enum": [
-                                "Component"
-                              ]
-                            }
-                          }
+                          "$ref": "#/definitions/actualTargetAdditionComponentUsage"
                         }
                       ]
                     }
