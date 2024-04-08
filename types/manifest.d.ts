@@ -175,7 +175,8 @@ export type JSONSchemaForSAPUI5Namespace = {
     | "1.14.0"
     | "1.15.0"
     | "1.16.0"
-    | "1.17.0";
+    | "1.17.0"
+    | "1.18.0";
   resources?: Resource;
   /**
    * Represents the explicit usage declaration for UI5 reuse components
@@ -704,7 +705,9 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.58.0"
     | "1.59.0"
     | "1.60.0"
-    | "1.61.0";
+    | "1.61.0"
+    | "1.62.0"
+    | "1.63.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -1677,10 +1680,6 @@ export interface Target {
    */
   parent?: string;
   /**
-   * Represents the level of the current view which is used to define the transition direction when navigate to this view
-   */
-  viewLevel?: number;
-  /**
    * Represents the type of transition when navigating from previous view to this view
    */
   transition?: string | ("slide" | "flip" | "fade" | "show");
@@ -1771,12 +1770,10 @@ export interface Routing {
        */
       target: [] | [string | RouteTargetObject] | string | RouteTargetObject;
     };
-    /**
-     * Represents a prefix that is prepended in front of the viewName
-     */
-    viewPath?: string;
     [k: string]: unknown;
-  } & Target;
+  } & Target &
+    LegacyTargetAdditionWithoutRequiredProp &
+    ActualTargetAdditionStandardWithoutRequiredProp;
   routes?:
     | Route[]
     | {
@@ -1791,59 +1788,112 @@ export interface Routing {
      * via the `patternProperty` "[\s\S]*".
      */
     [k: string]:
-      | (Target & {
-          /**
-           * Represents the name of a view that will be created
-           */
-          viewName: string;
-          /**
-           * Represents the id of the created view
-           */
-          viewId?: string;
-          /**
-           * Represents a prefix that is prepended in front of the viewName
-           */
-          viewPath?: string;
-          [k: string]: unknown;
-        })
-      | (Target &
-          (
-            | {
-                /**
-                 * Represents the name of a view or component that will be created
-                 */
-                name: string;
-                /**
-                 * Represents the id of the created view or component
-                 */
-                id?: string;
-                /**
-                 * Represents a prefix that is prepended in front of the view or component name
-                 */
-                path?: string;
-                /**
-                 * Represents the type of the type View or Component
-                 */
-                type?: "View" | "Component";
-                [k: string]: unknown;
-              }
-            | {
-                /**
-                 * Represents the componentUsage of the component that will be created
-                 */
-                usage: string;
-                /**
-                 * Represents the id of the created view or component
-                 */
-                id?: string;
-                /**
-                 * Represents the type of the type Component
-                 */
-                type: "Component";
-                [k: string]: unknown;
-              }
-          ));
+      | (Target & LegacyTargetAddition)
+      | (Target & (ActualTargetAdditionStandard | ActualTargetAdditionComponentUsage));
   };
+  [k: string]: unknown;
+}
+export interface LegacyTargetAdditionWithoutRequiredProp {
+  /**
+   * Represents the name of a view that will be created
+   */
+  viewName?: string;
+  /**
+   * Represents the id of the created view
+   */
+  viewId?: string;
+  /**
+   * Represents a prefix that is prepended in front of the viewName
+   */
+  viewPath?: string;
+  /**
+   * Represents the level of the current view which is used to define the transition direction when navigate to this view
+   */
+  viewLevel?: number;
+  [k: string]: unknown;
+}
+export interface ActualTargetAdditionStandardWithoutRequiredProp {
+  /**
+   * Represents the name of a view or component that will be created
+   */
+  name?: string;
+  /**
+   * Represents the id of the created view or component
+   */
+  id?: string;
+  /**
+   * Represents a prefix that is prepended in front of the view or component name
+   */
+  path?: string;
+  /**
+   * Represents the type of the type View or Component
+   */
+  type?: "View" | "Component";
+  /**
+   * Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component
+   */
+  level?: number;
+  [k: string]: unknown;
+}
+export interface LegacyTargetAddition {
+  /**
+   * Represents the name of a view that will be created
+   */
+  viewName: string;
+  /**
+   * Represents the id of the created view
+   */
+  viewId?: string;
+  /**
+   * Represents a prefix that is prepended in front of the viewName
+   */
+  viewPath?: string;
+  /**
+   * Represents the level of the current view which is used to define the transition direction when navigate to this view
+   */
+  viewLevel?: number;
+  [k: string]: unknown;
+}
+export interface ActualTargetAdditionStandard {
+  /**
+   * Represents the name of a view or component that will be created
+   */
+  name: string;
+  /**
+   * Represents the id of the created view or component
+   */
+  id?: string;
+  /**
+   * Represents a prefix that is prepended in front of the view or component name
+   */
+  path?: string;
+  /**
+   * Represents the type of the type View or Component
+   */
+  type?: "View" | "Component";
+  /**
+   * Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component
+   */
+  level?: number;
+  [k: string]: unknown;
+}
+export interface ActualTargetAdditionComponentUsage {
+  /**
+   * Represents the componentUsage of the component that will be created
+   */
+  usage: string;
+  /**
+   * Represents the id of the created view or component
+   */
+  id?: string;
+  /**
+   * Represents the type of the type Component
+   */
+  type: "Component";
+  /**
+   * Represents the level of the current component which is used to define the transition direction when navigate to this component
+   */
+  level?: number;
   [k: string]: unknown;
 }
 /**
