@@ -189,9 +189,9 @@ export type JSONSchemaForSAPUI5Namespace = {
    */
   dependencies: {
     /**
-     * Represents the minimum version of SAP UI5 that your component requires
+     * Represents the minimum version of SAP UI5 that your component requires. It is either a specific version or an array of versions where each major version can only be included once. If array contains more than one version and if version 1 is included it must be at least 1.120.x.
      */
-    minUI5Version: string;
+    minUI5Version: string | string[];
     /**
      * Represents the id (namespace) of the libraries that should be loaded by UI5 Core to be used in your component
      */
@@ -707,7 +707,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.60.0"
     | "1.61.0"
     | "1.62.0"
-    | "1.63.0";
+    | "1.63.0"
+    | "1.64.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
