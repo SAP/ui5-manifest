@@ -2,7 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/ui5-manifest/compare/v1.64.1...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/ui5-manifest/compare/v1.65.1...HEAD).
+
+<a name="v1.65.1"></a>
+## [v1.65.1] - 2024-05-06
 
 <a name="v1.64.1"></a>
 ## [v1.64.1] - 2024-05-06
@@ -70,6 +73,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/ui5-mani
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
+[v1.65.1]: https://github.com/SAP/ui5-manifest/compare/v1.64.1...v1.65.1
 [v1.64.1]: https://github.com/SAP/ui5-manifest/compare/v1.65.0...v1.64.1
 [v1.65.0]: https://github.com/SAP/ui5-manifest/compare/v1.64.0...v1.65.0
 [v1.64.0]: https://github.com/SAP/ui5-manifest/compare/v1.63.0...v1.64.0
