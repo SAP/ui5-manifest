@@ -1991,7 +1991,8 @@
             "1.42.0",
             "1.43.0",
             "1.44.0",
-            "1.45.0"
+            "1.45.0",
+            "1.46.0"
           ]
         },
         "designtime": {
@@ -3027,6 +3028,18 @@
         "displayValue": {
           "description": "The value, which will be displayed as a text next to the bar",
           "type": "string"
+        },
+        "displayZeroValue": {
+          "description": "Defines whether bars with zero values are displayed",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         },
         "bars": {
           "description": "The bars of the chart",
@@ -4827,6 +4840,21 @@
             }
           ]
         },
+        "fitType": {
+          "description": "Defines how the image fits in the icon area",
+          "oneOf": [
+            {
+              "enum": [
+                "Cover",
+                "Contain"
+              ],
+              "default": "Cover"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "backgroundColor": {
           "$ref": "#/definitions/iconBackgroundColor"
         },
@@ -5639,6 +5667,34 @@
         "sandbox": {
           "description": "Sandbox attribute of the iframe",
           "type": "string"
+        },
+        "allow": {
+          "description": "Allow attribute of the iframe",
+          "type": "string"
+        },
+        "allowfullscreen": {
+          "description": "Allowfullscreen attribute of the iframe",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
+        "omitSandbox": {
+          "description": "If set to 'true' the 'sandbox' attribute will not be added to the iframe.",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         }
       }
     },
@@ -5885,33 +5941,7 @@
     "ContentType.AnalyticsCloud": {
       "description": "Represents SAP Analytics Cloud content attributes",
       "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "data": {
-          "$ref": "#/definitions/data"
-        },
-        "minHeight": {
-          "$ref": "#/definitions/minHeight"
-        },
-        "actions": {
-          "description": "Defines actions that can be applied on the content",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/action"
-          }
-        },
-        "options": {
-          "description": "Options of the chart",
-          "oneOf": [
-            {
-              "type": "object"
-            },
-            {
-              "$ref": "#/definitions/simpleBinding"
-            }
-          ]
-        }
-      }
+      "additionalProperties": true
     },
     "ContentType.Analytical": {
       "description": "Represents analytical content attributes",
