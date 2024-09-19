@@ -1993,7 +1993,8 @@
             "1.43.0",
             "1.44.0",
             "1.45.0",
-            "1.46.0"
+            "1.46.0",
+            "1.47.0"
           ]
         },
         "designtime": {
@@ -4438,6 +4439,10 @@
         "src": {
           "type": "string",
           "description": "Represents image source URL"
+        },
+        "fallbackSrc": {
+          "type": "string",
+          "description": "Represents fallback image source URL"
         },
         "alt": {
           "type": "string",
