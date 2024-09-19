@@ -3664,7 +3664,7 @@ export interface JSONSchemaForSapCardsApNamespace {
   /**
    * Represents attributes format version.
    */
-  _version?: "1.0.0";
+  _version?: "1.0.0" | "1.1.0";
   /**
    * Represents an object with reference to the generated cards
    */
@@ -3699,5 +3699,9 @@ export interface ManifestSettings {
    * Represents the local uri of the generated card
    */
   localUri?: string;
+  /**
+   * Represents a switch to hide actions from the shared card
+   */
+  hideActions?: boolean;
   [k: string]: unknown;
 }
