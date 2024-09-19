@@ -6443,6 +6443,18 @@
           "description": "Defines the initially selected key from the given options for combo box.",
           "type": "string"
         },
+        "selectedIndex": {
+          "description": "Specifies the index of the selected item. Index value for no selection is -1.",
+          "oneOf": [
+            {
+              "type": "number",
+              "default": -1
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
+        },
         "data": {
           "$ref": "#/definitions/data"
         },
