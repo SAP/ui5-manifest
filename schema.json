@@ -1995,7 +1995,8 @@
             "1.44.0",
             "1.45.0",
             "1.46.0",
-            "1.47.0"
+            "1.47.0",
+            "1.48.0"
           ]
         },
         "designtime": {
@@ -2186,10 +2187,6 @@
                       "$ref": "#/definitions/simpleBinding"
                     }
                   ]
-                },
-                "visible": {
-                  "description": "Represents the visibility of the paginator",
-                  "$ref": "#/definitions/visibility"
                 }
               }
             },
@@ -5287,6 +5284,21 @@
         },
         "backgroundColor": {
           "$ref": "#/definitions/iconBackgroundColor"
+        },
+        "fitType": {
+          "description": "Defines how the image fits in the icon area",
+          "oneOf": [
+            {
+              "enum": [
+                "Cover",
+                "Contain"
+              ],
+              "default": "Cover"
+            },
+            {
+              "$ref": "#/definitions/simpleBinding"
+            }
+          ]
         },
         "visible": {
           "description": "Visibility of the icon",
