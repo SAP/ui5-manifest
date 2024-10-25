@@ -1,6 +1,6 @@
 {
   "title": "SAP JSON schema for Web Application Manifest File (CIL)",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "required": [
     "_version",
@@ -105,7 +105,7 @@
         },
         "id": {
           "description": "Represents mandatory unique app identifier which must correspond to component 'id/namespace'",
-          "$ref": "#/definitions/id_def"
+          "$ref": "#/$defs/id_def"
         },
         "type": {
           "description": "Represents type of an application and can be application or component or library",
@@ -149,7 +149,7 @@
                   "additionalProperties": false,
                   "patternProperties": {
                     "^[a-zA-Z0-9_\\-]*$": {
-                      "$ref": "#/definitions/terminologySetting"
+                      "$ref": "#/$defs/terminologySetting"
                     }
                   }
                 },
@@ -158,7 +158,7 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "$ref": "#/definitions/enhanceWithSetting"
+                    "$ref": "#/$defs/enhanceWithSetting"
                   }
                 }
               }
@@ -197,7 +197,7 @@
                   "additionalProperties": false,
                   "patternProperties": {
                     "^[a-zA-Z0-9_\\-]*$": {
-                      "$ref": "#/definitions/terminologySetting"
+                      "$ref": "#/$defs/terminologySetting"
                     }
                   }
                 },
@@ -206,7 +206,7 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "$ref": "#/definitions/enhanceWithSetting"
+                    "$ref": "#/$defs/enhanceWithSetting"
                   }
                 }
               }
@@ -219,7 +219,7 @@
         },
         "title": {
           "description": "Represents a title (mandatory); to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string",
+          "$ref": "#/$defs/i18n_key_string",
           "i18n": {
             "type": "XTIT",
             "comment": "Application title"
@@ -227,7 +227,7 @@
         },
         "subTitle": {
           "description": "Represents a subtitle to the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string",
+          "$ref": "#/$defs/i18n_key_string",
           "i18n": {
             "type": "XTIT",
             "comment": "Application subtitle"
@@ -235,7 +235,7 @@
         },
         "shortTitle": {
           "description": "Represents a shorter version of the title; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string",
+          "$ref": "#/$defs/i18n_key_string",
           "i18n": {
             "type": "XTIT",
             "comment": "Shorter version of the application title"
@@ -243,7 +243,7 @@
         },
         "description": {
           "description": "Represents a description; to make this property language dependent (recommended), use a key in double curly brackets '{{key}}'",
-          "$ref": "#/definitions/i18n_key_string",
+          "$ref": "#/$defs/i18n_key_string",
           "i18n": {
             "type": "YDES",
             "comment": "Application description"
@@ -260,7 +260,7 @@
           "additionalProperties": false,
           "patternProperties": {
             "^[a-zA-Z0-9_\\.\\-]*$": {
-              "$ref": "#/definitions/dataSource"
+              "$ref": "#/$defs/dataSource"
             }
           }
         },
@@ -282,7 +282,7 @@
           "description": "Represents a collection of directly used open source libs (not when used via UI5 capsulation)",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/openSource"
+            "$ref": "#/$defs/openSource"
           }
         },
         "offline": {
@@ -291,7 +291,7 @@
           "default": false
         }
       },
-      "definitions": {
+      "$defs": {
         "version": {
           "type": "string"
         }
@@ -334,7 +334,7 @@
           "description": "Represents device types on which application is running. Supported device types are desktop, tablet and phone",
           "allOf": [
             {
-              "$ref": "#/definitions/deviceType"
+              "$ref": "#/$defs/deviceType"
             },
             {
               "required": [
@@ -346,7 +346,8 @@
           ]
         },
         "supportedThemes": {
-          "description": "The property is Deprecated. Represents array of supported SAP themes such as sap_hcb, sap_bluecrystal",
+          "description": "[Deprecated] Represents array of supported SAP themes such as sap_hcb, sap_bluecrystal",
+          "deprecated": true,
           "type": "array",
           "items": {
             "type": "string"
@@ -386,7 +387,7 @@
             },
             "resources": {
               "description": "Represents paths to JavaScript/CSS resources that your app needs (app internal), formerly called '.includes'",
-              "$ref": "#/definitions/resource"
+              "$ref": "#/$defs/resource"
             },
             "componentUsages": {
               "description": "Represents the explicit usage declaration for UI5 reuse components",
@@ -394,7 +395,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[a-zA-Z0-9_\\.]*$": {
-                  "$ref": "#/definitions/componentUsages"
+                  "$ref": "#/$defs/componentUsages"
                 }
               }
             },
@@ -409,7 +410,7 @@
                   "additionalProperties": false,
                   "patternProperties": {
                     "^([a-z][a-z0-9]{0,39})(\\.[a-z][a-z0-9]{0,39})*$": {
-                      "$ref": "#/definitions/lib"
+                      "$ref": "#/$defs/lib"
                     }
                   }
                 },
@@ -419,7 +420,7 @@
                   "additionalProperties": false,
                   "patternProperties": {
                     "^([a-zA-Z_$][a-zA-Z0-9_$]{0,39}\\.)*([a-zA-Z_$][a-zA-Z0-9_$]{0,39})$": {
-                      "$ref": "#/definitions/component"
+                      "$ref": "#/$defs/component"
                     }
                   }
                 }
@@ -431,7 +432,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[a-zA-Z0-9_\\.\\-\\|@]*$": {
-                  "$ref": "#/definitions/model"
+                  "$ref": "#/$defs/model"
                 }
               }
             },
@@ -441,7 +442,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[a-zA-Z0-9_\\.\\-]*$": {
-                  "$ref": "#/definitions/resourceRoot"
+                  "$ref": "#/$defs/resourceRoot"
                 }
               }
             },
@@ -456,7 +457,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "[\\s\\S]*": {
-                  "$ref": "#/definitions/config"
+                  "$ref": "#/$defs/config"
                 }
               }
             },
@@ -467,11 +468,11 @@
               "properties": {
                 "component": {
                   "description": "Represents the component name",
-                  "$ref": "#/definitions/id_def"
+                  "$ref": "#/$defs/id_def"
                 },
                 "minVersion": {
                   "description": "Represents minimal version of the component",
-                  "$ref": "#/definitions/version"
+                  "$ref": "#/$defs/version"
                 },
                 "extensions": {
                   "description": "Represents extensions of the component",
@@ -513,7 +514,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "[\\s\\S]*": {
-                  "$ref": "#/definitions/service"
+                  "$ref": "#/$defs/service"
                 }
               }
             },
@@ -523,7 +524,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[A-Za-z_][A-Za-z0-9_\\-\\|@]+$": {
-                  "$ref": "#/definitions/command"
+                  "$ref": "#/$defs/command"
                 }
               }
             }
@@ -533,10 +534,10 @@
           "type": "object",
           "properties": {
             "routing": {
-              "$ref": "#/definitions/routing"
+              "$ref": "#/$defs/routing"
             },
             "rootView": {
-              "$ref": "#/definitions/rootView_def"
+              "$ref": "#/$defs/rootView_def"
             }
           }
         },
@@ -556,10 +557,10 @@
                   ]
                 },
                 "routing": {
-                  "$ref": "#/definitions/routing_flexEnabled"
+                  "$ref": "#/$defs/routing_flexEnabled"
                 },
                 "rootView": {
-                  "$ref": "#/definitions/rootView_def_flexEnabled"
+                  "$ref": "#/$defs/rootView_def_flexEnabled"
                 }
               }
             },
@@ -574,17 +575,17 @@
                   ]
                 },
                 "routing": {
-                  "$ref": "#/definitions/routing"
+                  "$ref": "#/$defs/routing"
                 },
                 "rootView": {
-                  "$ref": "#/definitions/rootView_def"
+                  "$ref": "#/$defs/rootView_def"
                 }
               }
             }
           ]
         }
       ],
-      "definitions": {
+      "$defs": {
         "deviceType": {
           "type": "object",
           "description": "Represents device types on which the app is running",
@@ -798,7 +799,7 @@
         },
         "settings": {
           "description": "Represents global settings for the application controller",
-          "$ref": "#/definitions/setting_def"
+          "$ref": "#/$defs/setting_def"
         },
         "pages": {
           "description": "Represents one ore more pages of an application. UI5 routing is created from the definitions in this section",
@@ -806,7 +807,7 @@
             {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/pages_array"
+                "$ref": "#/$defs/pages_array"
               }
             },
             {
@@ -814,7 +815,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
-                  "$ref": "#/definitions/pages_map"
+                  "$ref": "#/$defs/pages_map"
                 }
               }
             }
@@ -897,7 +898,7 @@
       "required": [
         "cards"
       ],
-      "dependencies": {
+      "dependentRequired": {
         "globalFilterEntityType": [
           "globalFilterModel"
         ]
@@ -996,7 +997,7 @@
         },
         "refreshStrategyOnAppRestore": {
           "description": "Represents the refresh strategies configured for OVP while coming back to the source app",
-          "$ref": "#/definitions/refreshStrategies_prop_def"
+          "$ref": "#/$defs/refreshStrategies_prop_def"
         },
         "considerAnalyticalParameters": {
           "description": "Flag to enable/disable analytical parameter support for Smart filter bar",
@@ -1051,7 +1052,7 @@
                   "type": "object",
                   "patternProperties": {
                     "^[a-zA-Z0-9_\\.\\-]*$": {
-                      "$ref": "#/definitions/filterFieldName"
+                      "$ref": "#/$defs/filterFieldName"
                     }
                   }
                 }
@@ -1080,7 +1081,7 @@
           "additionalProperties": false,
           "patternProperties": {
             "^[a-zA-Z0-9_\\.\\-]+$": {
-              "$ref": "#/definitions/card"
+              "$ref": "#/$defs/card"
             }
           }
         },
@@ -1089,7 +1090,7 @@
           "additionalProperties": false,
           "patternProperties": {
             "^cols_[0-9]+$": {
-              "$ref": "#/definitions/resizableLayoutVariant"
+              "$ref": "#/$defs/resizableLayoutVariant"
             }
           }
         }
@@ -1296,7 +1297,7 @@
           "additionalProperties": false,
           "patternProperties": {
             "^[a-zA-Z0-9_\\.\\-]*": {
-              "$ref": "#/definitions/definingRequest"
+              "$ref": "#/$defs/definingRequest"
             }
           }
         }
@@ -1457,7 +1458,7 @@
       }
     }
   },
-  "definitions": {
+  "$defs": {
     "definingRequest": {
       "type": "object",
       "additionalProperties": false,
@@ -1549,7 +1550,7 @@
       "type": "object",
       "properties": {
         "levels": {
-          "$ref": "#/definitions/levelsDef"
+          "$ref": "#/$defs/levelsDef"
         }
       }
     },
@@ -1600,7 +1601,7 @@
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "#/definitions/customActionsSetting"
+            "$ref": "#/$defs/customActionsSetting"
           }
         }
       }
@@ -1701,10 +1702,10 @@
           "additionalProperties": false,
           "properties": {
             "plotArea": {
-              "$ref": "#/definitions/plotAreaDef"
+              "$ref": "#/$defs/plotAreaDef"
             },
             "timeAxis": {
-              "$ref": "#/definitions/timeAxisDef"
+              "$ref": "#/$defs/timeAxisDef"
             }
           }
         },
@@ -1879,14 +1880,14 @@
           "default": true
         },
         "defaultSpan": {
-          "$ref": "#/definitions/defaultSpanDef"
+          "$ref": "#/$defs/defaultSpanDef"
         },
         "requireAppAuthorization": {
           "description": "Represents the cards for which authorization is required",
           "type": "string"
         },
         "objectStreamCardsSettings": {
-          "$ref": "#/definitions/objectStreamCardsSettingsDef"
+          "$ref": "#/$defs/objectStreamCardsSettingsDef"
         },
         "enableLocaleCurrencyFormatting": {
           "description": "Represents the flag to indicate the use of object number/smart field",
@@ -1939,10 +1940,10 @@
           "additionalProperties": false,
           "properties": {
             "plotArea": {
-              "$ref": "#/definitions/plotAreaDef"
+              "$ref": "#/$defs/plotAreaDef"
             },
             "timeAxis": {
-              "$ref": "#/definitions/timeAxisDef"
+              "$ref": "#/$defs/timeAxisDef"
             }
           }
         },
@@ -1968,7 +1969,7 @@
       "additionalProperties": false,
       "patternProperties": {
         "^[a-zA-Z0-9_\\.\\-]+$": {
-          "$ref": "#/definitions/resizableLayoutVariantCardProperties"
+          "$ref": "#/$defs/resizableLayoutVariantCardProperties"
         }
       }
     },
@@ -1995,14 +1996,14 @@
           "pattern": "^[a-zA-Z0-9\\.]+$"
         },
         "settings": {
-          "$ref": "#/definitions/card_setting"
+          "$ref": "#/$defs/card_setting"
         },
         "tabs": {
           "description": "Represents the card with view switch control",
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "#/definitions/tab_setting"
+            "$ref": "#/$defs/tab_setting"
           }
         }
       }
@@ -2064,13 +2065,13 @@
               "pattern": "^([a-zA-Z][a-zA-Z0-9_]{0,39})(\\.[a-zA-Z][a-zA-Z0-9_]{0,39})*$"
             },
             "binding": {
-              "$ref": "#/definitions/component_binding_def"
+              "$ref": "#/$defs/component_binding_def"
             },
             "settings": {
-              "$ref": "#/definitions/component_setting_def"
+              "$ref": "#/$defs/component_setting_def"
             },
             "pages": {
-              "$ref": "#/definitions/component_pages_def"
+              "$ref": "#/$defs/component_pages_def"
             }
           }
         },
@@ -2086,13 +2087,13 @@
               "type": "string"
             },
             "binding": {
-              "$ref": "#/definitions/component_binding_def"
+              "$ref": "#/$defs/component_binding_def"
             },
             "settings": {
-              "$ref": "#/definitions/component_setting_def"
+              "$ref": "#/$defs/component_setting_def"
             },
             "pages": {
-              "$ref": "#/definitions/component_pages_def"
+              "$ref": "#/$defs/component_pages_def"
             }
           }
         }
@@ -2143,15 +2144,15 @@
       "properties": {
         "display": {
           "description": "Represents an action triggered by the user on UI: the navigation to display an object",
-          "$ref": "#/definitions/action_prop_def"
+          "$ref": "#/$defs/action_prop_def"
         },
         "create": {
           "description": "Represents an action triggered by the user on UI: the navigation to create an object",
-          "$ref": "#/definitions/action_prop_def"
+          "$ref": "#/$defs/action_prop_def"
         },
         "edit": {
           "description": "Represents an action triggered by the user on UI: the navigation to edit an object",
-          "$ref": "#/definitions/action_prop_def"
+          "$ref": "#/$defs/action_prop_def"
         }
       }
     },
@@ -2172,7 +2173,7 @@
           "type": "boolean"
         },
         "settings": {
-          "$ref": "#/definitions/component_setting_def"
+          "$ref": "#/$defs/component_setting_def"
         }
       }
     },
@@ -2181,7 +2182,7 @@
       "additionalProperties": false,
       "patternProperties": {
         "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
-          "$ref": "#/definitions/pages_map"
+          "$ref": "#/$defs/pages_map"
         }
       }
     },
@@ -2276,7 +2277,7 @@
                   ],
                   "properties": {
                     "embeddedComponents": {
-                      "$ref": "#/definitions/embeddedComponent"
+                      "$ref": "#/$defs/embeddedComponent"
                     }
                   }
                 }
@@ -2304,7 +2305,7 @@
         },
         "refreshStrategyOnAppRestore": {
           "description": "Represents the refresh strategies configured for external display navigation while coming back to the source app",
-          "$ref": "#/definitions/refreshStrategies_prop_def"
+          "$ref": "#/$defs/refreshStrategies_prop_def"
         }
       }
     },
@@ -2325,38 +2326,38 @@
         },
         "component": {
           "description": "Represents the component and its settings that makes the page",
-          "$ref": "#/definitions/component_def"
+          "$ref": "#/$defs/component_def"
         },
         "navigation": {
           "description": "Represents the different navigation targets",
-          "$ref": "#/definitions/navigation_def"
+          "$ref": "#/$defs/navigation_def"
         },
         "embeddedComponents": {
           "description": "Represent reuse components that should be appended at the end of the template component",
-          "$ref": "#/definitions/embeddedComponent"
+          "$ref": "#/$defs/embeddedComponent"
         },
         "routingSpec": {
           "description": "Represents the routing specification",
-          "$ref": "#/definitions/routingSpec_def"
+          "$ref": "#/$defs/routingSpec_def"
         },
         "implementingComponent": {
           "description": "Represents the component to be loaded inside the canvas if sap.suite.ui.generic.template.Canvas is used as component name, and its settings",
-          "$ref": "#/definitions/implementingComponent_def"
+          "$ref": "#/$defs/implementingComponent_def"
         },
         "defaultLayoutType": {
           "description": "Default layout used to open the corresponding page in FlexibleColumnLayout",
-          "$ref": "#/definitions/defaultLayoutType_def"
+          "$ref": "#/$defs/defaultLayoutType_def"
         },
         "defaultLayoutTypeIfExternalNavigation": {
           "description": "Default layout used to open the corresponding page in FlexibleColumnLayout when reached via external navigation",
-          "$ref": "#/definitions/defaultLayoutType_def"
+          "$ref": "#/$defs/defaultLayoutType_def"
         },
         "pages": {
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-zA-Z0-9_\\.\\-]+[\\|]?[a-zA-Z0-9_\\.\\-]+$": {
-              "$ref": "#/definitions/pages_map"
+              "$ref": "#/$defs/pages_map"
             }
           }
         }
@@ -2379,36 +2380,36 @@
         },
         "component": {
           "description": "Represents the component and its settings that makes the page",
-          "$ref": "#/definitions/component_def"
+          "$ref": "#/$defs/component_def"
         },
         "navigation": {
           "description": "Represents the different navigation targets",
-          "$ref": "#/definitions/navigation_def"
+          "$ref": "#/$defs/navigation_def"
         },
         "embeddedComponents": {
           "description": "Represent reuse components that should be appended at the end of the template component",
-          "$ref": "#/definitions/embeddedComponent"
+          "$ref": "#/$defs/embeddedComponent"
         },
         "routingSpec": {
           "description": "Represents the routing specification",
-          "$ref": "#/definitions/routingSpec_def"
+          "$ref": "#/$defs/routingSpec_def"
         },
         "implementingComponent": {
           "description": "Represents the component to be loaded inside the canvas if sap.suite.ui.generic.template.Canvas is used as component name, and its settings",
-          "$ref": "#/definitions/implementingComponent_def"
+          "$ref": "#/$defs/implementingComponent_def"
         },
         "defaultLayoutType": {
           "description": "Default layout used to open the corresponding page in FlexibleColumnLayout",
-          "$ref": "#/definitions/defaultLayoutType_def"
+          "$ref": "#/$defs/defaultLayoutType_def"
         },
         "defaultLayoutTypeIfExternalNavigation": {
           "description": "Default layout used to open the corresponding page in FlexibleColumnLayout when reached via external navigation",
-          "$ref": "#/definitions/defaultLayoutType_def"
+          "$ref": "#/$defs/defaultLayoutType_def"
         },
         "pages": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/pages_array"
+            "$ref": "#/$defs/pages_array"
           }
         }
       }
@@ -2432,7 +2433,7 @@
         "propagateTitle": {
           "description": "Indicates whether this 'Component' target should propagate it's title to this component or not",
           "type": "boolean",
-          "default": "#/definitions/routing/config/propagateTitle"
+          "default": "#/$defs/routing/config/propagateTitle"
         }
       }
     },
@@ -2537,7 +2538,7 @@
         },
         "target": {
           "description": "Represents one or multiple names of targets which are displayed when the route is matched",
-          "$ref": "#/definitions/routeTarget"
+          "$ref": "#/$defs/routeTarget"
         },
         "titleTarget": {
           "description": "Represents the name of the target where the 'title' information should be taken",
@@ -2549,7 +2550,7 @@
       "description": "Represents the definition of each route",
       "allOf": [
         {
-          "$ref": "#/definitions/routeWithoutName"
+          "$ref": "#/$defs/routeWithoutName"
         },
         {
           "type": "object",
@@ -2697,7 +2698,7 @@
                   "type": "string"
                 },
                 {
-                  "$ref": "#/definitions/routeTargetObject"
+                  "$ref": "#/$defs/routeTargetObject"
                 }
               ]
             }
@@ -2707,7 +2708,7 @@
           "type": "string"
         },
         {
-          "$ref": "#/definitions/routeTargetObject"
+          "$ref": "#/$defs/routeTargetObject"
         }
       ]
     },
@@ -2745,7 +2746,7 @@
               "type": "object",
               "patternProperties": {
                 "^[a-zA-Z0-9_\\-]*$": {
-                  "$ref": "#/definitions/terminologySetting"
+                  "$ref": "#/$defs/terminologySetting"
                 }
               }
             }
@@ -2774,7 +2775,7 @@
               "type": "object",
               "patternProperties": {
                 "^[a-zA-Z0-9_\\-]*$": {
-                  "$ref": "#/definitions/terminologySetting"
+                  "$ref": "#/$defs/terminologySetting"
                 }
               }
             }
@@ -2873,7 +2874,7 @@
           "additionalProperties": true,
           "patternProperties": {
             "^[a-zA-Z0-9_\\-]*$": {
-              "$ref": "#/definitions/terminologySetting"
+              "$ref": "#/$defs/terminologySetting"
             }
           }
         },
@@ -2882,7 +2883,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/enhanceWithSetting"
+            "$ref": "#/$defs/enhanceWithSetting"
           }
         }
       }
@@ -2951,7 +2952,7 @@
                   "properties": {
                     "target": {
                       "description": "Represents one or multiple names of targets that are displayed when no route is matched",
-                      "$ref": "#/definitions/routeTarget"
+                      "$ref": "#/$defs/routeTarget"
                     }
                   }
                 },
@@ -2962,7 +2963,7 @@
               }
             },
             {
-              "$ref": "#/definitions/target"
+              "$ref": "#/$defs/target"
             }
           ]
         },
@@ -2972,7 +2973,7 @@
               "description": "Represents the definition of routes by providing an array with elements which contain the configuration for each route",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/route"
+                "$ref": "#/$defs/route"
               }
             },
             {
@@ -2980,7 +2981,7 @@
               "type": "object",
               "patternProperties": {
                 "[\\s\\S]*": {
-                  "$ref": "#/definitions/routeWithoutName"
+                  "$ref": "#/$defs/routeWithoutName"
                 }
               }
             }
@@ -2995,7 +2996,7 @@
                 {
                   "allOf": [
                     {
-                      "$ref": "#/definitions/target"
+                      "$ref": "#/$defs/target"
                     },
                     {
                       "type": "object",
@@ -3023,7 +3024,7 @@
                 {
                   "allOf": [
                     {
-                      "$ref": "#/definitions/target"
+                      "$ref": "#/$defs/target"
                     },
                     {
                       "oneOf": [
@@ -3161,20 +3162,20 @@
                   "properties": {
                     "target": {
                       "description": "Represents one or multiple names of targets that are displayed when no route is matched",
-                      "$ref": "#/definitions/routeTarget"
+                      "$ref": "#/$defs/routeTarget"
                     }
                   }
                 }
               }
             },
             {
-              "$ref": "#/definitions/target"
+              "$ref": "#/$defs/target"
             },
             {
-              "$ref": "#/definitions/legacyTargetAdditionWithoutRequiredProp"
+              "$ref": "#/$defs/legacyTargetAdditionWithoutRequiredProp"
             },
             {
-              "$ref": "#/definitions/actualTargetAdditionStandardWithoutRequiredProp"
+              "$ref": "#/$defs/actualTargetAdditionStandardWithoutRequiredProp"
             }
           ]
         },
@@ -3184,7 +3185,7 @@
               "description": "Represents the definition of routes by providing an array with elements which contain the configuration for each route",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/route"
+                "$ref": "#/$defs/route"
               }
             },
             {
@@ -3192,7 +3193,7 @@
               "type": "object",
               "patternProperties": {
                 "[\\s\\S]*": {
-                  "$ref": "#/definitions/routeWithoutName"
+                  "$ref": "#/$defs/routeWithoutName"
                 }
               }
             }
@@ -3207,25 +3208,25 @@
                 {
                   "allOf": [
                     {
-                      "$ref": "#/definitions/target"
+                      "$ref": "#/$defs/target"
                     },
                     {
-                      "$ref": "#/definitions/legacyTargetAddition"
+                      "$ref": "#/$defs/legacyTargetAddition"
                     }
                   ]
                 },
                 {
                   "allOf": [
                     {
-                      "$ref": "#/definitions/target"
+                      "$ref": "#/$defs/target"
                     },
                     {
                       "oneOf": [
                         {
-                          "$ref": "#/definitions/actualTargetAdditionStandard"
+                          "$ref": "#/$defs/actualTargetAdditionStandard"
                         },
                         {
-                          "$ref": "#/definitions/actualTargetAdditionComponentUsage"
+                          "$ref": "#/$defs/actualTargetAdditionComponentUsage"
                         }
                       ]
                     }
@@ -3282,7 +3283,7 @@
         {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/config"
+            "$ref": "#/$defs/config"
           }
         },
         {
@@ -3326,7 +3327,7 @@
           "default": false
         },
         "settings": {
-          "$ref": "#/definitions/ui5setting"
+          "$ref": "#/$defs/ui5setting"
         }
       }
     },
@@ -3336,7 +3337,7 @@
       "properties": {
         "minVersion": {
           "description": "Represents minimal version of ui5 component",
-          "$ref": "#/definitions/version"
+          "$ref": "#/$defs/version"
         },
         "lazy": {
           "description": "Represents Indicator to lazy loading component",
@@ -3351,7 +3352,7 @@
       "properties": {
         "minVersion": {
           "description": "Represents minimal version of ui5 library",
-          "$ref": "#/definitions/version"
+          "$ref": "#/$defs/version"
         },
         "lazy": {
           "description": "Represents Indicator to lazy loading lib",
@@ -3375,11 +3376,11 @@
         },
         "componentData": {
           "description": "Represents component data for the Component",
-          "$ref": "#/definitions/config"
+          "$ref": "#/$defs/config"
         },
         "settings": {
           "description": "Represents settings for the Component",
-          "$ref": "#/definitions/config"
+          "$ref": "#/$defs/config"
         },
         "lazy": {
           "description": "Represents Indicator to lazy loading component usage, default true",
@@ -3490,10 +3491,10 @@
           "description": "A (catalog) object of an InA DataSource",
           "properties": {
             "objectName": {
-              "$ref": "#/definitions/objectName"
+              "$ref": "#/$defs/objectName"
             },
             "objectType": {
-              "$ref": "#/definitions/objectType"
+              "$ref": "#/$defs/objectType"
             },
             "packageName": {
               "type": "string"
@@ -3563,7 +3564,7 @@
         },
         "settings": {
           "description": "Represents data source type specific attributes (key, value pairs)",
-          "$ref": "#/definitions/setting"
+          "$ref": "#/$defs/setting"
         }
       }
     },
@@ -3613,7 +3614,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[a-zA-Z0-9_\\-]*$": {
-                  "$ref": "#/definitions/terminologySetting"
+                  "$ref": "#/$defs/terminologySetting"
                 }
               }
             }
@@ -3643,7 +3644,7 @@
               "additionalProperties": false,
               "patternProperties": {
                 "^[a-zA-Z0-9_\\-]*$": {
-                  "$ref": "#/definitions/terminologySetting"
+                  "$ref": "#/$defs/terminologySetting"
                 }
               }
             }

@@ -1217,7 +1217,7 @@ export interface SignatureDef {
          */
         format?: "plain" | "array";
         /**
-         * DEPRECATED - Indicates the administrator should be prompted to supply a value when creating a tile
+         * [Deprecated] Indicates the administrator should be prompted to supply a value when creating a tile
          */
         prompt?: boolean;
       };
@@ -1329,7 +1329,7 @@ export interface JSONSchemaForSAPUINamespace {
     [k: string]: unknown;
   };
   /**
-   * The property is Deprecated. Represents array of supported SAP themes such as sap_hcb, sap_bluecrystal
+   * [Deprecated] Represents array of supported SAP themes such as sap_hcb, sap_bluecrystal
    */
   supportedThemes?: string[];
   /**
@@ -3094,7 +3094,7 @@ export interface JSONSchemaForSAPInsightsNamespace {
    */
   visible?: boolean;
   /**
-   * Deprecated: Represents the display order of Insights card
+   * [Deprecated] Represents the display order of Insights card
    */
   rank?: number;
   /**
