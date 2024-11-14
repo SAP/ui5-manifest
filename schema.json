@@ -1999,7 +1999,8 @@
             "1.45.0",
             "1.46.0",
             "1.47.0",
-            "1.48.0"
+            "1.48.0",
+            "1.49.0"
           ]
         },
         "designtime": {
@@ -5800,6 +5801,34 @@
           "oneOf": [
             {
               "type": "string"
+            },
+            {
+              "$ref": "#/$defs/simpleBinding"
+            }
+          ]
+        },
+        "use12HourFormat": {
+          "description": "Displays the time for calendar appointments in either 12h or 24h formats. By default, time is displayed in 24h format.",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/$defs/simpleBinding"
+            }
+          ]
+        },
+        "calendarWeekNumbering": {
+          "description": "Set the first day of week based on one of the available options Default, ISO_8601, MiddleEastern, or WesternTraditional.",
+          "oneOf": [
+            {
+              "enum": [
+                "Default",
+                "ISO_8601",
+                "MiddleEastern",
+                "WesternTraditional"
+              ],
+              "default": "Default"
             },
             {
               "$ref": "#/$defs/simpleBinding"
