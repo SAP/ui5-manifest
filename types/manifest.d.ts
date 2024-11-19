@@ -1557,7 +1557,7 @@ export interface RoutingFlexEnabled {
       /**
        * Represents one or multiple names of targets that are displayed when no route is matched
        */
-      target: [] | [string | RouteTargetObject] | string | RouteTargetObject;
+      target: (string | RouteTargetObject)[] | string | RouteTargetObject;
     };
     /**
      * Represents a prefix that is prepended in front of the viewName
@@ -1717,7 +1717,7 @@ export interface RouteWithoutName {
   /**
    * Represents one or multiple names of targets which are displayed when the route is matched
    */
-  target?: [] | [string | RouteTargetObject] | string | RouteTargetObject;
+  target?: (string | RouteTargetObject)[] | string | RouteTargetObject;
   /**
    * Represents the name of the target where the 'title' information should be taken
    */
@@ -1773,7 +1773,7 @@ export interface Routing {
       /**
        * Represents one or multiple names of targets that are displayed when no route is matched
        */
-      target: [] | [string | RouteTargetObject] | string | RouteTargetObject;
+      target: (string | RouteTargetObject)[] | string | RouteTargetObject;
     };
     [k: string]: unknown;
   } & Target &

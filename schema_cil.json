@@ -2691,18 +2691,16 @@
       "oneOf": [
         {
           "type": "array",
-          "items": [
-            {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/$defs/routeTargetObject"
-                }
-              ]
-            }
-          ]
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/routeTargetObject"
+              }
+            ]
+          }
         },
         {
           "type": "string"
