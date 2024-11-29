@@ -189,7 +189,7 @@ export type JSONSchemaForSAPUI5Namespace = {
    */
   dependencies: {
     /**
-     * Represents the minimum version of SAP UI5 that your component requires. It is either a specific version or an array of versions where each major version can only be included once. If array contains more than one version and if version 1 is included it must be at least 1.120.x.
+     * Represents the minimum version of SAPUI5 that your component requires. It is either a specific version or an array of versions where each major version can only be included once. If array contains more than one version and if version 1 is included it must be at least 1.120.x.
      */
     minUI5Version: string | string[];
     /**
