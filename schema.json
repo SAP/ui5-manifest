@@ -2001,7 +2001,8 @@
             "1.46.0",
             "1.47.0",
             "1.48.0",
-            "1.49.0"
+            "1.49.0",
+            "1.50.0"
           ]
         },
         "designtime": {
@@ -5717,8 +5718,8 @@
           "description": "Allow attribute of the iframe",
           "type": "string"
         },
-        "allowfullscreen": {
-          "description": "Allowfullscreen attribute of the iframe",
+        "allowFullscreen": {
+          "description": "AllowFullscreen attribute of the iframe",
           "oneOf": [
             {
               "type": "boolean",
@@ -6565,6 +6566,9 @@
               "pattern": "^[a-zA-Z0-9_\\.\\-/|@#]*$"
             }
           }
+        },
+        "group": {
+          "$ref": "#/$defs/group"
         },
         "visible": {
           "description": "Determines whether the filter is visible",
