@@ -7,6 +7,12 @@ A list of unreleased changes can be found [here](https://github.com/SAP/ui5-mani
 <a name="v1.69.0"></a>
 ## [v1.69.0] - 2025-01-10
 
+### Added
+- New property “group” for ComboBox filter. This allows to group the items inside the ComboBox.
+
+### Changed
+- Renamed property “allowfullscreen” to “allowFullscreen” for WebPage card. The old property is still usable, but is deprecated.
+
 <a name="v1.68.0"></a>
 ## [v1.68.0] - 2024-11-14
 
