@@ -4,10 +4,17 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <a name="Unreleased"></a>
 ## [Unreleased]
+
 ### Fixed
+
 ### Added
+- In "sap.card" section - new property "closeButton" for footer. Allows to control the visibility of the close button which appears in the card footer. Replaces the property "closeButton" from the header section.
+
 ### Changed
+- In "sap.card" section - deprecated property "closeButton" for header. Replaced by the property "closeButton" in the footer.
+
 ### Removed
+
 ### Required application adoption
 
 <a name="v1.69.0"></a>

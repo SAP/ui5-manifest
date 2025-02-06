@@ -2003,7 +2003,8 @@
             "1.47.0",
             "1.48.0",
             "1.49.0",
-            "1.50.0"
+            "1.50.0",
+            "1.51.0"
           ]
         },
         "designtime": {
@@ -2201,6 +2202,10 @@
             "visible": {
               "description": "[Experimental] Visibility of the footer",
               "$ref": "#/$defs/visibility"
+            },
+            "closeButton": {
+              "description": "[Experimental] Defines the Close button when the card is opened by the ShowCard action.",
+              "$ref": "#/$defs/closeButton"
             }
           }
         },
@@ -5232,17 +5237,6 @@
         }
       ]
     },
-    "closeButton": {
-      "description": "[Experimental] Represents attributes of the Close button",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "visible": {
-          "description": "[Experimental] Represents the visibility of the Close button",
-          "$ref": "#/$defs/visibility"
-        }
-      }
-    },
     "status": {
       "description": "Represents status attributes",
       "type": "object",
@@ -5597,7 +5591,8 @@
         },
         "closeButton": {
           "description": "[Experimental] Represents the Close button when a card is opened by the ShowCard action.",
-          "$ref": "#/$defs/closeButton"
+          "$ref": "#/$defs/closeButton",
+          "deprecated": true
         },
         "wrappingType": {
           "description": "[Experimental] The wrapping type for texts inside the header.",
@@ -5684,7 +5679,8 @@
         },
         "closeButton": {
           "description": "[Experimental] Represents the Close button when a card is opened by the ShowCard action.",
-          "$ref": "#/$defs/closeButton"
+          "$ref": "#/$defs/closeButton",
+          "deprecated": true
         },
         "wrappingType": {
           "description": "[Experimental] The wrapping type for texts inside the header.",
@@ -6232,6 +6228,17 @@
         },
         "group": {
           "$ref": "#/$defs/group"
+        }
+      }
+    },
+    "closeButton": {
+      "description": "[Experimental] Represents attributes of the Close button",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "visible": {
+          "description": "[Experimental] Represents the visibility of the Close button",
+          "$ref": "#/$defs/visibility"
         }
       }
     },
