@@ -15,13 +15,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - sap.card: deprecated property "closeButton" for header. Replaced by the property "closeButton" in the footer.
 
 <a name="v1.69.0"></a>
-## [v1.69.0] - 2025-01-10
+## [v1.69.0] - 2025-01-10 (UI5 1.132)
 
 ### Added
-- New property “group” for ComboBox filter. This allows to group the items inside the ComboBox.
+- sap.card: new property “group” for ComboBox filter. This allows to group the items inside the ComboBox.
 
 ### Changed
-- Renamed property “allowfullscreen” to “allowFullscreen” for WebPage card. The old property is still usable, but is deprecated.
+- sap.card: renamed property “allowfullscreen” to “allowFullscreen” for WebPage card. The old property is still usable, but is deprecated.
 
 <a name="v1.68.0"></a>
 ## [v1.68.0] - 2024-11-14
