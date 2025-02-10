@@ -5,17 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
-### Fixed
+<a name="v1.70.0-1"></a>
+## [v1.70.0] - 2025-02-10 (UI5 1.133)
 
 ### Added
-- In "sap.card" section - new property "closeButton" for footer. Allows to control the visibility of the close button which appears in the card footer. Replaces the property "closeButton" from the header section.
+- sap.card: new property "closeButton" for footer. Allows to control the visibility of the close button which appears in the card footer. Replaces the property "closeButton" from the header section.
 
 ### Changed
-- In "sap.card" section - deprecated property "closeButton" for header. Replaced by the property "closeButton" in the footer.
-
-### Removed
-
-### Required application adoption
+- sap.card: deprecated property "closeButton" for header. Replaced by the property "closeButton" in the footer.
 
 <a name="v1.69.0"></a>
 ## [v1.69.0] - 2025-01-10
@@ -110,7 +107,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.69.0...HEAD
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.70.0...HEAD
+[v1.70.0]: https://github.com/SAP/ui5-manifest/compare/v1.69.0...v1.70.0
 [v1.69.0]: https://github.com/SAP/ui5-manifest/compare/v1.68.0...v1.69.0
 [v1.68.0]: https://github.com/SAP/ui5-manifest/compare/v1.67.2...v1.68.0
 [v1.67.2]: https://github.com/SAP/ui5-manifest/compare/v1.67.1...v1.67.2
