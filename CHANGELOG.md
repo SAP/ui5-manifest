@@ -2,26 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-<a name="Unreleased"></a>
-## [Unreleased]
+A list of unreleased changes can be found [here](https://github.com/SAP/ui5-manifest/compare/v1.70.0...HEAD).
 
-<a name="v1.70.0-1"></a>
-## [v1.70.0] - 2025-02-10 (UI5 1.133)
-
-### Added
-- sap.card: new property "closeButton" for footer. Allows to control the visibility of the close button which appears in the card footer. Replaces the property "closeButton" from the header section.
-
-### Changed
-- sap.card: deprecated property "closeButton" for header. Replaced by the property "closeButton" in the footer.
+<a name="v1.70.0"></a>
+## [v1.70.0] - 2025-02-10
 
 <a name="v1.69.0"></a>
-## [v1.69.0] - 2025-01-10 (UI5 1.132)
-
-### Added
-- sap.card: new property “group” for ComboBox filter. This allows to group the items inside the ComboBox.
-
-### Changed
-- sap.card: renamed property “allowfullscreen” to “allowFullscreen” for WebPage card. The old property is still usable, but is deprecated.
+## [v1.69.0] - 2025-01-10
 
 <a name="v1.68.0"></a>
 ## [v1.68.0] - 2024-11-14
@@ -107,7 +94,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.70.0...HEAD
 [v1.70.0]: https://github.com/SAP/ui5-manifest/compare/v1.69.0...v1.70.0
 [v1.69.0]: https://github.com/SAP/ui5-manifest/compare/v1.68.0...v1.69.0
 [v1.68.0]: https://github.com/SAP/ui5-manifest/compare/v1.67.2...v1.68.0
