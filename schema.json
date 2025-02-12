@@ -8321,6 +8321,12 @@
             },
             {
               "$ref": "#/$defs/target"
+            },
+            {
+              "$ref": "#/$defs/legacyTargetAdditionWithoutRequiredProp"
+            },
+            {
+              "$ref": "#/$defs/actualTargetAdditionStandardWithoutRequiredProp"
             }
           ]
         },

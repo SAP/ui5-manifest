@@ -1566,7 +1566,9 @@ export interface RoutingFlexEnabled {
      */
     viewPath?: string;
     [k: string]: unknown;
-  } & Target;
+  } & Target &
+    LegacyTargetAdditionWithoutRequiredProp &
+    ActualTargetAdditionStandardWithoutRequiredProp;
   routes?:
     | Route[]
     | {
@@ -1698,6 +1700,48 @@ export interface Target {
   };
   [k: string]: unknown;
 }
+export interface LegacyTargetAdditionWithoutRequiredProp {
+  /**
+   * Represents the name of a view that will be created
+   */
+  viewName?: string;
+  /**
+   * Represents the id of the created view
+   */
+  viewId?: string;
+  /**
+   * Represents a prefix that is prepended in front of the viewName
+   */
+  viewPath?: string;
+  /**
+   * Represents the level of the current view which is used to define the transition direction when navigate to this view
+   */
+  viewLevel?: number;
+  [k: string]: unknown;
+}
+export interface ActualTargetAdditionStandardWithoutRequiredProp {
+  /**
+   * Represents the name of a view or component that will be created
+   */
+  name?: string;
+  /**
+   * Represents the id of the created view or component
+   */
+  id?: string;
+  /**
+   * Represents a prefix that is prepended in front of the view or component name
+   */
+  path?: string;
+  /**
+   * Represents the type of the type View or Component
+   */
+  type?: "View" | "Component";
+  /**
+   * Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component
+   */
+  level?: number;
+  [k: string]: unknown;
+}
 /**
  * Represents the definition of route without the option 'name'. This is used when routes are defined in an object.
  *
@@ -1798,48 +1842,6 @@ export interface Routing {
       | (Target & LegacyTargetAddition)
       | (Target & (ActualTargetAdditionStandard | ActualTargetAdditionComponentUsage));
   };
-  [k: string]: unknown;
-}
-export interface LegacyTargetAdditionWithoutRequiredProp {
-  /**
-   * Represents the name of a view that will be created
-   */
-  viewName?: string;
-  /**
-   * Represents the id of the created view
-   */
-  viewId?: string;
-  /**
-   * Represents a prefix that is prepended in front of the viewName
-   */
-  viewPath?: string;
-  /**
-   * Represents the level of the current view which is used to define the transition direction when navigate to this view
-   */
-  viewLevel?: number;
-  [k: string]: unknown;
-}
-export interface ActualTargetAdditionStandardWithoutRequiredProp {
-  /**
-   * Represents the name of a view or component that will be created
-   */
-  name?: string;
-  /**
-   * Represents the id of the created view or component
-   */
-  id?: string;
-  /**
-   * Represents a prefix that is prepended in front of the view or component name
-   */
-  path?: string;
-  /**
-   * Represents the type of the type View or Component
-   */
-  type?: "View" | "Component";
-  /**
-   * Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component
-   */
-  level?: number;
   [k: string]: unknown;
 }
 export interface LegacyTargetAddition {
