@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+<a name="v1.71.0"></a>
+## [v1.71.0] - 2025-03-06  (UI5 1.134)
+
 ### Added
 - sap.card: new property "configuration/loadingPlaceholders/delay". Allows to control the delay of the loading placeholders for the whole card.
 
@@ -116,7 +119,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.70.1...HEAD
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...HEAD
+[v1.71.0]: https://github.com/SAP/ui5-manifest/compare/v1.70.1...v1.71.0
 [v1.70.1]: https://github.com/SAP/ui5-manifest/compare/v1.70.0...v1.70.1
 [v1.70.0]: https://github.com/SAP/ui5-manifest/compare/v1.69.0...v1.70.0
 [v1.69.0]: https://github.com/SAP/ui5-manifest/compare/v1.68.0...v1.69.0
