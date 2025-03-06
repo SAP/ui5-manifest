@@ -14,7 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Changed
 - sap.ui5: add support for legacy (e.g. viewPath) and new options (e.g. path) in routing config when flex enabled.
 
-<a name="v1.70.0-1"></a>
+<a name="v1.70.0"></a>
 ## [v1.70.0] - 2025-02-10 (UI5 1.133)
 
 ### Added
