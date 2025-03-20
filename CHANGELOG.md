@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+### Added
+- sap.ui5/commands: added new "ref" property to reference SAP standardized command and a "description" property to provide a translatable text for describing the command.
+
 <a name="v1.71.0"></a>
 ## [v1.71.0] - 2025-03-06  (UI5 1.134)
 

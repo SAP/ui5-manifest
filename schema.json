@@ -8478,8 +8478,40 @@
           "patternTransformCode": "''.split('').map(function(char) { console.log(char);  if (/[a-z]/i.test(char)) { return `[${char.toUpperCase()}${char.toLowerCase()}]`; } else { return char; } } ).join('')",
           "patternFromRuntime": "^((Ctrl|Shift|Alt)(\\+)?){0,3}([A-Za-z0-9\\.,\\-\\*\\/=]|Plus|Tab|Space|Enter|Backspace|Home|Delete|End|Pageup|Pagedown|Escape|ArrowUp|ArrowDown|ArrowLeft|ArrowRight|F[1-9]|F1[0-2])$",
           "pattern": "^(([Cc][Tt][Rr][Ll]|[Ss][Hh][Ii][Ff][Tt]|[Aa][Ll][Tt])(\\+)?){0,3}([A-Za-z0-9\\.,\\-\\*\\/=]|[Pp][Ll][Uu][Ss]|[Tt][Aa][Bb]|[Ss][Pp][Aa][Cc][Ee]|[Ee][Nn][Tt][Ee][Rr]|[Bb][Aa][Cc][Kk][Ss][Pp][Aa][Cc][Ee]|[Hh][Oo][Mm][Ee]|[Dd][Ee][Ll][Ee][Tt][Ee]|[Ee][Nn][Dd]|[Pp][Aa][Gg][Ee][Uu][Pp]|[Pp][Aa][Gg][Ee][Dd][Oo][Ww][Nn]|[Ee][Ss][Cc][Aa][Pp][Ee]|[Aa][Rr][Rr][Oo][Ww][Uu][Pp]|[Aa][Rr][Rr][Oo][Ww][Dd][Oo][Ww][Nn]|[Aa][Rr][Rr][Oo][Ww][Ll][Ee][Ff][Tt]|[Aa][Rr][Rr][Oo][Ww][Rr][Ii][Gg][Hh][Tt]|F[1-9]|F1[0-2])$"
+        },
+        "ref": {
+          "description": "A string referencing a predefined shortcut command. Must start with 'sap:'.",
+          "type": "string",
+          "pattern": "^sap:[a-zA-Z0-9_-]+$"
+        },
+        "description": {
+          "description": "A string containing a placeholder that follows the format {{someKey}}.",
+          "type": "string",
+          "pattern": "^\\{\\{[a-zA-Z0-9_]+\\}\\}$"
         }
-      }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "shortcut"
+          ],
+          "not": {
+            "required": [
+              "ref"
+            ]
+          }
+        },
+        {
+          "required": [
+            "ref"
+          ],
+          "not": {
+            "required": [
+              "shortcut"
+            ]
+          }
+        }
+      ]
     },
     "booleanOrString": {
       "oneOf": [

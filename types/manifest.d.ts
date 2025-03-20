@@ -551,6 +551,29 @@ export type EnhanceWithSetting4 =
       };
     };
 /**
+ * Represents a UI5 shortcut command.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[A-Za-z_][A-Za-z0-9_\-\|@]+$".
+ */
+export type Command = {
+  /**
+   * A string describing a shortcut key combination that, when used by the user, will trigger the command.
+   */
+  shortcut?: string;
+  /**
+   * A string referencing a predefined shortcut command. Must start with 'sap:'.
+   */
+  ref?: string;
+  /**
+   * A string containing a placeholder that follows the format {{someKey}}.
+   */
+  description?: string;
+} & Command1;
+export type Command1 = {
+  [k: string]: unknown;
+};
+/**
  * Represents the definition of each route
  */
 export type Route = RouteWithoutName & {
@@ -1524,18 +1547,6 @@ export interface Service {
    */
   optional?: boolean;
   [k: string]: unknown;
-}
-/**
- * Represents a UI5 shortcut command.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[A-Za-z_][A-Za-z0-9_\-\|@]+$".
- */
-export interface Command {
-  /**
-   * A string describing a shortcut key combination that, when used by the user, will trigger the command.
-   */
-  shortcut?: string;
 }
 /**
  * Represents the configuration of routing
