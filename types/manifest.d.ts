@@ -176,7 +176,8 @@ export type JSONSchemaForSAPUI5Namespace = {
     | "1.15.0"
     | "1.16.0"
     | "1.17.0"
-    | "1.18.0";
+    | "1.18.0"
+    | "1.19.0";
   resources?: Resource;
   /**
    * Represents the explicit usage declaration for UI5 reuse components
@@ -738,7 +739,8 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.68.0"
     | "1.69.0"
     | "1.70.1"
-    | "1.71.0";
+    | "1.71.0"
+    | "1.72.0";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
