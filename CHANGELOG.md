@@ -2,44 +2,25 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-<a name="Unreleased"></a>
-## [Unreleased]
+A list of unreleased changes can be found [here](https://github.com/SAP/ui5-manifest/compare/v1.72.1...HEAD).
+
+<a name="v1.72.1"></a>
+## [v1.72.1] - 2025-03-21
 
 <a name="v1.72.0"></a>
-## [v1.72.0] - 2025-03-21  (UI5 1.134)
-
-### Added
-- sap.ui5/commands: added new "ref" property to reference SAP standardized command and a "description" property to provide a translatable text for describing the command.
+## [v1.72.0] - 2025-03-10
 
 <a name="v1.71.0"></a>
-## [v1.71.0] - 2025-03-06  (UI5 1.134)
-
-### Added
-- sap.card: new property "configuration/loadingPlaceholders/delay". Allows to control the delay of the loading placeholders for the whole card.
+## [v1.71.0] - 2025-03-06
 
 <a name="v1.70.1"></a>
-## [v1.70.1] - 2025-02-12 (UI5 1.133)
-
-### Changed
-- sap.ui5: add support for legacy (e.g. viewPath) and new options (e.g. path) in routing config when flex enabled.
+## [v1.70.1] - 2025-02-12
 
 <a name="v1.70.0"></a>
-## [v1.70.0] - 2025-02-10 (UI5 1.133)
-
-### Added
-- sap.card: new property "closeButton" for footer. Allows to control the visibility of the close button which appears in the card footer. Replaces the property "closeButton" from the header section.
-
-### Changed
-- sap.card: deprecated property "closeButton" for header. Replaced by the property "closeButton" in the footer.
+## [v1.70.0] - 2025-02-10
 
 <a name="v1.69.0"></a>
 ## [v1.69.0] - 2025-01-10
-
-### Added
-- New property “group” for ComboBox filter. This allows to group the items inside the ComboBox.
-
-### Changed
-- Renamed property “allowfullscreen” to “allowFullscreen” for WebPage card. The old property is still usable, but is deprecated.
 
 <a name="v1.68.0"></a>
 ## [v1.68.0] - 2024-11-14
@@ -125,7 +106,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...HEAD
+[v1.72.1]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v1.72.1
 [v1.72.0]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...v1.72.0
 [v1.71.0]: https://github.com/SAP/ui5-manifest/compare/v1.70.1...v1.71.0
 [v1.70.1]: https://github.com/SAP/ui5-manifest/compare/v1.70.0...v1.70.1
