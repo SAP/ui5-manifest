@@ -7849,19 +7849,23 @@
       ],
       "properties": {
         "viewName": {
-          "description": "Represents the name of a view that will be created",
+          "deprecated": true,
+          "description": "[Deprecated] Represents the name of a view that will be created",
           "type": "string"
         },
         "viewId": {
-          "description": "Represents the id of the created view",
+          "deprecated": true,
+          "description": "[Deprecated] Represents the id of the created view",
           "type": "string"
         },
         "viewPath": {
-          "description": "Represents a prefix that is prepended in front of the viewName",
+          "deprecated": true,
+          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName",
           "type": "string"
         },
         "viewLevel": {
-          "description": "Represents the level of the current view which is used to define the transition direction when navigate to this view",
+          "deprecated": true,
+          "description": "[Deprecated] Represents the level of the current view, which is used to define the transition direction when navigating to this view",
           "type": "number",
           "multipleOf": 1
         }
@@ -7943,19 +7947,23 @@
       "type": "object",
       "properties": {
         "viewName": {
-          "description": "Represents the name of a view that will be created",
+          "deprecated": true,
+          "description": "[Deprecated] Represents the name of a view that will be created",
           "type": "string"
         },
         "viewId": {
-          "description": "Represents the id of the created view",
+          "deprecated": true,
+          "description": "[Deprecated] Represents the id of the created view",
           "type": "string"
         },
         "viewPath": {
-          "description": "Represents a prefix that is prepended in front of the viewName",
+          "deprecated": true,
+          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName",
           "type": "string"
         },
         "viewLevel": {
-          "description": "Represents the level of the current view which is used to define the transition direction when navigate to this view",
+          "deprecated": true,
+          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view",
           "type": "number",
           "multipleOf": 1
         }
@@ -8795,6 +8803,8 @@
       "type": "object",
       "properties": {
         "js": {
+          "description": "[Deprecated] Specifies additional JavaScript resources of the Component.",
+          "deprecated": true,
           "type": "array",
           "items": {
             "type": "object",
@@ -8809,6 +8819,7 @@
           }
         },
         "css": {
+          "description": "Specifies additional CSS resources of the Component.",
           "type": "array",
           "items": {
             "type": "object",

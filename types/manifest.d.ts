@@ -1388,10 +1388,16 @@ export interface DeviceType1 {
  * Represents paths to JavaScript/CSS resources that your app needs (app internal), formerly called '.includes'
  */
 export interface Resource {
+  /**
+   * [Deprecated] Specifies additional JavaScript resources of the Component.
+   */
   js?: {
     uri: string;
     [k: string]: unknown;
   }[];
+  /**
+   * Specifies additional CSS resources of the Component.
+   */
   css?: {
     uri: string;
     id?: string;
@@ -1716,19 +1722,19 @@ export interface Target {
 }
 export interface LegacyTargetAdditionWithoutRequiredProp {
   /**
-   * Represents the name of a view that will be created
+   * [Deprecated] Represents the name of a view that will be created
    */
   viewName?: string;
   /**
-   * Represents the id of the created view
+   * [Deprecated] Represents the id of the created view
    */
   viewId?: string;
   /**
-   * Represents a prefix that is prepended in front of the viewName
+   * [Deprecated] Represents a prefix that is prepended in front of the viewName
    */
   viewPath?: string;
   /**
-   * Represents the level of the current view which is used to define the transition direction when navigate to this view
+   * [Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view
    */
   viewLevel?: number;
   [k: string]: unknown;
@@ -1860,19 +1866,19 @@ export interface Routing {
 }
 export interface LegacyTargetAddition {
   /**
-   * Represents the name of a view that will be created
+   * [Deprecated] Represents the name of a view that will be created
    */
   viewName: string;
   /**
-   * Represents the id of the created view
+   * [Deprecated] Represents the id of the created view
    */
   viewId?: string;
   /**
-   * Represents a prefix that is prepended in front of the viewName
+   * [Deprecated] Represents a prefix that is prepended in front of the viewName
    */
   viewPath?: string;
   /**
-   * Represents the level of the current view which is used to define the transition direction when navigate to this view
+   * [Deprecated] Represents the level of the current view, which is used to define the transition direction when navigating to this view
    */
   viewLevel?: number;
   [k: string]: unknown;
