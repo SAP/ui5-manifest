@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <a name="Unreleased"></a>
 ## [Unreleased]
+
+<a name="v1.73.0"></a>
+## [v1.73.0] - 2025-04-30  (UI5 1.135)
 - sap.ui5/resources: Deprecated "js" property. Only "css" is a valid resource.
 - sap.ui5/routing/targets: Deprecated options that are prefixed with "view", e.g., "viewName". Use options without "view"-prefix instead.
 
@@ -131,7 +134,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...HEAD
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.73.0...HEAD
+[v1.73.0]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v1.73.0
 [v1.72.3]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...v1.72.0
 [v1.71.0]: https://github.com/SAP/ui5-manifest/compare/v1.70.1...v1.71.0
 [v1.70.1]: https://github.com/SAP/ui5-manifest/compare/v1.70.0...v1.70.1
