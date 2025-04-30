@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - sap.ui5/resources: Deprecated "js" property. Only "css" is a valid resource.
 - sap.ui5/routing/targets: Deprecated options that are prefixed with "view", e.g., "viewName". Use options without "view"-prefix instead.
 
+### Added
+- sap.card/header: Added new section "infoSection".
+- sap.card/configuration: Added new property "placeholder" for DateRange filter.
+
 <a name="v1.72.3"></a>
 ## [v1.72.3] - 2025-03-21  (UI5 1.135)
 
