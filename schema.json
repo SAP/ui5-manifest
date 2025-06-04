@@ -2037,7 +2037,8 @@
             "1.50.0",
             "1.51.0",
             "1.52.0",
-            "1.53.0"
+            "1.53.0",
+            "1.54.0"
           ]
         },
         "designtime": {
@@ -5228,6 +5229,13 @@
               "$ref": "#/$defs/simpleBinding"
             }
           ]
+        },
+        "actions": {
+          "description": "Actions that can be applied on the status",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/action"
+          }
         }
       }
     },
