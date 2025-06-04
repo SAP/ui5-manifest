@@ -1190,9 +1190,6 @@
       "title": "JSON schema for SAP.FLP Namespace",
       "description": "Represents FLP specific attributes",
       "type": "object",
-      "required": [
-        "type"
-      ],
       "additionalProperties": false,
       "properties": {
         "_version": {
@@ -1201,16 +1198,43 @@
           "enum": [
             "1.1.0",
             "1.2.0",
-            "1.3.0"
+            "1.3.0",
+            "1.4.0"
           ]
         },
         "tileSize": {
-          "description": "Represents size of the tile",
+          "description": "Represents size of the tile. Deprecated, use 'vizOptions' instead.",
           "type": "string",
           "enum": [
             "1x1",
             "1x2"
-          ]
+          ],
+          "deprecated": true
+        },
+        "vizOptions": {
+          "description": "Options a visualization (launchpad tile) is offering with regards to rendering, for example",
+          "type": "object",
+          "properties": {
+            "displayFormats": {
+              "description": "Defines what display formats a visualization type can render itself in. The value 'default' is deprecated - please use 'standard' instead!",
+              "type": "object",
+              "properties": {
+                "supported": {
+                  "description": "Lists all display formats the visualization type is capable of rendering itself in. The order of items may be used as preference definition (most important first). The value 'default' is deprecated - please use 'standard' instead!",
+                  "type": "array",
+                  "default": [
+                    "standard"
+                  ],
+                  "items": {
+                    "$ref": "#/$defs/displayFormatEnum"
+                  }
+                },
+                "default": {
+                  "$ref": "#/$defs/displayFormatEnum"
+                }
+              }
+            }
+          }
         },
         "type": {
           "description": "Represents the type of FLP entry. It must be 'application' or 'tile' or 'plugin'",
@@ -1219,7 +1243,8 @@
             "application",
             "tile",
             "plugin"
-          ]
+          ],
+          "default": "application"
         },
         "config": {
           "description": "Represents configuration parameters of the FLP entry",
@@ -1233,7 +1258,7 @@
           }
         },
         "origin": {
-          "description": "Represents the original tile and target mapping which resulted in this app",
+          "description": "Represents the original tile and target mapping which resulted in this app. Deprecated.",
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -1245,7 +1270,8 @@
               "description": "Represents the original target mapping which resulted in this app",
               "type": "string"
             }
-          }
+          },
+          "deprecated": true
         }
       }
     },
@@ -7516,6 +7542,16 @@
           "type": "object"
         }
       }
+    },
+    "displayFormatEnum": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "standardWide",
+        "flat",
+        "flatWide",
+        "compact"
+      ]
     },
     "defaultLayoutType_def": {
       "type": "string"

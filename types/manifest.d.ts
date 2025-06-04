@@ -612,6 +612,7 @@ export type RootViewDef =
  *  Represents a binding string to indicate, how the reuse component should be bound relative to the containing page or absolute
  */
 export type ComponentBindingDef = string;
+export type DisplayFormatEnum = "standard" | "standardWide" | "flat" | "flatWide" | "compact";
 /**
  * Represents the card default grid size in columns and rows
  */
@@ -2529,15 +2530,32 @@ export interface JSONSchemaForSAPFLPNamespace {
   /**
    * Represents attributes format version. It is managed by namespace owner
    */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0";
+  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0";
   /**
-   * Represents size of the tile
+   * Represents size of the tile. Deprecated, use 'vizOptions' instead.
    */
   tileSize?: "1x1" | "1x2";
   /**
+   * Options a visualization (launchpad tile) is offering with regards to rendering, for example
+   */
+  vizOptions?: {
+    /**
+     * Defines what display formats a visualization type can render itself in. The value 'default' is deprecated - please use 'standard' instead!
+     */
+    displayFormats?: {
+      /**
+       * Lists all display formats the visualization type is capable of rendering itself in. The order of items may be used as preference definition (most important first). The value 'default' is deprecated - please use 'standard' instead!
+       */
+      supported?: DisplayFormatEnum[];
+      default?: DisplayFormatEnum;
+      [k: string]: unknown;
+    };
+    [k: string]: unknown;
+  };
+  /**
    * Represents the type of FLP entry. It must be 'application' or 'tile' or 'plugin'
    */
-  type: "application" | "tile" | "plugin";
+  type?: "application" | "tile" | "plugin";
   /**
    * Represents configuration parameters of the FLP entry
    */
@@ -2553,7 +2571,7 @@ export interface JSONSchemaForSAPFLPNamespace {
     };
   };
   /**
-   * Represents the original tile and target mapping which resulted in this app
+   * Represents the original tile and target mapping which resulted in this app. Deprecated.
    */
   origin?: {
     /**

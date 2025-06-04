@@ -4,7 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <a name="Unreleased"></a>
 ## [Unreleased]
+- sap.flp: new property "vizOptions" has been added to provide more options for tile sizes. Only needed for declaration of custom Fiori launchpad tiles.
 
+- sap.flp/origin: has been deprecated, as it is not used anymore
+- sap.flp/tileSize: has been deprecated in favor of sap.flp/vizOptions/displayFormats
+- sap.flp/type: is optional, defaults to "application"
 <a name="v1.73.1"></a>
 ## [v1.73.1] - 2025-04-30  (UI5 1.136)
 - sap.ui5/resources: Deprecated "js" property. Only "css" is a valid resource.
