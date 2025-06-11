@@ -5,13 +5,28 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
-<a name="v1.75.1"></a>
-## [v1.75.1] - 2025-06-04  (UI5 1.137)
+<a name="v2.0.0"></a>
+## [v2.0.0] - 2025-06-11  (UI5 1.136-lf)
+
 ### Added
-- sap.card: Added option for "actions" for all elements of type "status"
 - sap.flp: new property "vizOptions" has been added to provide more options for tile sizes. Only needed for declaration of custom Fiori launchpad tiles.
-- sap.flp/origin: has been deprecated, as it is not used anymore
-- sap.flp/tileSize: has been deprecated in favor of sap.flp/vizOptions/displayFormats
+
+### Removed
+- sap.ui5/resource:
+	- `js` property: removed
+- sap.ui5/rootView:
+	- `async` property: removed
+	- `type` property: Removed "HTML", "JS", "Template", "JSON" from possible values
+- sap.ui5/routing:
+	- config: async property removed
+	- targets: Removed legacy options, e.g., viewName, viewId, viewPath
+- sap.ovp: Removed Deprecated property globalFilterEntityType, globalFilterEntitySet should be used instead.
+- sap.ovp/cards: Removed deprecated property sequencePos.
+- sap.ovp/cards/settings: Corrected location for "tabs" property configuration.
+- sap.card: Remove all properties which are marked as deprecated. Some of the properties will continue to work in the runtime, but should not be used anymore.
+- sap.card: Remove option for "service" in "data" and "actions" section which was never published
+- sap.flp/origin: has been removed, as it is not used anymore
+- sap.flp/tileSize: has been removed in favor of sap.flp/vizOptions/displayFormats
 - sap.flp/type: is optional, defaults to "application"
 
 <a name="v1.73.1"></a>
@@ -143,7 +158,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...HEAD
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v2.0.0...HEAD
+[v2.0.0]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...v2.0.0
 [v1.75.1]: https://github.com/SAP/ui5-manifest/compare/v1.73.1...v1.75.1
 [v1.73.1]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v1.73.1
 [v1.72.3]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...v1.72.0

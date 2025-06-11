@@ -155,29 +155,6 @@ export type ObjectType = "query" | "cdsprojectionview" | "view" | "inamodel";
  * Represents sapui5 attributes
  */
 export type JSONSchemaForSAPUI5Namespace = {
-  /**
-   *  Represents SAPUI5 attributes format version. It is managed by namespace owner
-   */
-  _version?:
-    | "1.1.0"
-    | "1.2.0"
-    | "1.3.0"
-    | "1.4.0"
-    | "1.5.0"
-    | "1.6.0"
-    | "1.7.0"
-    | "1.8.0"
-    | "1.9.0"
-    | "1.10.0"
-    | "1.11.0"
-    | "1.12.0"
-    | "1.13.0"
-    | "1.14.0"
-    | "1.15.0"
-    | "1.16.0"
-    | "1.17.0"
-    | "1.18.0"
-    | "1.19.0";
   resources?: Resource;
   /**
    * Represents the explicit usage declaration for UI5 reuse components
@@ -595,17 +572,13 @@ export type RootViewDef =
        */
       viewName: string;
       /**
-       * Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template
+       * Represents the type of the view. Possible Values: XML
        */
-      type?: "XML" | "JSON" | "JS" | "HTML" | "Template";
+      type?: "XML";
       /**
        * Represents the id of the view
        */
       id?: string;
-      /**
-       * Configure the targets for asynchronous loading
-       */
-      async?: boolean;
       [k: string]: unknown;
     };
 /**
@@ -742,8 +715,7 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
     | "1.70.1"
     | "1.71.0"
     | "1.72.0"
-    | "1.73.1"
-    | "1.75.1";
+    | "1.73.1";
   /**
    * Represents the URL that the developer would prefer the user agent load when the user launches the web application
    */
@@ -761,16 +733,11 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
   "sap.flp"?: JSONSchemaForSAPFLPNamespace;
   "sap.ovp"?: JSONSchemaForSAPOVPNamespace;
   "sap.insights"?: JSONSchemaForSAPInsightsNamespace;
-  "sap.wda"?: JSONSchemaForSAPWDANamespace;
-  "sap.apf"?: JSONSchemaForSAPAPFNamespace;
   "sap.cloud.portal"?: JSONSchemaForSAPCLOUDPORTALNamespace;
-  "sap.gui"?: JSONSchemaForSAPGUINamespace;
   "sap.integration"?: JSONSchemaForSAPINTEGRATIONNamespace;
-  "sap.wcf"?: JSONSchemaForSAPWCFNamespace;
   "sap.ui.smartbusiness.app"?: JSONSchemaForSAPUISMARTBUSINESSAPPNamespace;
   "sap.mobile"?: JSONSchemaForSAPMOBILENamespace;
   "sap.copilot"?: JSONSchemaForSAPCOPILOTNamespace;
-  "sap.map"?: JSONSchemaForSAPMAPNamespace;
   "sap.url"?: JSONSchemaForSAPURLNamespace;
   "sap.platform.sfsf"?: JSONSchemaForSAPPLATFORMSFSFNamespace;
   "sap.cloud"?: JSONSchemaForSAPCLOUDNamespace;
@@ -784,31 +751,6 @@ export interface SAPJSONSchemaForWebApplicationManifestFile {
  * Represents general application attributes
  */
 export interface JSONSchemaForSAPAPPNamespace {
-  /**
-   * Application attributes format version. It is managed by namespace owner
-   */
-  _version?:
-    | "1.1.0"
-    | "1.2.0"
-    | "1.3.0"
-    | "1.4.0"
-    | "1.5.0"
-    | "1.6.0"
-    | "1.7.0"
-    | "1.8.0"
-    | "1.9.0"
-    | "1.10.0"
-    | "1.11.0"
-    | "1.12.0"
-    | "1.13.0"
-    | "1.14.0"
-    | "1.15.0"
-    | "1.16.0"
-    | "1.17.0"
-    | "1.18.0"
-    | "1.19.0"
-    | "1.20.0"
-    | "1.21.0";
   /**
    * Represents the template from which the app was generated
    */
@@ -1318,10 +1260,6 @@ export interface Outbound {
  */
 export interface JSONSchemaForSAPUINamespace {
   /**
-   * Represents UI attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0";
-  /**
    * Represents UI technology. The possible values are UI5 (default), WDA, NWBC, GUI, URL and WCF
    */
   technology: "UI5" | "WDA" | "NWBC" | "GUI" | "URL" | "WCF";
@@ -1388,16 +1326,9 @@ export interface DeviceType1 {
   phone?: boolean;
 }
 /**
- * Represents paths to JavaScript/CSS resources that your app needs (app internal), formerly called '.includes'
+ * Represents paths to CSS resources that your app needs (app internal).
  */
 export interface Resource {
-  /**
-   * [Deprecated] Specifies additional JavaScript resources of the Component.
-   */
-  js?: {
-    uri: string;
-    [k: string]: unknown;
-  }[];
   /**
    * Specifies additional CSS resources of the Component.
    */
@@ -1572,10 +1503,6 @@ export interface RoutingFlexEnabled {
      */
     routerClass?: string;
     /**
-     * Indicates whether the Views in routing are loaded asyncly
-     */
-    async?: boolean;
-    /**
      * Represents information about targets to display when no route is matched
      */
     bypassed?: {
@@ -1584,13 +1511,8 @@ export interface RoutingFlexEnabled {
        */
       target: (string | RouteTargetObject)[] | string | RouteTargetObject;
     };
-    /**
-     * Represents a prefix that is prepended in front of the viewName
-     */
-    viewPath?: string;
     [k: string]: unknown;
   } & Target &
-    LegacyTargetAdditionWithoutRequiredProp &
     ActualTargetAdditionStandardWithoutRequiredProp;
   routes?:
     | Route[]
@@ -1605,59 +1527,7 @@ export interface RoutingFlexEnabled {
      * This interface was referenced by `undefined`'s JSON-Schema definition
      * via the `patternProperty` "[\s\S]*".
      */
-    [k: string]:
-      | (Target & {
-          /**
-           * Represents the name of a view that will be created
-           */
-          viewName: string;
-          /**
-           * Represents the id of the created view
-           */
-          viewId: string;
-          /**
-           * Represents a prefix that is prepended in front of the viewName
-           */
-          viewPath?: string;
-          [k: string]: unknown;
-        })
-      | (Target &
-          (
-            | {
-                /**
-                 * Represents the name of a view or component that will be created
-                 */
-                name: string;
-                /**
-                 * Represents the id of the created view or component
-                 */
-                id: string;
-                /**
-                 * Represents a prefix that is prepended in front of the view or component name
-                 */
-                path?: string;
-                /**
-                 * Represents the type of the type View or Component
-                 */
-                type?: "View" | "Component";
-                [k: string]: unknown;
-              }
-            | {
-                /**
-                 * Represents the componentUsage of the component that will be created
-                 */
-                usage: string;
-                /**
-                 * Represents the id of the created view or component
-                 */
-                id: string;
-                /**
-                 * Represents the type of the type Component
-                 */
-                type: "Component";
-                [k: string]: unknown;
-              }
-          ));
+    [k: string]: (Target & ActualTargetAdditionStandardFlex) | (Target & ActualTargetAdditionComponentUsageFlex);
   };
   [k: string]: unknown;
 }
@@ -1690,7 +1560,7 @@ export interface Target {
   /**
    * Represents the type of view that is going to be created
    */
-  viewType?: "XML" | "JSON" | "JS" | "HTML" | "Template";
+  viewType?: "XML";
   /**
    * Represents the id of the view that contains the control specified by the 'controlId'
    */
@@ -1721,25 +1591,6 @@ export interface Target {
   transitionParameters?: {
     [k: string]: unknown;
   };
-  [k: string]: unknown;
-}
-export interface LegacyTargetAdditionWithoutRequiredProp {
-  /**
-   * [Deprecated] Represents the name of a view that will be created
-   */
-  viewName?: string;
-  /**
-   * [Deprecated] Represents the id of the created view
-   */
-  viewId?: string;
-  /**
-   * [Deprecated] Represents a prefix that is prepended in front of the viewName
-   */
-  viewPath?: string;
-  /**
-   * [Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view
-   */
-  viewLevel?: number;
   [k: string]: unknown;
 }
 export interface ActualTargetAdditionStandardWithoutRequiredProp {
@@ -1793,6 +1644,48 @@ export interface RouteWithoutName {
   titleTarget?: string;
   [k: string]: unknown;
 }
+export interface ActualTargetAdditionStandardFlex {
+  /**
+   * Represents the name of a view or component that will be created
+   */
+  name: string;
+  /**
+   * Represents the id of the created view or component
+   */
+  id: string;
+  /**
+   * Represents a prefix that is prepended in front of the view or component name
+   */
+  path?: string;
+  /**
+   * Represents the type of the type View or Component
+   */
+  type?: "View" | "Component";
+  /**
+   * Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component
+   */
+  level?: number;
+  [k: string]: unknown;
+}
+export interface ActualTargetAdditionComponentUsageFlex {
+  /**
+   * Represents the componentUsage of the component that will be created
+   */
+  usage: string;
+  /**
+   * Represents the id of the created view or component
+   */
+  id: string;
+  /**
+   * Represents the type of the type Component
+   */
+  type: "Component";
+  /**
+   * Represents the level of the current component which is used to define the transition direction when navigate to this component
+   */
+  level?: number;
+  [k: string]: unknown;
+}
 /**
  * Represents the root view definition when flex is enabled (requires a view id)
  */
@@ -1802,9 +1695,9 @@ export interface RootViewDefFlexEnabled {
    */
   viewName: string;
   /**
-   * Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template
+   * Represents the type of the view. Possible Values: XML
    */
-  type?: "XML" | "JSON" | "JS" | "HTML" | "Template";
+  type?: "XML";
   /**
    * Represents the id of the view
    */
@@ -1828,10 +1721,6 @@ export interface Routing {
      */
     routerClass?: string;
     /**
-     * Indicates whether the Views in routing are loaded asyncly
-     */
-    async?: boolean;
-    /**
      * Indicates whether the targets which have type 'Component' should propagate their title to this component or not
      */
     propagateTitle?: boolean;
@@ -1846,7 +1735,6 @@ export interface Routing {
     };
     [k: string]: unknown;
   } & Target &
-    LegacyTargetAdditionWithoutRequiredProp &
     ActualTargetAdditionStandardWithoutRequiredProp;
   routes?:
     | Route[]
@@ -1861,29 +1749,8 @@ export interface Routing {
      * This interface was referenced by `undefined`'s JSON-Schema definition
      * via the `patternProperty` "[\s\S]*".
      */
-    [k: string]:
-      | (Target & LegacyTargetAddition)
-      | (Target & (ActualTargetAdditionStandard | ActualTargetAdditionComponentUsage));
+    [k: string]: (Target & ActualTargetAdditionStandard) | (Target & ActualTargetAdditionComponentUsage);
   };
-  [k: string]: unknown;
-}
-export interface LegacyTargetAddition {
-  /**
-   * [Deprecated] Represents the name of a view that will be created
-   */
-  viewName: string;
-  /**
-   * [Deprecated] Represents the id of the created view
-   */
-  viewId?: string;
-  /**
-   * [Deprecated] Represents a prefix that is prepended in front of the viewName
-   */
-  viewPath?: string;
-  /**
-   * [Deprecated] Represents the level of the current view, which is used to define the transition direction when navigating to this view
-   */
-  viewLevel?: number;
   [k: string]: unknown;
 }
 export interface ActualTargetAdditionStandard {
@@ -1933,10 +1800,6 @@ export interface ActualTargetAdditionComponentUsage {
  */
 export interface JSONSchemaForSAPPLATFORMABAPNamespace {
   /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0";
-  /**
    * Represents the uri of the app in the ABAP system
    */
   uri?: string;
@@ -1949,10 +1812,6 @@ export interface JSONSchemaForSAPPLATFORMABAPNamespace {
  * Represents HANA Cloud Platform platform specific attributes
  */
 export interface JSONSchemaForSAPPLATFORMHCPNamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0";
   /**
    * Represents the uri of the app in the HANA Cloud Platform
    */
@@ -1983,10 +1842,6 @@ export interface JSONSchemaForSAPPLATFORMHCPNamespace {
  */
 export interface JSONSchemaForSAPPLATFORMCFNamespace {
   /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0";
-  /**
    * Represents the authorization scope of the application
    */
   oAuthScopes?: string[];
@@ -1997,10 +1852,6 @@ export interface JSONSchemaForSAPPLATFORMCFNamespace {
  */
 export interface JSONSchemaForSAPPLATFORMMOBILECARDSNamespace {
   /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0";
-  /**
    * Represents the compatibility of this app with the Mobile Cards platform.
    */
   compatible?: boolean;
@@ -2010,10 +1861,6 @@ export interface JSONSchemaForSAPPLATFORMMOBILECARDSNamespace {
  * Represents SAP Fiori  specific attributes
  */
 export interface JSONSchemaForSAPFIORINamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0";
   /**
    * Represents array of registration ids, i.e. for Fiori apps fiori id(s)
    */
@@ -2035,7 +1882,6 @@ export interface JSONSchemaForSAPFIORINamespace {
  * Represents GENERIC APP specific attributes
  */
 export interface JSONSchemaForSAPUIGENERICAPPNamespace {
-  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0" | "1.6.0";
   settings?: SettingDef;
   /**
    * Represents one ore more pages of an application. UI5 routing is created from the definitions in this section
@@ -2529,14 +2375,6 @@ export interface JSONSchemaForSAPFENamespace {
  */
 export interface JSONSchemaForSAPFLPNamespace {
   /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0";
-  /**
-   * Represents size of the tile. Deprecated, use 'vizOptions' instead.
-   */
-  tileSize?: "1x1" | "1x2";
-  /**
    * Options a visualization (launchpad tile) is offering with regards to rendering, for example
    */
   vizOptions?: {
@@ -2571,47 +2409,15 @@ export interface JSONSchemaForSAPFLPNamespace {
       [k: string]: unknown;
     };
   };
-  /**
-   * Represents the original tile and target mapping which resulted in this app. Deprecated.
-   */
-  origin?: {
-    /**
-     * Represents the original tile which resulted in this app
-     */
-    tileId?: string;
-    /**
-     * Represents the original target mapping which resulted in this app
-     */
-    targetMappingId?: string;
-  };
 }
 /**
  * Represents OVP specific attributes
  */
 export interface JSONSchemaForSAPOVPNamespace {
   /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?:
-    | "1.1.0"
-    | "1.2.0"
-    | "1.3.0"
-    | "1.4.0"
-    | "1.5.0"
-    | "1.6.0"
-    | "1.7.0"
-    | "1.8.0"
-    | "1.9.0"
-    | "1.10.0"
-    | "1.11.0";
-  /**
    * Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters
    */
   globalFilterModel?: string;
-  /**
-   * Represents the entity to use as global filter in the smart filter bar control
-   */
-  globalFilterEntityType?: string;
   /**
    * Represents the control to be used for the filter bar
    */
@@ -2776,10 +2582,6 @@ export interface FilterFieldName {
  */
 export interface Card {
   /**
-   * Represents the position of the card in the sequence
-   */
-  sequencePos?: number;
-  /**
    * Represents the model for the card
    */
   model?: string;
@@ -2788,12 +2590,6 @@ export interface Card {
    */
   template: string;
   settings?: CardSetting;
-  /**
-   * Represents the card with view switch control
-   *
-   * @minItems 1
-   */
-  tabs?: [TabSetting, ...TabSetting[]];
 }
 /**
  * Represents the card specific properties - properties that are passed to the card
@@ -2948,6 +2744,12 @@ export interface CardSetting {
     | {
         [k: string]: unknown;
       };
+  /**
+   * Represents the card with view switch control
+   *
+   * @minItems 1
+   */
+  tabs?: [TabSetting, ...TabSetting[]];
   [k: string]: unknown;
 }
 /**
@@ -3109,7 +2911,6 @@ export interface ResizableLayoutVariantCardProperties {
  * Represents Insights attributes
  */
 export interface JSONSchemaForSAPInsightsNamespace {
-  _version?: "1.0.0" | "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0" | "1.5.0";
   /**
    * Represents mandatory unique app identifier of the app containing self manifest.
    */
@@ -3206,82 +3007,15 @@ export interface JSONSchemaForSAPInsightsNamespace {
   )[];
 }
 /**
- * Represents WDA specific attributes
- */
-export interface JSONSchemaForSAPWDANamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0";
-  /**
-   * Represents ID of an application
-   */
-  applicationId: string;
-  /**
-   * Represents ID of an application configuration
-   */
-  configId?: string;
-  /**
-   * Represents SAP Screen Personas Flavor ID
-   */
-  flavorId?: string;
-  /**
-   * Indicates that WebDynpro Application requires Compatibility Mode, while uses legacy shell services. Possible values are true or false (default)
-   */
-  compatibilityMode?: boolean;
-}
-/**
- * Represents APF specific attributes
- */
-export interface JSONSchemaForSAPAPFNamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0";
-  /**
-   * Represents a switch to activate filter reduction so that filters in OData requests can be represented as ABAP select options
-   */
-  activateFilterReduction?: boolean;
-  /**
-   * Represents a switch to activate LREP as the persistence for configurations and texts
-   */
-  activateLrep?: boolean;
-  /**
-   * Represents a switch to use HEAD-Requests instead of GET-Requests when fetching the XSRF-Security-Token
-   */
-  useHeadRequestForXsrfToken?: boolean;
-}
-/**
  * Represents Cloud Portal specific attributes
  */
 export interface JSONSchemaForSAPCLOUDPORTALNamespace {
   [k: string]: unknown;
 }
 /**
- * Represents GUI specific attributes
- */
-export interface JSONSchemaForSAPGUINamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0" | "1.2.0";
-  /**
-   * Represents transaction of an application
-   */
-  transaction: string;
-  /**
-   * Represents SAP Screen Personas Flavor ID
-   */
-  flavorId?: string;
-}
-/**
  * Represents Application Integration specific attributes
  */
 export interface JSONSchemaForSAPINTEGRATIONNamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0";
   /**
    * Reference to the desired URL Template
    */
@@ -3303,19 +3037,6 @@ export interface JSONSchemaForSAPINTEGRATIONNamespace {
   [k: string]: unknown;
 }
 /**
- * Represents WCF Application specific attributes
- */
-export interface JSONSchemaForSAPWCFNamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0";
-  /**
-   * Represents the target technical id for a WCF Application
-   */
-  "wcf-target-id": string;
-}
-/**
  * Represents specific attributes for Smart Business
  */
 export interface JSONSchemaForSAPUISMARTBUSINESSAPPNamespace {
@@ -3325,10 +3046,6 @@ export interface JSONSchemaForSAPUISMARTBUSINESSAPPNamespace {
  * Represents mobile specific attributes
  */
 export interface JSONSchemaForSAPMOBILENamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.1.0";
   /**
    * Represents mobile specific attributes
    */
@@ -3360,10 +3077,6 @@ export interface DefiningRequest {
  */
 export interface JSONSchemaForSAPCOPILOTNamespace {
   /**
-   * Represents SAP.COPILOT attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0" | "1.1.0";
-  /**
    * Settings for the context analysis features of SAP CoPilot
    */
   contextAnalysis?: {
@@ -3377,52 +3090,12 @@ export interface JSONSchemaForSAPCOPILOTNamespace {
     whitelistedEntityTypes?: string[];
     [k: string]: unknown;
   };
-  /**
-   * Settings for the Digital Assistant features of SAP CoPilot
-   */
-  digitalAssistant?: {
-    /**
-     * A list of Intent
-     */
-    intentDefinition?: {
-      /**
-       * This interface was referenced by `undefined`'s JSON-Schema definition
-       * via the `patternProperty` "^[a-zA-Z0-9_\.\-]*$".
-       */
-      [k: string]: {
-        /**
-         * Represents the uri of the intent
-         */
-        uri?: string;
-        /**
-         * A list of the sap.app.dataSources used by the intent
-         */
-        dataSources?: string[];
-        /**
-         * Represents the uri of the translation file
-         */
-        i18n?: string;
-        [k: string]: unknown;
-      };
-    };
-    [k: string]: unknown;
-  };
-  [k: string]: unknown;
-}
-/**
- * Represents specific attributes for SAP.MAP
- */
-export interface JSONSchemaForSAPMAPNamespace {
   [k: string]: unknown;
 }
 /**
  * Represents specific attributes for SAP URL
  */
 export interface JSONSchemaForSAPURLNamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0";
   /**
    * Represents URI of an application
    */
@@ -3432,10 +3105,6 @@ export interface JSONSchemaForSAPURLNamespace {
  * Represents SFSF platform specific attributes
  */
 export interface JSONSchemaForSAPPLATFORMSFSFNamespace {
-  /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0";
   /**
    * Represents the uri inside the SFSF app
    */
@@ -3454,10 +3123,6 @@ export interface JSONSchemaForSAPPLATFORMSFSFNamespace {
  */
 export interface JSONSchemaForSAPCLOUDNamespace {
   /**
-   * Represents attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0" | "1.1.0" | "1.2.0";
-  /**
    * Unique Business Service Identifier
    */
   service?: string;
@@ -3470,10 +3135,6 @@ export interface JSONSchemaForSAPCLOUDNamespace {
  * Represents general package attributes. Experimental, will be detailed in the future
  */
 export interface JSONSchemaForSAPPACKAGENamespace {
-  /**
-   * Represents SAP.PACKAGE attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0" | "1.1.0" | "1.2.0";
   /**
    * Represents mandatory unique package identifier
    */
@@ -3648,10 +3309,6 @@ export interface Contentitem {
  */
 export interface JSONSchemaForSAPARTIFACTNamespace {
   /**
-   * Represents SAP.ARTIFACT attributes format version. It is managed by namespace owner
-   */
-  _version?: "1.0.0" | "1.1.0" | "1.2.0";
-  /**
    * Represents mandatory unique artifact identifier
    */
   id: string;
@@ -3708,10 +3365,6 @@ export interface JSONSchemaForSAPARTIFACTNamespace {
  * Represents generated cards saved to the application repository
  */
 export interface JSONSchemaForSapCardsApNamespace {
-  /**
-   * Represents attributes format version.
-   */
-  _version?: "1.0.0" | "1.1.0";
   /**
    * Represents an object with reference to the generated cards
    */

@@ -45,7 +45,8 @@
         "1.25.0",
         "1.26.0",
         "1.27.0",
-        "1.28.0"
+        "1.28.0",
+        "2.0.0"
       ]
     },
     "start_url": {
@@ -64,24 +65,6 @@
         "embeddedBy"
       ],
       "properties": {
-        "_version": {
-          "description": "Application attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0",
-            "1.4.0",
-            "1.5.0",
-            "1.6.0",
-            "1.7.0",
-            "1.8.0",
-            "1.9.0",
-            "1.10.0",
-            "1.11.0",
-            "1.12.0"
-          ]
-        },
         "sourceTemplate": {
           "description": "Represents the template from which the app was generated",
           "type": "object",
@@ -307,17 +290,6 @@
         "deviceTypes"
       ],
       "properties": {
-        "_version": {
-          "description": "Represents UI attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0",
-            "1.4.0",
-            "1.5.0"
-          ]
-        },
         "technology": {
           "description": "Represents UI technology. The possible values are UI5 (default), WDA, NWBC, GUI, URL and WCF",
           "type": "string",
@@ -367,28 +339,8 @@
             "contentDensities"
           ],
           "properties": {
-            "_version": {
-              "description": " Represents SAPUI5 attributes format version. It is managed by namespace owner",
-              "type": "string",
-              "enum": [
-                "1.1.0",
-                "1.2.0",
-                "1.3.0",
-                "1.4.0",
-                "1.5.0",
-                "1.6.0",
-                "1.7.0",
-                "1.8.0",
-                "1.9.0",
-                "1.10.0",
-                "1.11.0",
-                "1.12.0",
-                "1.13.0",
-                "1.14.0"
-              ]
-            },
             "resources": {
-              "description": "Represents paths to JavaScript/CSS resources that your app needs (app internal), formerly called '.includes'",
+              "description": "Represents paths to JavaScript/CSS resources that your app needs (app internal).",
               "$ref": "#/$defs/resource"
             },
             "componentUsages": {
@@ -625,14 +577,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
         "uri": {
           "description": "Represents the uri of the app in the ABAP system",
           "type": "string"
@@ -649,15 +593,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0"
-          ]
-        },
         "uri": {
           "description": "Represents the uri of the app in the HANA Cloud Platform",
           "type": "string"
@@ -691,14 +626,6 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
         "oAuthScopes": {
           "description": "Represents the authorization scope of the application",
           "type": "array",
@@ -739,15 +666,6 @@
       ],
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0"
-          ]
-        },
         "registrationIds": {
           "description": "Represents array of registration ids, i.e. for Fiori apps fiori id(s)",
           "type": "array",
@@ -788,17 +706,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0",
-            "1.4.0",
-            "1.5.0",
-            "1.6.0"
-          ]
-        },
         "settings": {
           "description": "Represents global settings for the application controller",
           "$ref": "#/$defs/setting_def"
@@ -836,25 +743,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0",
-            "1.4.0"
-          ]
-        },
-        "tileSize": {
-          "description": "Represents size of the tile. Deprecated, use 'vizOptions' instead.",
-          "type": "string",
-          "enum": [
-            "1x1",
-            "1x2"
-          ],
-          "deprecated": true
-        },
         "vizOptions": {
           "description": "Options a visualization (launchpad tile) is offering with regards to rendering, for example",
           "type": "object",
@@ -900,22 +788,6 @@
               "type": "object"
             }
           }
-        },
-        "origin": {
-          "description": "Represents the original tile and target mapping which resulted in this app. Deprecated.",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "tileId": {
-              "description": "Represents the original tile which resulted in this app",
-              "type": "string"
-            },
-            "targetMappingId": {
-              "description": "Represents the original target mapping which resulted in this app",
-              "type": "string"
-            }
-          },
-          "deprecated": true
         }
       }
     },
@@ -927,36 +799,14 @@
         "cards"
       ],
       "dependentRequired": {
-        "globalFilterEntityType": [
+        "globalFilterEntitySet": [
           "globalFilterModel"
         ]
       },
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0",
-            "1.3.0",
-            "1.4.0",
-            "1.5.0",
-            "1.6.0",
-            "1.7.0",
-            "1.8.0",
-            "1.9.0",
-            "1.10.0",
-            "1.11.0"
-          ]
-        },
         "globalFilterModel": {
           "description": "Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
-        },
-        "globalFilterEntityType": {
-          "description": "Represents the entity to use as global filter in the smart filter bar control",
           "type": "string",
           "pattern": "^[a-zA-Z0-9_\\.\\-\\|@]*$"
         },
@@ -1124,109 +974,10 @@
         }
       }
     },
-    "sap.wda": {
-      "title": "JSON schema for SAP.WDA Namespace",
-      "description": "Represents WDA specific attributes",
-      "type": "object",
-      "required": [
-        "applicationId"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
-        "applicationId": {
-          "description": "Represents ID of an application",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/_]{1,30}$"
-        },
-        "configId": {
-          "description": "Represents ID of an application configuration",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/\\_]{1,32}$"
-        },
-        "flavorId": {
-          "description": "Represents SAP Screen Personas Flavor ID",
-          "type": "string",
-          "pattern": "^[A-F0-9]{1,32}$"
-        },
-        "compatibilityMode": {
-          "description": "Indicates that WebDynpro Application requires Compatibility Mode, while uses legacy shell services. Possible values are true or false (default)",
-          "type": "boolean",
-          "default": false
-        }
-      }
-    },
-    "sap.apf": {
-      "title": "JSON schema for SAP.APF Namespace",
-      "description": "Represents APF specific attributes",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
-        "activateFilterReduction": {
-          "description": "Represents a switch to activate filter reduction so that filters in OData requests can be represented as ABAP select options",
-          "type": "boolean",
-          "default": false
-        },
-        "activateLrep": {
-          "description": "Represents a switch to activate LREP as the persistence for configurations and texts",
-          "type": "boolean",
-          "default": false
-        },
-        "useHeadRequestForXsrfToken": {
-          "description": "Represents a switch to use HEAD-Requests instead of GET-Requests when fetching the XSRF-Security-Token",
-          "type": "boolean",
-          "default": false
-        }
-      }
-    },
     "sap.cloud.portal": {
       "title": "JSON schema for SAP.CLOUD.PORTAL Namespace",
       "description": "Represents Cloud Portal specific attributes",
       "type": "object"
-    },
-    "sap.gui": {
-      "title": "JSON schema for SAP.GUI Namespace",
-      "description": "Represents GUI specific attributes",
-      "type": "object",
-      "required": [
-        "transaction"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
-        "transaction": {
-          "description": "Represents transaction of an application",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/_]{1,20}$"
-        },
-        "flavorId": {
-          "description": "Represents SAP Screen Personas Flavor ID",
-          "type": "string",
-          "pattern": "^[A-F0-9]{1,32}$"
-        }
-      }
     },
     "sap.integration": {
       "title": "JSON schema for SAP.INTEGRATION Namespace",
@@ -1237,13 +988,6 @@
         "parameters"
       ],
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.0.0"
-          ]
-        },
         "urlTemplateId": {
           "description": "Reference to the desired URL Template",
           "type": "string",
@@ -1276,29 +1020,6 @@
         }
       }
     },
-    "sap.wcf": {
-      "title": "JSON schema for SAP.WCF Namespace",
-      "description": "Represents WCF Application specific attributes",
-      "type": "object",
-      "required": [
-        "wcf-target-id"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0"
-          ]
-        },
-        "wcf-target-id": {
-          "description": "Represents the target technical id for a WCF Application",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\/_]{1,10}$"
-        }
-      }
-    },
     "sap.ui.smartbusiness.app": {
       "title": "JSON schema for SAP.UI.SMARTBUSINESS.APP Namespace",
       "description": "Represents specific attributes for Smart Business  ",
@@ -1312,13 +1033,6 @@
         "definingRequests"
       ],
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.1.0"
-          ]
-        },
         "definingRequests": {
           "description": "Represents mobile specific attributes",
           "type": "object",
@@ -1337,14 +1051,6 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "_version": {
-          "description": "Represents SAP.COPILOT attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.0.0",
-            "1.1.0"
-          ]
-        },
         "contextAnalysis": {
           "description": "Settings for the context analysis features of SAP CoPilot",
           "type": "object",
@@ -1363,48 +1069,8 @@
               }
             }
           }
-        },
-        "digitalAssistant": {
-          "description": "Settings for the Digital Assistant features of SAP CoPilot",
-          "type": "object",
-          "additionalProperties": true,
-          "properties": {
-            "intentDefinition": {
-              "description": "A list of Intent",
-              "type": "object",
-              "additionalProperties": false,
-              "patternProperties": {
-                "^[a-zA-Z0-9_\\.\\-]*$": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "properties": {
-                    "uri": {
-                      "description": "Represents the uri of the intent",
-                      "type": "string"
-                    },
-                    "dataSources": {
-                      "description": "A list of the sap.app.dataSources used by the intent",
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "i18n": {
-                      "description": "Represents the uri of the translation file",
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
-    },
-    "sap.map": {
-      "title": "JSON schema for SAP.MAP Namespace",
-      "description": "Represents specific attributes for SAP.MAP  ",
-      "type": "object"
     },
     "sap.url": {
       "title": "JSON schema for SAP.URL Namespace",
@@ -1415,13 +1081,6 @@
         "uri"
       ],
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.0.0"
-          ]
-        },
         "uri": {
           "description": "Represents URI of an application",
           "type": "string"
@@ -1437,13 +1096,6 @@
         "appName"
       ],
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.0.0"
-          ]
-        },
         "uri": {
           "description": "Represents the uri inside the SFSF app",
           "type": "string"
@@ -1464,15 +1116,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "_version": {
-          "description": "Represents attributes format version. It is managed by namespace owner",
-          "type": "string",
-          "enum": [
-            "1.0.0",
-            "1.1.0",
-            "1.2.0"
-          ]
-        },
         "service": {
           "description": "Unique Business Service Identifier",
           "type": "string",
@@ -1570,6 +1213,79 @@
         "position": {
           "description": "Position of extended actions in Quick View",
           "type": "integer"
+        }
+      }
+    },
+    "tab_setting": {
+      "description": "Represents the tab specific properties - properties that are passed to a particular tab in a card",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "annotationPath": {
+          "description": "Represents the annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "selectionAnnotationPath": {
+          "description": "Represents the selection annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "chartAnnotationPath": {
+          "description": "Represents the chart annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "presentationAnnotationPath": {
+          "description": "Represents the presentation annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "dataPointAnnotationPath": {
+          "description": "Represents the data point annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "identificationAnnotationPath": {
+          "description": "Represents the identification annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "dynamicSubtitleAnnotationPath": {
+          "description": "Represents the dynamic subtitle annotation path",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
+        },
+        "value": {
+          "description": "Represents the drop down value to be shown",
+          "type": "string"
+        },
+        "chartProperties": {
+          "description": "This property is responsible for setting specific chart settings",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "plotArea": {
+              "$ref": "#/$defs/plotAreaDef"
+            },
+            "timeAxis": {
+              "$ref": "#/$defs/timeAxisDef"
+            }
+          }
+        },
+        "colorPalette": {
+          "description": "Represents the configuration to customize the column stacked chart",
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            {
+              "type": "object"
+            }
+          ]
         }
       }
     },
@@ -1679,79 +1395,6 @@
           ]
         }
       ]
-    },
-    "tab_setting": {
-      "description": "Represents the tab specific properties - properties that are passed to a particular tab in a card",
-      "type": "object",
-      "additionalProperties": true,
-      "properties": {
-        "annotationPath": {
-          "description": "Represents the annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "selectionAnnotationPath": {
-          "description": "Represents the selection annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "chartAnnotationPath": {
-          "description": "Represents the chart annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "presentationAnnotationPath": {
-          "description": "Represents the presentation annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "dataPointAnnotationPath": {
-          "description": "Represents the data point annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "identificationAnnotationPath": {
-          "description": "Represents the identification annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "dynamicSubtitleAnnotationPath": {
-          "description": "Represents the dynamic subtitle annotation path",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_\\.\\-\\|@#]*$"
-        },
-        "value": {
-          "description": "Represents the drop down value to be shown",
-          "type": "string"
-        },
-        "chartProperties": {
-          "description": "This property is responsible for setting specific chart settings",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "plotArea": {
-              "$ref": "#/$defs/plotAreaDef"
-            },
-            "timeAxis": {
-              "$ref": "#/$defs/timeAxisDef"
-            }
-          }
-        },
-        "colorPalette": {
-          "description": "Represents the configuration to customize the column stacked chart",
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "object"
-              }
-            },
-            {
-              "type": "object"
-            }
-          ]
-        }
-      }
     },
     "card_setting": {
       "description": "Represents the card specific properties - properties that are passed to the card",
@@ -1988,6 +1631,14 @@
               "type": "object"
             }
           ]
+        },
+        "tabs": {
+          "description": "Represents the card with view switch control",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/tab_setting"
+          }
         }
       }
     },
@@ -2009,10 +1660,6 @@
       ],
       "additionalProperties": false,
       "properties": {
-        "sequencePos": {
-          "description": "Represents the position of the card in the sequence",
-          "type": "integer"
-        },
         "model": {
           "description": "Represents the model for the card",
           "type": "string",
@@ -2025,14 +1672,6 @@
         },
         "settings": {
           "$ref": "#/$defs/card_setting"
-        },
-        "tabs": {
-          "description": "Represents the card with view switch control",
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/tab_setting"
-          }
         }
       }
     },
@@ -2475,6 +2114,70 @@
         }
       }
     },
+    "actualTargetAdditionComponentUsageFlex": {
+      "type": "object",
+      "required": [
+        "id",
+        "usage",
+        "type"
+      ],
+      "properties": {
+        "usage": {
+          "description": "Represents the componentUsage of the component that will be created",
+          "type": "string"
+        },
+        "id": {
+          "description": "Represents the id of the created view or component",
+          "type": "string"
+        },
+        "type": {
+          "description": "Represents the type of the type Component",
+          "type": "string",
+          "enum": [
+            "Component"
+          ]
+        },
+        "level": {
+          "description": "Represents the level of the current component which is used to define the transition direction when navigate to this component",
+          "type": "number",
+          "multipleOf": 1
+        }
+      }
+    },
+    "actualTargetAdditionStandardFlex": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "Represents the name of a view or component that will be created",
+          "type": "string"
+        },
+        "id": {
+          "description": "Represents the id of the created view or component",
+          "type": "string"
+        },
+        "path": {
+          "description": "Represents a prefix that is prepended in front of the view or component name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Represents the type of the type View or Component",
+          "type": "string",
+          "enum": [
+            "View",
+            "Component"
+          ]
+        },
+        "level": {
+          "description": "Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component",
+          "type": "number",
+          "multipleOf": 1
+        }
+      }
+    },
     "actualTargetAdditionComponentUsage": {
       "type": "object",
       "required": [
@@ -2532,35 +2235,6 @@
         },
         "level": {
           "description": "Represents the level of the current view/component which is used to define the transition direction when navigate to this view/component",
-          "type": "number",
-          "multipleOf": 1
-        }
-      }
-    },
-    "legacyTargetAddition": {
-      "type": "object",
-      "required": [
-        "viewName"
-      ],
-      "properties": {
-        "viewName": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents the name of a view that will be created",
-          "type": "string"
-        },
-        "viewId": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents the id of the created view",
-          "type": "string"
-        },
-        "viewPath": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName",
-          "type": "string"
-        },
-        "viewLevel": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view",
           "type": "number",
           "multipleOf": 1
         }
@@ -2638,32 +2312,6 @@
         }
       }
     },
-    "legacyTargetAdditionWithoutRequiredProp": {
-      "type": "object",
-      "properties": {
-        "viewName": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents the name of a view that will be created",
-          "type": "string"
-        },
-        "viewId": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents the id of the created view",
-          "type": "string"
-        },
-        "viewPath": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName",
-          "type": "string"
-        },
-        "viewLevel": {
-          "deprecated": true,
-          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view",
-          "type": "number",
-          "multipleOf": 1
-        }
-      }
-    },
     "target": {
       "description": "Represents the definition of each target",
       "type": "object",
@@ -2676,11 +2324,7 @@
           "description": "Represents the type of view that is going to be created",
           "type": "string",
           "enum": [
-            "XML",
-            "JSON",
-            "JS",
-            "HTML",
-            "Template"
+            "XML"
           ]
         },
         "targetParent": {
@@ -2702,11 +2346,6 @@
         "parent": {
           "description": "Represents the name of another target which will also be displayed once this target is displayed",
           "type": "string"
-        },
-        "viewLevel": {
-          "description": "Represents the level of the current view which is used to define the transition direction when navigate to this view",
-          "type": "number",
-          "multipleOf": 1
         },
         "transition": {
           "description": "Represents the type of transition when navigating from previous view to this view",
@@ -2946,24 +2585,15 @@
           "type": "string"
         },
         "type": {
-          "description": "Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template",
+          "description": "Represents the type of the view. Possible Values: XML",
           "type": "string",
           "enum": [
-            "XML",
-            "JSON",
-            "JS",
-            "HTML",
-            "Template"
+            "XML"
           ]
         },
         "id": {
           "description": "Represents the id of the view",
           "type": "string"
-        },
-        "async": {
-          "description": "Configure the targets for asynchronous loading",
-          "type": "boolean",
-          "default": false
         }
       }
     },
@@ -2981,11 +2611,6 @@
                   "description": "Represents the router class",
                   "type": "string"
                 },
-                "async": {
-                  "description": "Indicates whether the Views in routing are loaded asyncly",
-                  "type": "boolean",
-                  "default": false
-                },
                 "bypassed": {
                   "description": "Represents information about targets to display when no route is matched",
                   "type": "object",
@@ -2999,18 +2624,11 @@
                       "$ref": "#/$defs/routeTarget"
                     }
                   }
-                },
-                "viewPath": {
-                  "description": "Represents a prefix that is prepended in front of the viewName",
-                  "type": "string"
                 }
               }
             },
             {
               "$ref": "#/$defs/target"
-            },
-            {
-              "$ref": "#/$defs/legacyTargetAdditionWithoutRequiredProp"
             },
             {
               "$ref": "#/$defs/actualTargetAdditionStandardWithoutRequiredProp"
@@ -3049,25 +2667,7 @@
                       "$ref": "#/$defs/target"
                     },
                     {
-                      "type": "object",
-                      "required": [
-                        "viewName",
-                        "viewId"
-                      ],
-                      "properties": {
-                        "viewName": {
-                          "description": "Represents the name of a view that will be created",
-                          "type": "string"
-                        },
-                        "viewId": {
-                          "description": "Represents the id of the created view",
-                          "type": "string"
-                        },
-                        "viewPath": {
-                          "description": "Represents a prefix that is prepended in front of the viewName",
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/$defs/actualTargetAdditionStandardFlex"
                     }
                   ]
                 },
@@ -3077,62 +2677,7 @@
                       "$ref": "#/$defs/target"
                     },
                     {
-                      "oneOf": [
-                        {
-                          "type": "object",
-                          "required": [
-                            "name",
-                            "id"
-                          ],
-                          "properties": {
-                            "name": {
-                              "description": "Represents the name of a view or component that will be created",
-                              "type": "string"
-                            },
-                            "id": {
-                              "description": "Represents the id of the created view or component",
-                              "type": "string"
-                            },
-                            "path": {
-                              "description": "Represents a prefix that is prepended in front of the view or component name",
-                              "type": "string"
-                            },
-                            "type": {
-                              "description": "Represents the type of the type View or Component",
-                              "type": "string",
-                              "enum": [
-                                "View",
-                                "Component"
-                              ]
-                            }
-                          }
-                        },
-                        {
-                          "type": "object",
-                          "required": [
-                            "usage",
-                            "id",
-                            "type"
-                          ],
-                          "properties": {
-                            "usage": {
-                              "description": "Represents the componentUsage of the component that will be created",
-                              "type": "string"
-                            },
-                            "id": {
-                              "description": "Represents the id of the created view or component",
-                              "type": "string"
-                            },
-                            "type": {
-                              "description": "Represents the type of the type Component",
-                              "type": "string",
-                              "enum": [
-                                "Component"
-                              ]
-                            }
-                          }
-                        }
-                      ]
+                      "$ref": "#/$defs/actualTargetAdditionComponentUsageFlex"
                     }
                   ]
                 }
@@ -3160,14 +2705,10 @@
               "type": "string"
             },
             "type": {
-              "description": "Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template",
+              "description": "Represents the type of the view. Possible Values: XML",
               "type": "string",
               "enum": [
-                "XML",
-                "JSON",
-                "JS",
-                "HTML",
-                "Template"
+                "XML"
               ]
             },
             "id": {
@@ -3192,11 +2733,6 @@
                   "description": "Represents the router class",
                   "type": "string"
                 },
-                "async": {
-                  "description": "Indicates whether the Views in routing are loaded asyncly",
-                  "type": "boolean",
-                  "default": false
-                },
                 "propagateTitle": {
                   "description": "Indicates whether the targets which have type 'Component' should propagate their title to this component or not",
                   "type": "boolean",
@@ -3220,9 +2756,6 @@
             },
             {
               "$ref": "#/$defs/target"
-            },
-            {
-              "$ref": "#/$defs/legacyTargetAdditionWithoutRequiredProp"
             },
             {
               "$ref": "#/$defs/actualTargetAdditionStandardWithoutRequiredProp"
@@ -3261,7 +2794,7 @@
                       "$ref": "#/$defs/target"
                     },
                     {
-                      "$ref": "#/$defs/legacyTargetAddition"
+                      "$ref": "#/$defs/actualTargetAdditionStandard"
                     }
                   ]
                 },
@@ -3271,14 +2804,7 @@
                       "$ref": "#/$defs/target"
                     },
                     {
-                      "oneOf": [
-                        {
-                          "$ref": "#/$defs/actualTargetAdditionStandard"
-                        },
-                        {
-                          "$ref": "#/$defs/actualTargetAdditionComponentUsage"
-                        }
-                      ]
+                      "$ref": "#/$defs/actualTargetAdditionComponentUsage"
                     }
                   ]
                 }
@@ -3474,22 +3000,6 @@
     "resource": {
       "type": "object",
       "properties": {
-        "js": {
-          "description": "[Deprecated] Specifies additional JavaScript resources of the Component.",
-          "deprecated": true,
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "uri"
-            ],
-            "properties": {
-              "uri": {
-                "type": "string"
-              }
-            }
-          }
-        },
         "css": {
           "description": "Specifies additional CSS resources of the Component.",
           "type": "array",
