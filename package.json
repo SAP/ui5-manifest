@@ -1,6 +1,6 @@
 {
     "name": "@ui5/manifest",
-    "version": "2.0.2",
+    "version": "1.75.1",
     "description": "This project contains the flattend json schema for the ui5 manifest.",
     "repository": {
         "type": "git",

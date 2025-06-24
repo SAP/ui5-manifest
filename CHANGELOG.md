@@ -1,12 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.2.html).
+This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <a name="Unreleased"></a>
 ## [Unreleased]
 
-<a name="v2.0.2"></a>
-## [v2.0.2] - 2025-06-11  (UI5 1.136-lf)
+<a name="v2.0.0"></a>
+## [v2.0.0] - 2025-06-11  (UI5 1.136-lf)
 
 ### Added
 - sap.flp: new property "vizOptions" has been added to provide more options for tile sizes. Only needed for declaration of custom Fiori launchpad tiles.
@@ -158,8 +158,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.2.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v2.0.2...HEAD
-[v2.0.2]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...v2.0.2
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v2.0.0...HEAD
+[v2.0.0]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...v2.0.0
 [v1.75.1]: https://github.com/SAP/ui5-manifest/compare/v1.73.1...v1.75.1
 [v1.73.1]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v1.73.1
 [v1.72.3]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...v1.72.0
