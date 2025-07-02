@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+<a name="v1.76.0"></a>
+## [v1.76.0] - 2025-07-02  (UI5 1.138)
+
 ### Changed
 - sap.card: Deprecated property "actions" for Object Content.
 
@@ -146,7 +149,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...HEAD
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.76.0...HEAD
+[v1.76.0]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...v1.76.0
 [v1.75.1]: https://github.com/SAP/ui5-manifest/compare/v1.73.1...v1.75.1
 [v1.73.1]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v1.73.1
 [v1.72.3]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...v1.72.0
