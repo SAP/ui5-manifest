@@ -2039,7 +2039,8 @@
             "1.51.0",
             "1.52.0",
             "1.53.0",
-            "1.54.0"
+            "1.54.0",
+            "1.55.0"
           ]
         },
         "designtime": {
@@ -6048,8 +6049,9 @@
           }
         },
         "actions": {
-          "description": "Defines actions that can be applied on the content",
+          "description": "[Deprecated] Defines actions that can be applied on the content",
           "type": "array",
+          "deprecated": true,
           "items": {
             "$ref": "#/$defs/action"
           }

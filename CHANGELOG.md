@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+### Changed
+- sap.card: Deprecated property "actions" for Object Content.
+
 <a name="v1.75.1"></a>
 ## [v1.75.1] - 2025-06-04  (UI5 1.137)
 ### Added
