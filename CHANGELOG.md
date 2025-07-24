@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+### Added
+- sap.card: Added new property "header/subtitle"
+- sap.card: Added new property "overflow/subtitle" in an object content item of type "Image"
+
+### Changed
+- sap.card: Deprecated property "header/subTitle" (with capital T)
+- sap.card: Deprecated property "overflow/subTitle" (with capital T) in an object content item of type "Image"
+
 <a name="v1.76.0"></a>
 ## [v1.76.0] - 2025-07-02  (UI5 1.138)
 
