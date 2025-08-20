@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <a name="Unreleased"></a>
 ## [Unreleased]
+- sap.ui5/rootView: Deprecated value `async: false`.
+- sap.ui5/routing: Deprecated value `async: false`.
 
 ### Added
 - sap.card: Added new property "useMainDestinations"

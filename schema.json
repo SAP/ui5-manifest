@@ -591,7 +591,8 @@
                 "1.16.0",
                 "1.17.0",
                 "1.18.0",
-                "1.19.0"
+                "1.19.0",
+                "1.20.0"
               ]
             },
             "resources": {
@@ -1306,7 +1307,8 @@
             "1.8.0",
             "1.9.0",
             "1.10.0",
-            "1.11.0"
+            "1.11.0",
+            "1.12.0"
           ]
         },
         "globalFilterModel": {
@@ -7334,6 +7336,11 @@
             "comment": "Card subtitle which is displayed in the card header"
           }
         },
+        "showTimeAxis": {
+          "description": "Represents the flag to enable/disable time axis for analytical timeseries cards",
+          "type": "boolean",
+          "default": false
+        },
         "valueSelectionInfo": {
           "description": "Represents things like people, number of items",
           "type": "string",
@@ -8383,7 +8390,17 @@
             "async": {
               "description": "Configure the targets for asynchronous loading",
               "type": "boolean",
-              "default": false
+              "default": false,
+              "oneOf": [
+                {
+                  "const": true
+                },
+                {
+                  "const": false,
+                  "deprecated": true,
+                  "description": "[Deprecated] Value false is deprecated. Use async: true instead."
+                }
+              ]
             }
           }
         }
@@ -8406,7 +8423,17 @@
                 "async": {
                   "description": "Indicates whether the Views in routing are loaded asyncly",
                   "type": "boolean",
-                  "default": false
+                  "default": false,
+                  "oneOf": [
+                    {
+                      "const": true
+                    },
+                    {
+                      "const": false,
+                      "deprecated": true,
+                      "description": "[Deprecated] Value false is deprecated. Use async: true instead."
+                    }
+                  ]
                 },
                 "propagateTitle": {
                   "description": "Indicates whether the targets which have type 'Component' should propagate their title to this component or not",
@@ -8530,7 +8557,17 @@
         "async": {
           "description": "Configure the targets for asynchronous loading",
           "type": "boolean",
-          "default": false
+          "default": false,
+          "oneOf": [
+            {
+              "const": true
+            },
+            {
+              "const": false,
+              "deprecated": true,
+              "description": "[Deprecated] Value false is deprecated. Use async: true instead."
+            }
+          ]
         }
       }
     },
@@ -8551,7 +8588,17 @@
                 "async": {
                   "description": "Indicates whether the Views in routing are loaded asyncly",
                   "type": "boolean",
-                  "default": false
+                  "default": false,
+                  "oneOf": [
+                    {
+                      "const": true
+                    },
+                    {
+                      "const": false,
+                      "deprecated": true,
+                      "description": "[Deprecated] Value false is deprecated. Use async: true instead."
+                    }
+                  ]
                 },
                 "bypassed": {
                   "description": "Represents information about targets to display when no route is matched",

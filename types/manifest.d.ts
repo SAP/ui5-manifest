@@ -177,7 +177,8 @@ export type JSONSchemaForSAPUI5Namespace = {
     | "1.16.0"
     | "1.17.0"
     | "1.18.0"
-    | "1.19.0";
+    | "1.19.0"
+    | "1.20.0";
   resources?: Resource;
   /**
    * Represents the explicit usage declaration for UI5 reuse components
@@ -605,7 +606,7 @@ export type RootViewDef =
       /**
        * Configure the targets for asynchronous loading
        */
-      async?: boolean;
+      async?: boolean & (true | false);
       [k: string]: unknown;
     };
 /**
@@ -1576,7 +1577,7 @@ export interface RoutingFlexEnabled {
     /**
      * Indicates whether the Views in routing are loaded asyncly
      */
-    async?: boolean;
+    async?: boolean & (true | false);
     /**
      * Represents information about targets to display when no route is matched
      */
@@ -1814,7 +1815,7 @@ export interface RootViewDefFlexEnabled {
   /**
    * Configure the targets for asynchronous loading
    */
-  async?: boolean;
+  async?: boolean & (true | false);
   [k: string]: unknown;
 }
 /**
@@ -1832,7 +1833,7 @@ export interface Routing {
     /**
      * Indicates whether the Views in routing are loaded asyncly
      */
-    async?: boolean;
+    async?: boolean & (true | false);
     /**
      * Indicates whether the targets which have type 'Component' should propagate their title to this component or not
      */
@@ -2605,7 +2606,8 @@ export interface JSONSchemaForSAPOVPNamespace {
     | "1.8.0"
     | "1.9.0"
     | "1.10.0"
-    | "1.11.0";
+    | "1.11.0"
+    | "1.12.0";
   /**
    * Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters
    */
@@ -2817,6 +2819,10 @@ export interface CardSetting {
    * Represents language-dependent subtitle of the card - used in the card header
    */
   subTitle?: string;
+  /**
+   * Represents the flag to enable/disable time axis for analytical timeseries cards
+   */
+  showTimeAxis?: boolean;
   /**
    * Represents things like people, number of items
    */
