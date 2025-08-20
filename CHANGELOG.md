@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+### Added
+- sap.card: Added new property "useMainDestinations"
+
 <a name="v1.77.0"></a>
 ## [v1.77.0] - 2025-08-04  (UI5 1.139)
 
