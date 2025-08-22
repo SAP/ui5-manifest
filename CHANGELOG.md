@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <a name="Unreleased"></a>
 ## [Unreleased]
+
+<a name="v1.78.0"></a>
+## [v1.78.0] - 2025-08-22  (UI5 1.140)
 ### Changed
 - sap.ui5/rootView: Deprecated value `async: false`.
 - sap.ui5/routing: Deprecated value `async: false`.
@@ -166,7 +169,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.77.0...HEAD
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.78.0...HEAD
+[v1.78.0]: https://github.com/SAP/ui5-manifest/compare/v1.77.0...v1.78.0
 [v1.77.0]: https://github.com/SAP/ui5-manifest/compare/v1.76.0...v1.77.0
 [v1.76.0]: https://github.com/SAP/ui5-manifest/compare/v1.75.1...v1.76.0
 [v1.75.1]: https://github.com/SAP/ui5-manifest/compare/v1.73.1...v1.75.1
