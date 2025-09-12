@@ -45,8 +45,7 @@
         "1.25.0",
         "1.26.0",
         "1.27.0",
-        "1.28.0",
-        "2.0.0"
+        "1.28.0"
       ]
     },
     "start_url": {
@@ -748,11 +747,11 @@
           "type": "object",
           "properties": {
             "displayFormats": {
-              "description": "Defines what display formats a visualization type can render itself in. The value 'default' is deprecated - please use 'standard' instead!",
+              "description": "Defines what display formats a visualization type can render itself in",
               "type": "object",
               "properties": {
                 "supported": {
-                  "description": "Lists all display formats the visualization type is capable of rendering itself in. The order of items may be used as preference definition (most important first). The value 'default' is deprecated - please use 'standard' instead!",
+                  "description": "Lists all display formats the visualization type is capable of rendering itself in. The order of items may be used as preference definition (most important first).",
                   "type": "array",
                   "default": [
                     "standard"

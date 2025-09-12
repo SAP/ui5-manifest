@@ -2379,11 +2379,11 @@ export interface JSONSchemaForSAPFLPNamespace {
    */
   vizOptions?: {
     /**
-     * Defines what display formats a visualization type can render itself in. The value 'default' is deprecated - please use 'standard' instead!
+     * Defines what display formats a visualization type can render itself in
      */
     displayFormats?: {
       /**
-       * Lists all display formats the visualization type is capable of rendering itself in. The order of items may be used as preference definition (most important first). The value 'default' is deprecated - please use 'standard' instead!
+       * Lists all display formats the visualization type is capable of rendering itself in. The order of items may be used as preference definition (most important first).
        */
       supported?: DisplayFormatEnum[];
       default?: DisplayFormatEnum;
