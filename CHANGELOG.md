@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+<a name="v2.1.0"></a>
+## [v2.1.0] - 2025-09-12  (UI5 1.139)
+
 ### Added
 - sap.card: Added new property "header/subtitle"
 - sap.card: Added new property "overflow/subtitle" in an object content item of type "Image"
@@ -35,8 +38,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - sap.flp/tileSize: has been removed in favor of sap.flp/vizOptions/displayFormats
 - sap.flp/type: is optional, defaults to "application"
 
-<a name="v1.73.1"></a>
-## [v1.73.1] - 2025-04-30  (UI5 1.136)
+<a name="v2.0.0"></a>
+## [v2.0.0] - 2025-04-30  (UI5 1.136)
 - sap.ui5/resources: Deprecated "js" property. Only "css" is a valid resource.
 - sap.ui5/routing/targets: Deprecated options that are prefixed with "view", e.g., "viewName". Use options without "view"-prefix instead.
 
@@ -164,8 +167,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="v1.48.1"></a>
 ## v1.48.1 - 2022-11-10
 
-[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v1.73.1...HEAD
-[v1.73.1]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v1.73.1
+[Unreleased]: https://github.com/SAP/ui5-manifest/compare/v2.1.0...HEAD
+[v2.1.0]: https://github.com/SAP/ui5-manifest/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/SAP/ui5-manifest/compare/v1.72.0...v2.0.0
 [v1.72.3]: https://github.com/SAP/ui5-manifest/compare/v1.71.0...v1.72.0
 [v1.71.0]: https://github.com/SAP/ui5-manifest/compare/v1.70.1...v1.71.0
 [v1.70.1]: https://github.com/SAP/ui5-manifest/compare/v1.70.0...v1.70.1
