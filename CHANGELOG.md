@@ -5,6 +5,18 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 <a name="Unreleased"></a>
 ## [Unreleased]
 
+### Added
+- sap.card: New property "configuration/childCards" which holds a list of Configuration.ChildCard which represents a child card that can be opened from the main card
+- sap.card: New property "showCardActionParameters/childCardKey" to refer to a child card which to be shown
+- sap.card: New property "header/icon/state" which can be used to apply semantic state to the icon in the header
+
+### Changed
+- sap.card: Added valiadtion for allowed combinations of "header/icon" properties
+- sap.card: Deprecated property "showCardActionParameters/manifest". Use "showCardActionParameters/childCardKey" instead.
+
+- sap.ui5/*: Added additional description texts for already deprecated settings
+- v2: Added additional description texts to the left over v2 settings, same as in v1
+
 <a name="v1.78.0"></a>
 ## [v1.78.0] - 2025-08-22  (UI5 1.140)
 ### Changed
@@ -13,6 +25,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Added
 - sap.card: Added new property "useMainDestinations"
+- sap.ui5/flexBundle: new property explicitly flagging if a flexibility-bundle.json is part of the built application.
 
 <a name="v1.77.0"></a>
 ## [v1.77.0] - 2025-08-04  (UI5 1.139)

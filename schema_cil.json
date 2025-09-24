@@ -2483,6 +2483,7 @@
       }
     },
     "actualTargetAdditionComponentUsage": {
+      "description": "Represents target configuration properties for component usage routing scenarios where targets reference reusable components",
       "type": "object",
       "required": [
         "usage",
@@ -2512,6 +2513,7 @@
       }
     },
     "actualTargetAdditionStandard": {
+      "description": "Represents the target configuration properties for modern routing implementations with view or component targets",
       "type": "object",
       "required": [
         "name"
@@ -2530,7 +2532,7 @@
           "type": "string"
         },
         "type": {
-          "description": "Represents the type of the type View or Component",
+          "description": "Represents the type of the target: View or Component",
           "type": "string",
           "enum": [
             "View",
@@ -2545,6 +2547,7 @@
       }
     },
     "legacyTargetAddition": {
+      "description": "Represents legacy target configuration properties for backward compatibility with older routing implementations",
       "type": "object",
       "required": [
         "viewName"
@@ -2552,22 +2555,22 @@
       "properties": {
         "viewName": {
           "deprecated": true,
-          "description": "[Deprecated] Represents the name of a view that will be created",
+          "description": "[Deprecated] Represents the name of a view that will be created. Please use 'name' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewPath', 'viewLevel' as well.",
           "type": "string"
         },
         "viewId": {
           "deprecated": true,
-          "description": "[Deprecated] Represents the id of the created view",
+          "description": "[Deprecated] Represents the id of the created view. Please use 'id' property instead together with the 'type' property set to 'View'. The same applies to 'viewName', 'viewPath', 'viewLevel' as well.",
           "type": "string"
         },
         "viewPath": {
           "deprecated": true,
-          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName",
+          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName. Please use 'path' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewLevel' as well.",
           "type": "string"
         },
         "viewLevel": {
           "deprecated": true,
-          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view",
+          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view. Please use 'level' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewPath' as well.",
           "type": "number",
           "multipleOf": 1
         }
@@ -2646,26 +2649,27 @@
       }
     },
     "legacyTargetAdditionWithoutRequiredProp": {
+      "description": "Represents legacy target configuration properties without required properties for more flexible backward compatibility scenarios",
       "type": "object",
       "properties": {
         "viewName": {
           "deprecated": true,
-          "description": "[Deprecated] Represents the name of a view that will be created",
+          "description": "[Deprecated] Represents the name of a view that will be created. Please use 'name' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewPath', 'viewLevel' as well.",
           "type": "string"
         },
         "viewId": {
           "deprecated": true,
-          "description": "[Deprecated] Represents the id of the created view",
+          "description": "[Deprecated] Represents the id of the created view. Please use 'id' property instead together with the 'type' property set to 'View'. The same applies to 'viewName', 'viewPath', 'viewLevel' as well.",
           "type": "string"
         },
         "viewPath": {
           "deprecated": true,
-          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName",
+          "description": "[Deprecated] Represents a prefix that is prepended in front of the viewName. Please use 'path' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewLevel' as well.",
           "type": "string"
         },
         "viewLevel": {
           "deprecated": true,
-          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view",
+          "description": "[Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view. Please use 'level' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewPath' as well.",
           "type": "number",
           "multipleOf": 1
         }
@@ -2680,15 +2684,7 @@
           "type": "string"
         },
         "viewType": {
-          "description": "Represents the type of view that is going to be created",
-          "type": "string",
-          "enum": [
-            "XML",
-            "JSON",
-            "JS",
-            "HTML",
-            "Template"
-          ]
+          "$ref": "#/$defs/viewTypeDefinition"
         },
         "targetParent": {
           "description": "Represents the id of the view that contains the control specified by the 'controlId'",
@@ -2760,6 +2756,36 @@
         },
         {
           "$ref": "#/$defs/routeTargetObject"
+        }
+      ]
+    },
+    "viewTypeDefinition": {
+      "description": "Represents the type of view that is going to be created",
+      "type": "string",
+      "oneOf": [
+        {
+          "const": "XML",
+          "description": "Value `XML` is used to create an XML view. This is the recommended view type to use. Other view types are deprecated and will be removed in future UI5 versions."
+        },
+        {
+          "const": "JSON",
+          "deprecated": true,
+          "description": "[Deprecated] Value `JSON` is deprecated and will be removed in UI5 version 2. Consider using `viewType: XML` or `typed views` instead."
+        },
+        {
+          "const": "JS",
+          "deprecated": true,
+          "description": "[Deprecated] Value `JS` is deprecated and will be removed in UI5 version 2. Consider using `viewType: XML` or `typed views` instead."
+        },
+        {
+          "const": "HTML",
+          "deprecated": true,
+          "description": "[Deprecated] Value `HTML` is deprecated and will be removed in UI5 version 2. Consider using `viewType: XML` or `typed views` instead."
+        },
+        {
+          "const": "Template",
+          "deprecated": true,
+          "description": "[Deprecated] Value `Template` is deprecated and will be removed in UI5 version 2. Consider using `viewType: XML` or `typed views` instead."
         }
       ]
     },
@@ -2880,6 +2906,7 @@
       ]
     },
     "ui5setting": {
+      "description": "Represents UI5-specific settings and configuration options that can be applied to models.",
       "type": "object",
       "additionalProperties": true,
       "properties": {
@@ -2953,15 +2980,7 @@
           "type": "string"
         },
         "type": {
-          "description": "Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template",
-          "type": "string",
-          "enum": [
-            "XML",
-            "JSON",
-            "JS",
-            "HTML",
-            "Template"
-          ]
+          "$ref": "#/$defs/viewTypeDefinition"
         },
         "id": {
           "description": "Represents the id of the view",
@@ -3187,15 +3206,7 @@
               "type": "string"
             },
             "type": {
-              "description": "Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template",
-              "type": "string",
-              "enum": [
-                "XML",
-                "JSON",
-                "JS",
-                "HTML",
-                "Template"
-              ]
+              "$ref": "#/$defs/viewTypeDefinition"
             },
             "id": {
               "description": "Represents the id of the view",
@@ -3420,6 +3431,7 @@
       ]
     },
     "resourceRoot": {
+      "description": "Represents the resource root path relative to the application root. Used to define custom resource paths for loading modules and resources",
       "type": "string",
       "pattern": "^((\\.(?!\\.)\\/)?\\w+\\/?)+$"
     },
@@ -3509,10 +3521,11 @@
       }
     },
     "resource": {
+      "description": "Represents additional resources that need to be loaded for the component",
       "type": "object",
       "properties": {
         "js": {
-          "description": "[Deprecated] Specifies additional JavaScript resources of the Component.",
+          "description": "[Deprecated] Specifies additional JavaScript resources of the Component. Since 1.94, the usage of JavaScript resources is deprecated. Please use regular dependencies via 'sap.ui.define()' or 'sap.ui.require()' instead.",
           "deprecated": true,
           "type": "array",
           "items": {

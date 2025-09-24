@@ -372,6 +372,10 @@ export type JSONSchemaForSAPUI5Namespace = {
     [k: string]: Command;
   };
   /**
+   * Represents an indicator whether a flexibility bundle was created and is within the application sources. This property is set by the building tool.
+   */
+  flexBundle?: boolean;
+  /**
    * Represents an indicator whether app variant is flex extension point enabled
    */
   flexExtensionPointEnabled?: boolean;
@@ -458,6 +462,8 @@ export type EnhanceWithSetting2 =
       };
     };
 /**
+ * Represents the resource root path relative to the application root. Used to define custom resource paths for loading modules and resources
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-zA-Z0-9_\.\-]*$".
  */
@@ -575,6 +581,8 @@ export type Command = {
 export type Command1 = {
   [k: string]: unknown;
 };
+export type ViewTypeDefinition = "XML" | "JSON" | "JS" | "HTML" | "Template";
+export type ViewTypeDefinition1 = string;
 /**
  * Represents the definition of each route
  */
@@ -595,10 +603,7 @@ export type RootViewDef =
        * Represents the name of the view
        */
       viewName: string;
-      /**
-       * Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template
-       */
-      type?: "XML" | "JSON" | "JS" | "HTML" | "Template";
+      type?: ViewTypeDefinition & ViewTypeDefinition1;
       /**
        * Represents the id of the view
        */
@@ -1396,7 +1401,7 @@ export interface DeviceType1 {
  */
 export interface Resource {
   /**
-   * [Deprecated] Specifies additional JavaScript resources of the Component.
+   * [Deprecated] Specifies additional JavaScript resources of the Component. Since 1.94, the usage of JavaScript resources is deprecated. Please use regular dependencies via 'sap.ui.define()' or 'sap.ui.require()' instead.
    */
   js?: {
     uri: string;
@@ -1509,6 +1514,9 @@ export interface Model {
   preload?: boolean;
   settings?: Ui5Setting;
 }
+/**
+ * Represents UI5-specific settings and configuration options that can be applied to models.
+ */
 export interface Ui5Setting {
   /**
    * Represents default binding mode and must be a string value from sap.ui.model.BindingMode. Possible values: Default, OneTime, OneWay, TwoWay
@@ -1694,7 +1702,7 @@ export interface Target {
   /**
    * Represents the type of view that is going to be created
    */
-  viewType?: "XML" | "JSON" | "JS" | "HTML" | "Template";
+  viewType?: ViewTypeDefinition & ViewTypeDefinition1;
   /**
    * Represents the id of the view that contains the control specified by the 'controlId'
    */
@@ -1727,21 +1735,24 @@ export interface Target {
   };
   [k: string]: unknown;
 }
+/**
+ * Represents legacy target configuration properties without required properties for more flexible backward compatibility scenarios
+ */
 export interface LegacyTargetAdditionWithoutRequiredProp {
   /**
-   * [Deprecated] Represents the name of a view that will be created
+   * [Deprecated] Represents the name of a view that will be created. Please use 'name' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewPath', 'viewLevel' as well.
    */
   viewName?: string;
   /**
-   * [Deprecated] Represents the id of the created view
+   * [Deprecated] Represents the id of the created view. Please use 'id' property instead together with the 'type' property set to 'View'. The same applies to 'viewName', 'viewPath', 'viewLevel' as well.
    */
   viewId?: string;
   /**
-   * [Deprecated] Represents a prefix that is prepended in front of the viewName
+   * [Deprecated] Represents a prefix that is prepended in front of the viewName. Please use 'path' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewLevel' as well.
    */
   viewPath?: string;
   /**
-   * [Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view
+   * [Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view. Please use 'level' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewPath' as well.
    */
   viewLevel?: number;
   [k: string]: unknown;
@@ -1805,10 +1816,7 @@ export interface RootViewDefFlexEnabled {
    * Represents the name of the view
    */
   viewName: string;
-  /**
-   * Represents the type of the view. Possible Values: XML, JSON, JS, HTML, Template
-   */
-  type?: "XML" | "JSON" | "JS" | "HTML" | "Template";
+  type?: ViewTypeDefinition & ViewTypeDefinition1;
   /**
    * Represents the id of the view
    */
@@ -1871,25 +1879,31 @@ export interface Routing {
   };
   [k: string]: unknown;
 }
+/**
+ * Represents legacy target configuration properties for backward compatibility with older routing implementations
+ */
 export interface LegacyTargetAddition {
   /**
-   * [Deprecated] Represents the name of a view that will be created
+   * [Deprecated] Represents the name of a view that will be created. Please use 'name' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewPath', 'viewLevel' as well.
    */
   viewName: string;
   /**
-   * [Deprecated] Represents the id of the created view
+   * [Deprecated] Represents the id of the created view. Please use 'id' property instead together with the 'type' property set to 'View'. The same applies to 'viewName', 'viewPath', 'viewLevel' as well.
    */
   viewId?: string;
   /**
-   * [Deprecated] Represents a prefix that is prepended in front of the viewName
+   * [Deprecated] Represents a prefix that is prepended in front of the viewName. Please use 'path' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewLevel' as well.
    */
   viewPath?: string;
   /**
-   * [Deprecated] Represents the level of the current view, which is used to define the transition direction when navigating to this view
+   * [Deprecated] Represents the level of the current view which is used to define the transition direction when navigate to this view. Please use 'level' property instead together with the 'type' property set to 'View'. The same applies to 'viewId', 'viewName', 'viewPath' as well.
    */
   viewLevel?: number;
   [k: string]: unknown;
 }
+/**
+ * Represents the target configuration properties for modern routing implementations with view or component targets
+ */
 export interface ActualTargetAdditionStandard {
   /**
    * Represents the name of a view or component that will be created
@@ -1904,7 +1918,7 @@ export interface ActualTargetAdditionStandard {
    */
   path?: string;
   /**
-   * Represents the type of the type View or Component
+   * Represents the type of the target: View or Component
    */
   type?: "View" | "Component";
   /**
@@ -1913,6 +1927,9 @@ export interface ActualTargetAdditionStandard {
   level?: number;
   [k: string]: unknown;
 }
+/**
+ * Represents target configuration properties for component usage routing scenarios where targets reference reusable components
+ */
 export interface ActualTargetAdditionComponentUsage {
   /**
    * Represents the componentUsage of the component that will be created
