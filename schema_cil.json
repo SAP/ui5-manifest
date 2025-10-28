@@ -949,7 +949,8 @@
             "1.9.0",
             "1.10.0",
             "1.11.0",
-            "1.12.0"
+            "1.12.0",
+            "1.13.0"
           ]
         },
         "globalFilterModel": {
@@ -999,10 +1000,16 @@
         "containerLayout": {
           "description": "Represents the layout of the card container",
           "type": "string",
-          "default": "fixed",
-          "enum": [
-            "fixed",
-            "resizable"
+          "default": "resizable",
+          "oneOf": [
+            {
+              "const": "resizable"
+            },
+            {
+              "const": "fixed",
+              "deprecated": true,
+              "description": "[Deprecated] Value fixed is deprecated"
+            }
           ]
         },
         "showDateInRelativeFormat": {

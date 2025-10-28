@@ -2626,7 +2626,8 @@ export interface JSONSchemaForSAPOVPNamespace {
     | "1.9.0"
     | "1.10.0"
     | "1.11.0"
-    | "1.12.0";
+    | "1.12.0"
+    | "1.13.0";
   /**
    * Represents the name of global filter OData model, which  contains entities definition that are relevant for global filters
    */
@@ -2662,7 +2663,7 @@ export interface JSONSchemaForSAPOVPNamespace {
   /**
    * Represents the layout of the card container
    */
-  containerLayout?: "fixed" | "resizable";
+  containerLayout?: ("resizable" | "fixed") & string;
   /**
    * Represents a switch to Enable or disable Relative or Normal date formating in ovp application
    */
